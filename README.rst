@@ -1,5 +1,5 @@
-combo: combine machine learning models in Python
-================================================
+combo: A python toolbox for combining machine learning models
+=============================================================
 
 **combo** is a comprehensive Python model combination toolkit for
 fusing/aggregating/selecting multiple base ML estimators,
