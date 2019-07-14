@@ -24,9 +24,9 @@ with open(path.join(this_directory, 'requirements.txt'),
     requirements = f.read().splitlines()
 
 setup(
-    name='pyod',
+    name='combo',
     version=__version__,
-    description='A python toolbox for combining machine learning models',
+    description='A Python Toolbox for Machine Learning Model Combination',
     long_description=readme(),
     author='Yue Zhao',
     author_email='zhaoy@cmu.edu',
