@@ -109,6 +109,7 @@ Proposed Algorithms
 * **Classifier combination**: combine multiple supervised classifiers together for training and prediction
 * **Raw score & probability combination**: combine scores without invoking classifiers
 * **Cluster combination**: combine unsupervised clustering results
+  * Clusterer Ensemble [#Zhou2006Clusterer]_
 * **Anomaly detection**: combine unsupervised outlier detectors
 
 
@@ -117,7 +118,7 @@ For each of the tasks, various methods may be introduced:
 * **Simple methods**: averaging, maximization, weighted averaging, thresholding
 * **Bucket methods**: average of maximization, maximization of average
 * **Learning methods**: stacking (build an additional classifier to learn base estimator weights)
-* **Selection methods**: dynamic classifier/ensemble selection
+* **Selection methods**: dynamic classifier/ensemble selection [#Ko2008From]_
 * Other models
 
 
@@ -203,3 +204,14 @@ been laid out and will be implemented in the next few months.
 
 **Watch & Star** to get the latest update! Also feel free to send me an email (zhaoy@cmu.edu)
 for suggestions and ideas.
+
+
+----
+
+
+Reference
+^^^^^^^^^
+
+
+.. [#Ko2008From] Ko, A.H., Sabourin, R. and Britto Jr, A.S., 2008. From dynamic classifier selection to dynamic ensemble selection. *Pattern recognition*, 41(5), pp.1718-1731.
+.. [#Zhou2006Clusterer] Zhou, Z.H. and Tang, W., 2006. Clusterer ensemble. *Knowledge-Based Systems*, 19(1), pp.77-83.
