@@ -60,7 +60,7 @@ combo is featured for:
 * `Installation <#installation>`_
 * `Proposed Algorithms <#proposed-algorithms>`_
 * `Quick Start for Score Combination <#quick-start-for-score-combination>`_
-* `Proposed Algorithms <#proposed-algorithms>`_
+* `Development Status <#development-status>`_
 
 
 ----
@@ -101,8 +101,8 @@ Alternatively, you could clone and run setup.py file:
 -----
 
 
-Proposed Functionalities
-^^^^^^^^^^^^^^^^^^^^^^^^
+Proposed Algorithms
+^^^^^^^^^^^^^^^^^^^
 
 **combo** will include various model combination frameworks by tasks:
 
