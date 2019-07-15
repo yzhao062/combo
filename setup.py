@@ -26,7 +26,7 @@ with open(path.join(this_directory, 'requirements.txt'),
 setup(
     name='combo',
     version=__version__,
-    description='A Python Toolbox for Machine Learning Model Combination',
+    description='A Python Toolbox for Combination Tasks in Machine Learning',
     long_description=readme(),
     author='Yue Zhao',
     author_email='zhaoy@cmu.edu',

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""A collection of model combination functionalities.
+"""A collection of combination methods for combining raw scores.
 """
 # Author: Yue Zhao <zhaoy@cmu.edu>
 # License: BSD 2 clause
