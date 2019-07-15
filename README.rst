@@ -17,15 +17,6 @@ combo: A python Toolbox for ML Combination Methods
    :alt: GitHub forks
 
 
-.. image:: https://pepy.tech/badge/combo
-   :target: https://pepy.tech/project/combo
-   :alt: Downloads
-
-
-.. image:: https://pepy.tech/badge/combo/month
-   :target: https://pepy.tech/project/combo
-   :alt: Downloads
-
 .. image:: https://img.shields.io/github/license/yzhao062/pyod.svg
    :target: https://github.com/yzhao062/pyod/blob/master/LICENSE
    :alt: License
@@ -107,6 +98,9 @@ Alternatively, you could clone and run setup.py file:
 * scikit_learn>=0.19.1
 
 
+-----
+
+
 Proposed Functionalities
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -127,8 +121,14 @@ For each of the tasks, various methods may be introduced:
 * Other models
 
 
+-----
+
+
 Quick Start for Score Combination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+-----
 
 
 Development Status
