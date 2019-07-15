@@ -1,5 +1,38 @@
-combo: A python toolbox for combining machine learning models
-=============================================================
+combo: A python Toolbox for ML Combination Methods
+==================================================
+
+**Deployment & Documentation & Stats**
+
+.. image:: https://img.shields.io/pypi/v/combo.svg?color=brightgreen
+   :target: https://pypi.org/project/combo/
+   :alt: PyPI version
+
+.. image:: https://img.shields.io/github/stars/yzhao062/combo.svg
+   :target: https://github.com/yzhao062/combo/stargazers
+   :alt: GitHub stars
+
+
+.. image:: https://img.shields.io/github/forks/yzhao062/combo.svg?color=blue
+   :target: https://github.com/yzhao062/combo/network
+   :alt: GitHub forks
+
+
+.. image:: https://pepy.tech/badge/combo
+   :target: https://pepy.tech/project/combo
+   :alt: Downloads
+
+
+.. image:: https://pepy.tech/badge/combo/month
+   :target: https://pepy.tech/project/combo
+   :alt: Downloads
+
+.. image:: https://img.shields.io/github/license/yzhao062/pyod.svg
+   :target: https://github.com/yzhao062/pyod/blob/master/LICENSE
+   :alt: License
+
+
+-----
+
 
 **combo** is a comprehensive Python model combination toolbox for
 fusing/aggregating/selecting multiple base ML estimators,
