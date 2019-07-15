@@ -59,7 +59,7 @@ combo is featured for:
 
 * `Installation <#installation>`_
 * `Proposed Algorithms <#proposed-algorithms>`_
-* `Quick Start for Score Combination <#quick-start-for-score-combination>`_
+* `Quick Start for classifier Combination <#quick-start-for-classifier-combination>`_
 * `Development Status <#development-status>`_
 
 
