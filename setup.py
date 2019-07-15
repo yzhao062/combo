@@ -28,7 +28,7 @@ setup(
     version=__version__,
     description='A Python Toolbox for Combination Tasks in Machine Learning',
     long_description=readme(),
-    long_description_content_type="text/x-rst",
+    long_description_content_type='text/x-rst',
     author='Yue Zhao',
     author_email='zhaoy@cmu.edu',
     url='https://github.com/yzhao062/combo',
