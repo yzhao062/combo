@@ -1,5 +1,5 @@
-combo: A python Toolbox for ML Combination Methods
-==================================================
+combo: A Python Toolbox for Combination Tasks in Machine Learning
+=================================================================
 
 **Deployment & Documentation & Stats**
 
