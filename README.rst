@@ -11,10 +11,18 @@ combo: A Python Toolbox for Combination Tasks in Machine Learning
    :target: https://github.com/yzhao062/combo/stargazers
    :alt: GitHub stars
 
-
 .. image:: https://img.shields.io/github/forks/yzhao062/combo.svg?color=blue
    :target: https://github.com/yzhao062/combo/network
    :alt: GitHub forks
+
+.. image:: https://pepy.tech/badge/combo
+   :target: https://pepy.tech/project/combo
+   :alt: Downloads
+
+.. image:: https://pepy.tech/badge/combo/month
+   :target: https://pepy.tech/project/combo
+   :alt: Downloads
+
 
 
 .. image:: https://img.shields.io/github/license/yzhao062/pyod.svg
