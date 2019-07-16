@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""A collection of combination methods for combining classifier
+"""A collection of methods for combining classifiers
 """
 # Author: Yue Zhao <zhaoy@cmu.edu>
 # License: BSD 2 clause
