@@ -110,7 +110,7 @@ For each of the tasks, various methods may be introduced:
    :hidden:
    :caption: Documentation
 
-   pyod
+   combo
 
 
 
