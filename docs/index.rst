@@ -99,6 +99,19 @@ For each of the tasks, various methods may be introduced:
 ----
 
 
+Development Status
+^^^^^^^^^^^^^^^^^^
+
+combo is currently **under development** as of July 15, 2019. A concrete plan has
+been laid out and will be implemented in the next few months.
+
+**Watch & Star** to get the latest update! Also feel free to send me an email (zhaoy@cmu.edu)
+for suggestions and ideas.
+
+
+----
+
+
 .. toctree::
    :maxdepth: 2
    :hidden:
