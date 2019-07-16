@@ -13,6 +13,10 @@ Welcome to combo's documentation!
    :target: https://pypi.org/project/combo/
    :alt: PyPI version
 
+.. image:: https://readthedocs.org/projects/pycombo/badge/?version=latest
+   :target: https://pycombo.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
 .. image:: https://img.shields.io/github/stars/yzhao062/combo.svg
    :target: https://github.com/yzhao062/combo/stargazers
    :alt: GitHub stars
@@ -79,7 +83,7 @@ Proposed Algorithms
 * **Classifier combination**: combine multiple supervised classifiers together for training and prediction
 * **Raw score & probability combination**: combine scores without invoking classifiers
 * **Cluster combination**: combine unsupervised clustering results
-  * Clusterer Ensemble [#Zhou2006Clusterer]_
+  * Clusterer Ensemble :cite:`a-zhou2006clusterer`
 * **Anomaly detection**: combine unsupervised outlier detectors
 
 
@@ -88,7 +92,7 @@ For each of the tasks, various methods may be introduced:
 * **Simple methods**: averaging, maximization, weighted averaging, thresholding
 * **Bucket methods**: average of maximization, maximization of average
 * **Learning methods**: stacking (build an additional classifier to learn base estimator weights)
-* **Selection methods**: dynamic classifier/ensemble selection [#Ko2008From]_
+* **Selection methods**: dynamic classifier/ensemble selection :cite:`a-ko2008dynamic`
 * Other models
 
 
@@ -112,6 +116,16 @@ For each of the tasks, various methods may be introduced:
 
    combo
 
+
+----
+
+
+.. rubric:: References
+
+.. bibliography:: zreferences.bib
+   :cited:
+   :labelprefix: A
+   :keyprefix: a-
 
 
 

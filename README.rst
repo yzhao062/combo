@@ -7,6 +7,10 @@ combo: A Python Toolbox for Combination Tasks in Machine Learning
    :target: https://pypi.org/project/combo/
    :alt: PyPI version
 
+.. image:: https://readthedocs.org/projects/pycombo/badge/?version=latest
+   :target: https://pycombo.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
 .. image:: https://img.shields.io/github/stars/yzhao062/combo.svg
    :target: https://github.com/yzhao062/combo/stargazers
    :alt: GitHub stars
