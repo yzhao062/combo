@@ -105,6 +105,11 @@ Development Status
 combo is currently **under development** as of July 15, 2019. A concrete plan has
 been laid out and will be implemented in the next few months.
 
+Similar to other libraries built by us, e.g., Python Outlier Detection Toolbox
+(`pyod <https://github.com/yzhao062/pyod>`_),
+combo is also targeted to be published in *Journal of Machine Learning Research (JMLR)*,
+`open-source software track <http://www.jmlr.org/mloss/>`_.
+
 **Watch & Star** to get the latest update! Also feel free to send me an email (zhaoy@cmu.edu)
 for suggestions and ideas.
 
