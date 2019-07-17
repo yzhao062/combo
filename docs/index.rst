@@ -7,6 +7,8 @@ Welcome to combo's documentation!
 =================================
 
 
+**Deployment & Documentation & Stats**
+
 .. image:: https://img.shields.io/pypi/v/combo.svg?color=brightgreen
    :target: https://pypi.org/project/combo/
    :alt: PyPI version
@@ -87,20 +89,33 @@ Proposed Algorithms
 
 **combo** will include various model combination frameworks by tasks:
 
-* **Classifier combination**: combine multiple supervised classifiers together for training and prediction
-* **Raw score & probability combination**: combine scores without invoking classifiers
-* **Cluster combination**: combine unsupervised clustering results
-  * Clusterer Ensemble :cite:`a-zhou2006clusterer`
-* **Anomaly detection**: combine unsupervised outlier detectors
+1. **Classifier combination**: combine multiple supervised classifiers together for training and prediction
 
+  1. Averaging & Weighted Averaging
+  2. Maximization
+  3. Majority Vote & Weighted Majority Vote
+  4. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
+  5. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
 
-For each of the tasks, various methods may be introduced:
+2. **Raw score & probability combination**: combine scores without invoking classifiers
 
-* **Simple methods**: averaging, maximization, weighted averaging, thresholding
-* **Bucket methods**: average of maximization, maximization of average
-* **Learning methods**: stacking (build an additional classifier to learn base estimator weights)
-* **Selection methods**: dynamic classifier/ensemble selection :cite:`a-ko2008dynamic`
-* Other models
+  1. Averaging & Weighted Averaging
+  2. Maximization
+  3. Average of Maximum (AOM)
+  4. Maximum of Average (MOA)
+
+3. **Cluster combination**: combine unsupervised clustering results
+
+  1. Clusterer Ensemble :cite:`a-zhou2006clusterer`
+
+4. **Anomaly detection**: combine unsupervised outlier detectors
+
+  1. Averaging & Weighted Averaging
+  2. Maximization
+  3. Average of Maximum (AOM)
+  4. Maximum of Average (MOA)
+  5. Thresholding
+  5. Locally Selective Combination (LSCP) :cite:`a-zhao2019lscp`
 
 
 ----

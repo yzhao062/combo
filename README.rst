@@ -127,29 +127,33 @@ Proposed Algorithms
 
 **combo** will include various model combination frameworks by tasks:
 
-* **Classifier combination**: combine multiple supervised classifiers together for training and prediction
+1. **Classifier combination**: combine multiple supervised classifiers together for training and prediction
 
   1. Averaging & Weighted Averaging
   2. Maximization
   3. Majority Vote & Weighted Majority Vote
-  4. Dynamic Classifier Selection & Dynamic Ensemble Selection (work-in-progress)
+  4. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
+  5. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
 
-* **Raw score & probability combination**: combine scores without invoking classifiers
+2. **Raw score & probability combination**: combine scores without invoking classifiers
 
-* **Cluster combination**: combine unsupervised clustering results
+  1. Averaging & Weighted Averaging
+  2. Maximization
+  3. Average of Maximum (AOM)
+  4. Maximum of Average (MOA)
 
-  * Clusterer Ensemble [#Zhou2006Clusterer]_
+3. **Cluster combination**: combine unsupervised clustering results
 
-* **Anomaly detection**: combine unsupervised outlier detectors
+  1. Clusterer Ensemble [#Zhou2006Clusterer]_
 
+4. **Anomaly detection**: combine unsupervised outlier detectors
 
-For each of the tasks, various methods may be introduced:
-
-* **Simple methods**: averaging, maximization, weighted averaging, thresholding
-* **Bucket methods**: average of maximization, maximization of average
-* **Learning methods**: stacking (build an additional classifier to learn base estimator weights)
-* **Selection methods**: dynamic classifier/ensemble selection [#Ko2008From]_
-* Other models
+  1. Averaging & Weighted Averaging
+  2. Maximization
+  3. Average of Maximum (AOM)
+  4. Maximum of Average (MOA)
+  5. Thresholding
+  5. Locally Selective Combination (LSCP) [#Zhao2019LSCP]_
 
 
 -----
@@ -249,4 +253,7 @@ Reference
 
 
 .. [#Ko2008From] Ko, A.H., Sabourin, R. and Britto Jr, A.S., 2008. From dynamic classifier selection to dynamic ensemble selection. *Pattern recognition*, 41(5), pp.1718-1731.
+
+.. [#Zhao2019LSCP] Zhao, Y., Nasrullah, Z., Hryniewicki, M.K. and Li, Z., 2019, May. LSCP: Locally selective combination in parallel outlier ensembles. In *Proceedings of the 2019 SIAM International Conference on Data Mining (SDM)*, pp. 585-593. Society for Industrial and Applied Mathematics.
+
 .. [#Zhou2006Clusterer] Zhou, Z.H. and Tang, W., 2006. Clusterer ensemble. *Knowledge-Based Systems*, 19(1), pp.77-83.
