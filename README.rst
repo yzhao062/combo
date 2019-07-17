@@ -127,7 +127,7 @@ Proposed Algorithms
 
 **combo** will include various model combination frameworks by tasks:
 
-1. **Classifier combination**: combine multiple supervised classifiers together for training and prediction
+* **Classifier combination**: combine multiple supervised classifiers together for training and prediction
 
   1. Averaging & Weighted Averaging
   2. Maximization
@@ -135,18 +135,18 @@ Proposed Algorithms
   4. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
   5. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
 
-2. **Raw score & probability combination**: combine scores without invoking classifiers
+* **Raw score & probability combination**: combine scores without invoking classifiers
 
   1. Averaging & Weighted Averaging
   2. Maximization
   3. Average of Maximum (AOM)
   4. Maximum of Average (MOA)
 
-3. **Cluster combination**: combine unsupervised clustering results
+* **Cluster combination**: combine unsupervised clustering results
 
   1. Clusterer Ensemble [#Zhou2006Clusterer]_
 
-4. **Anomaly detection**: combine unsupervised outlier detectors
+* **Anomaly detection**: combine unsupervised outlier detectors
 
   1. Averaging & Weighted Averaging
   2. Maximization
