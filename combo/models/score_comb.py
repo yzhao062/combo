@@ -7,12 +7,15 @@
 
 import numpy as np
 from numpy.random import RandomState
+from scipy.stats import mode
 from sklearn.utils import check_array
 from sklearn.utils import column_or_1d
 # noinspection PyProtectedMember
 from sklearn.utils import shuffle
+from sklearn.utils.extmath import weighted_mode
 from sklearn.utils.random import sample_without_replacement
 from sklearn.utils.testing import assert_equal
+from sklearn.utils.multiclass import check_classification_targets
 from ..utils.utility import check_parameter
 
 
@@ -22,8 +25,8 @@ def _aom_moa_helper(mode, scores, n_buckets, method, bootstrap_estimators,
     Maximum of Average (MOA). See :cite:`aggarwal2015theoretical` for details.
 
     First dividing estimators into subgroups, take the maximum/average score
-    as the subgroup score. Finally, take the average/maximum of all subgroup
-    outlier scores.
+    as the subgroup score. Finally, take the average/maximum of all subgroup 
+    scores.
 
     Parameters
     ----------
@@ -52,7 +55,7 @@ def _aom_moa_helper(mode, scores, n_buckets, method, bootstrap_estimators,
     Returns
     -------
     combined_scores : Numpy array of shape (n_samples,)
-        The combined outlier scores.
+        The combined scores.
 
     """
 
@@ -134,7 +137,7 @@ def aom(scores, n_buckets=5, method='static', bootstrap_estimators=False,
     estimators. See :cite:`aggarwal2015theoretical` for details.
 
     First dividing estimators into subgroups, take the maximum score as the
-    subgroup score. Finally, take the average of all subgroup outlier scores.
+    subgroup score. Finally, take the average of all subgroup scores.
 
     Parameters
     ----------
@@ -160,7 +163,7 @@ def aom(scores, n_buckets=5, method='static', bootstrap_estimators=False,
     Returns
     -------
     combined_scores : Numpy array of shape (n_samples,)
-        The combined outlier scores.
+        The combined scores.
 
     """
     return _aom_moa_helper('AOM', scores, n_buckets, method,
@@ -200,7 +203,7 @@ def moa(scores, n_buckets=5, method='static', bootstrap_estimators=False,
     Returns
     -------
     combined_scores : Numpy array of shape (n_samples,)
-        The combined outlier scores.
+        The combined scores.
 
     """
     return _aom_moa_helper('MOA', scores, n_buckets, method,
@@ -208,7 +211,7 @@ def moa(scores, n_buckets=5, method='static', bootstrap_estimators=False,
 
 
 def average(scores, estimator_weight=None):
-    """Combination method to merge the outlier scores from multiple estimators
+    """Combination method to merge the scores from multiple estimators
     by taking the average.
 
     Parameters
@@ -222,7 +225,7 @@ def average(scores, estimator_weight=None):
     Returns
     -------
     combined_scores : numpy array of shape (n_samples, )
-        The combined outlier scores.
+        The combined scores.
 
     """
     scores = check_array(scores)
@@ -243,7 +246,7 @@ def average(scores, estimator_weight=None):
 
 
 def maximization(scores):
-    """Combination method to merge the outlier scores from multiple estimators
+    """Combination method to merge the scores from multiple estimators
     by taking the maximum.
 
     Parameters
@@ -254,9 +257,55 @@ def maximization(scores):
     Returns
     -------
     combined_scores : numpy array of shape (n_samples, )
-        The combined outlier scores.
+        The combined scores.
 
     """
 
     scores = check_array(scores)
     return np.max(scores, axis=1).ravel()
+
+
+def majority_vote(scores, n_classes=2, weights=None):
+    """Combination method to merge the scores from multiple estimators
+    by majority vote.
+
+    Parameters
+    ----------
+    scores : numpy array of shape (n_samples, n_estimators)
+        Score matrix from multiple estimators on the same samples.
+
+    n_classes : int, optional (default=2)
+        The number of classes in scores matrix
+
+    weights : list of shape (1, n_estimators)
+        If specified, using weighted majority weight.
+
+    Returns
+    -------
+    combined_scores : numpy array of shape (n_samples, )
+        The combined scores.
+
+    """
+
+    scores = check_array(scores)
+
+    # assert only discrete scores are combined with majority vote
+    check_classification_targets(scores)
+    assert (len(np.unique(scores)) == n_classes)
+
+    n_samples, n_estimators = scores.shape[0], scores.shape[1]
+
+    vote_results = np.zeros([n_samples, ])
+
+    if weights is not None:
+        weights = column_or_1d(weights).reshape(1, -1)
+        assert_equal(scores.shape[1], weights.shape[1])
+
+    # equal weights if not set
+    else:
+        weights = np.ones([n_estimators, ])
+
+    for i in range(n_samples):
+        vote_results[i] = weighted_mode(scores[i, :], weights)[0][0]
+
+    return vote_results.ravel()
