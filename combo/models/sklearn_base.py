@@ -8,9 +8,7 @@ from __future__ import division
 from __future__ import print_function
 
 import numpy as np
-from scipy import sparse
 import sklearn
-from sklearn.externals import six
 from sklearn.externals.joblib import cpu_count
 
 
@@ -68,32 +66,24 @@ def _partition_estimators(n_estimators, n_jobs):
 
 
 def _pprint(params, offset=0, printer=repr):
-    # noinspection PyPep8
     """Pretty print the dictionary 'params'
-
-    See http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html
-    and sklearn/base.py for more information.
-
-    :param params: The dictionary to pretty print
-    :type params: dict
-
-    :param offset: The offset in characters to add at the begin of each line.
-    :type offset: int
-
-    :param printer: The function to convert entries to strings, typically
+    Parameters
+    ----------
+    params : dict
+        The dictionary to pretty print
+    offset : int
+        The offset in characters to add at the begin of each line.
+    printer : callable
+        The function to convert entries to strings, typically
         the builtin str or repr
-    :type printer: callable
-
-    :return: None
     """
-
     # Do a multi-line justified repr:
     options = np.get_printoptions()
     np.set_printoptions(precision=5, threshold=64, edgeitems=2)
     params_list = list()
     this_line_length = offset
     line_sep = ',\n' + (1 + offset // 2) * ' '
-    for i, (k, v) in enumerate(sorted(six.iteritems(params))):
+    for i, (k, v) in enumerate(sorted(params.items())):
         if type(v) is float:
             # use str for representing floating point numbers
             # this way we get consistent representation across
@@ -105,7 +95,7 @@ def _pprint(params, offset=0, printer=repr):
         if len(this_repr) > 500:
             this_repr = this_repr[:300] + '...' + this_repr[-100:]
         if i > 0:
-            if this_line_length + len(this_repr) >= 75 or '\n' in this_repr:
+            if (this_line_length + len(this_repr) >= 75 or '\n' in this_repr):
                 params_list.append(line_sep)
                 this_line_length = len(line_sep)
             else:
