@@ -129,7 +129,7 @@ class TestMOA(unittest.TestCase):
 class TestStatic(unittest.TestCase):
     def setUp(self):
         self.scores = np.array([[1, 2], [3, 4], [5, 6]])
-        self.weights = [[0.2], [0.6]]
+        self.weights = np.array([[0.2, 0.6]])
 
     def test_average(self):
         score = average(self.scores)
@@ -147,7 +147,7 @@ class TestStatic(unittest.TestCase):
 class TestMajorityVote(unittest.TestCase):
     def setUp(self):
         self.scores = np.array([[0, 1, 1], [0, 1, 2], [2, 2, 2], [1, 1, 2]])
-        self.weights = [[0.1], [0.8], [0.1]]
+        self.weights = np.array([[0.1, 0.8, 0.1]])
 
     def test_majority_vote(self):
         score = majority_vote(self.scores, n_classes=3)

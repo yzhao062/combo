@@ -13,9 +13,10 @@ import numpy as np
 from sklearn.utils import check_array
 from sklearn.utils import check_X_y
 from sklearn.utils import check_consistent_length
+from sklearn.utils import column_or_1d
 from sklearn.utils.multiclass import check_classification_targets
 
-from .score_comb import average, maximization, aom, moa
+from .score_comb import average, maximization, majority_vote
 from .sklearn_base import _sklearn_version_21
 from .sklearn_base import _pprint
 from ..utils.utility import check_parameter
@@ -31,7 +32,7 @@ class BaseClassifierAggregator(ABC):
 
     Parameters
     ----------
-    classifiers: list
+    classifiers: list or numpy array (n_estimators,)
         A list of base classifiers.
 
     pre_fitted: bool, optional (default=False)
@@ -235,22 +236,50 @@ class BaseClassifierAggregator(ABC):
 
 
 class SimpleClassifierAggregator(BaseClassifierAggregator):
+    """A collection of simple combination methods.
+
+    Parameters
+    ----------
+    classifiers: list or numpy array of shape (n_classifiers,)
+        A list of base classifiers.
+
+    method : str, optional (default='average')
+        Combination method: {'average', 'maximization', 'majority vote'}.
+        Pass in weights of classifiers for weighted version.
+
+    threshold : float in (0, 1), optional (default=0.5)
+        Cut-off value to convert scores into binary labels.
+
+    weights : numpy array of shape (n_classifiers,)
+        Classifier weights.
+
+    pre_fitted: bool, optional (default=False)
+        Whether the base classifiers are trained. If True, `fit`
+        process may be skipped.
+    """
 
     def __init__(self, classifiers, method='average', threshold=0.5,
                  weights=None, pre_fitted=False):
+
         super(SimpleClassifierAggregator, self).__init__(
             classifiers=classifiers, pre_fitted=pre_fitted)
+
+        # validate input parameters
+        if method not in ['average', 'maximization', 'majority_vote']:
+            raise ValueError("{method} is not a valid parameter.".format(
+                shape=method))
 
         self.method = method
         check_parameter(threshold, 0, 1, include_left=False,
                         include_right=False, param_name='threshold')
         self.threshold = threshold
 
-        if weights == None:
-            self.weights = np.ones([self.len_classifiers_, ])
+        if weights is None:
+            self.weights = np.ones([1, self.len_classifiers_])
         else:
-            self.weights = check_array(weights)
-            assert (self.weights.shape[0] == self.len_classifiers_)
+
+            self.weights = column_or_1d(weights).reshape(1, len(weights))
+            assert (self.weights.shape[1] == self.len_classifiers_)
 
     def fit(self, X, y):
         """Fit detector.
@@ -303,9 +332,11 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
                 all_scores[:, i] = clf.predict(X)
 
         if self.method == 'average':
-            agg_score = average(all_scores, self.weights)
+            agg_score = average(all_scores, estimator_weights=self.weights)
         if self.method == 'maximization':
             agg_score = maximization(all_scores)
+        if self.method == 'majority_vote':
+            agg_score = majority_vote(all_scores, weights=self.weights)
 
         return (agg_score >= self.threshold).astype('int').ravel()
 
@@ -338,6 +369,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
             return np.mean(all_scores * self.weights, axis=2)
         if self.method == 'maximization':
             return np.max(all_scores * self.weights, axis=2)
-
-        else:
-            NotImplemented('Invalid combination methods')
+        if self.method == 'majority_vote':
+            Warning('average method is invoked for predict_proba as'
+                    'probability is not continuous')
+            return np.mean(all_scores * self.weights, axis=2)
