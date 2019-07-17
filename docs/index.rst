@@ -13,40 +13,30 @@ Welcome to combo's documentation!
    :target: https://pypi.org/project/combo/
    :alt: PyPI version
 
+
 .. image:: https://readthedocs.org/projects/pycombo/badge/?version=latest
    :target: https://pycombo.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
+
 
 .. image:: https://img.shields.io/github/stars/yzhao062/combo.svg
    :target: https://github.com/yzhao062/combo/stargazers
    :alt: GitHub stars
 
+
 .. image:: https://img.shields.io/github/forks/yzhao062/combo.svg?color=blue
    :target: https://github.com/yzhao062/combo/network
    :alt: GitHub forks
+
 
 .. image:: https://pepy.tech/badge/combo
    :target: https://pepy.tech/project/combo
    :alt: Downloads
 
+
 .. image:: https://pepy.tech/badge/combo/month
    :target: https://pepy.tech/project/combo
    :alt: Downloads
-
-
------
-
-
-**Build Status & Coverage & Maintainability & License**
-
-
-.. image:: https://travis-ci.org/yzhao062/combo.svg?branch=master
-   :target: https://travis-ci.org/yzhao062/combo
-   :alt: Build Status
-
-.. image:: https://img.shields.io/github/license/yzhao062/pyod.svg
-   :target: https://github.com/yzhao062/pyod/blob/master/LICENSE
-   :alt: License
 
 
 -----
