@@ -28,6 +28,15 @@ combo: A Python Toolbox for Combination Tasks in Machine Learning
    :alt: Downloads
 
 
+-----
+
+
+**Build Status & Coverage & Maintainability & License**
+
+
+.. image:: https://travis-ci.org/yzhao062/combo.svg?branch=master
+   :target: https://travis-ci.org/yzhao062/combo
+   :alt: Build Status
 
 .. image:: https://img.shields.io/github/license/yzhao062/pyod.svg
    :target: https://github.com/yzhao062/pyod/blob/master/LICENSE
@@ -119,9 +128,18 @@ Proposed Algorithms
 **combo** will include various model combination frameworks by tasks:
 
 * **Classifier combination**: combine multiple supervised classifiers together for training and prediction
+
+  1. Averaging & Weighted Averaging
+  2. Maximization
+  3. Majority Vote & Weighted Majority Vote
+  4. Dynamic Classifier Selection & Dynamic Ensemble Selection (work-in-progress)
+
 * **Raw score & probability combination**: combine scores without invoking classifiers
+
 * **Cluster combination**: combine unsupervised clustering results
+
   * Clusterer Ensemble [#Zhou2006Clusterer]_
+
 * **Anomaly detection**: combine unsupervised outlier detectors
 
 

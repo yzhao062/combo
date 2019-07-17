@@ -7,8 +7,6 @@ Welcome to combo's documentation!
 =================================
 
 
-**Deployment & Documentation & Stats**
-
 .. image:: https://img.shields.io/pypi/v/combo.svg?color=brightgreen
    :target: https://pypi.org/project/combo/
    :alt: PyPI version
@@ -34,6 +32,15 @@ Welcome to combo's documentation!
    :alt: Downloads
 
 
+-----
+
+
+**Build Status & Coverage & Maintainability & License**
+
+
+.. image:: https://travis-ci.org/yzhao062/combo.svg?branch=master
+   :target: https://travis-ci.org/yzhao062/combo
+   :alt: Build Status
 
 .. image:: https://img.shields.io/github/license/yzhao062/pyod.svg
    :target: https://github.com/yzhao062/pyod/blob/master/LICENSE
