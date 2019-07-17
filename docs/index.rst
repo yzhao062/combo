@@ -91,9 +91,9 @@ Proposed Algorithms
 
 * **Classifier combination**: combine multiple supervised classifiers together for training and prediction
 
-  1. Averaging & Weighted Averaging
+  1. Averaging & Weighted Averaging :cite:`a-zhou2012ensemble`
   2. Maximization
-  3. Majority Vote & Weighted Majority Vote
+  3. Majority Vote & Weighted Majority Vote :cite:`a-zhou2012ensemble`
   4. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
   5. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
 

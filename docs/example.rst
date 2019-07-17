@@ -9,7 +9,7 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
    .. code-block:: python
 
 
-       from combo.models.classifier_comb import BaseClassiferAggregator
+       from combo.models.classifier_comb import SimpleClassifierAggregator
 
        # initialize a group of classifiers
        classifiers = [DecisionTreeClassifier(random_state=random_state),

@@ -131,9 +131,9 @@ Proposed Algorithms
 
 * **Classifier combination**: combine multiple supervised classifiers together for training and prediction
 
-  1. Averaging & Weighted Averaging
+  1. Averaging & Weighted Averaging [#Zhou2012Ensemble]_
   2. Maximization
-  3. Majority Vote & Weighted Majority Vote
+  3. Majority Vote & Weighted Majority Vote [#Zhou2012Ensemble]_
   4. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
   5. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
 
@@ -172,7 +172,7 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
    .. code-block:: python
 
 
-       from combo.models.classifier_comb import BaseClassiferAggregator
+       from combo.models.classifier_comb import SimpleClassifierAggregator
 
        # initialize a group of classifiers
        classifiers = [DecisionTreeClassifier(random_state=random_state),
@@ -248,3 +248,5 @@ Reference
 .. [#Zhao2019LSCP] Zhao, Y., Nasrullah, Z., Hryniewicki, M.K. and Li, Z., 2019, May. LSCP: Locally selective combination in parallel outlier ensembles. In *Proceedings of the 2019 SIAM International Conference on Data Mining (SDM)*, pp. 585-593. Society for Industrial and Applied Mathematics.
 
 .. [#Zhou2006Clusterer] Zhou, Z.H. and Tang, W., 2006. Clusterer ensemble. *Knowledge-Based Systems*, 19(1), pp.77-83.
+
+.. [#Zhou2012Ensemble] Zhou, Z.H., 2012. Ensemble methods: foundations and algorithms. Chapman and Hall/CRC.
