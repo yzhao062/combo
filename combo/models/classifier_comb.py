@@ -281,6 +281,10 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
             self.weights = column_or_1d(weights).reshape(1, len(weights))
             assert (self.weights.shape[1] == self.len_classifiers_)
 
+            # adjust probability by a factor for integrity
+            adjust_factor = self.weights.shape[1] / np.sum(weights)
+            self.weights = self.weights * adjust_factor
+
     def fit(self, X, y):
         """Fit detector.
 
