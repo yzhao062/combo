@@ -1,3 +1,4 @@
+joblib
 matplotlib
 nose
 numpy>=1.13

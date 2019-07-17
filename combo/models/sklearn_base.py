@@ -9,7 +9,7 @@ from __future__ import print_function
 
 import numpy as np
 import sklearn
-from sklearn.externals.joblib import cpu_count
+from joblib.parallel import cpu_count
 
 
 def _get_n_jobs(n_jobs):
