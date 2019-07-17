@@ -115,7 +115,7 @@ Proposed Algorithms
   3. Average of Maximum (AOM)
   4. Maximum of Average (MOA)
   5. Thresholding
-  5. Locally Selective Combination (LSCP) :cite:`a-zhao2019lscp`
+  6. Locally Selective Combination (LSCP) :cite:`a-zhao2019lscp`
 
 
 ----
