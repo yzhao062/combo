@@ -45,8 +45,13 @@ combo: A Python Toolbox for Combination Tasks in Machine Learning
    :alt: Build Status
 
 
-.. image:: https://img.shields.io/github/license/yzhao062/pyod.svg
-   :target: https://github.com/yzhao062/pyod/blob/master/LICENSE
+.. image:: https://coveralls.io/repos/github/yzhao062/combo/badge.svg
+   :target: https://coveralls.io/github/yzhao062/combo
+   :alt: Coverage Status
+
+
+.. image:: https://img.shields.io/github/license/yzhao062/combo.svg
+   :target: https://github.com/yzhao062/combo/blob/master/LICENSE
    :alt: License
 
 

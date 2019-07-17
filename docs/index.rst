@@ -42,6 +42,27 @@ Welcome to combo's documentation!
 -----
 
 
+**Build Status & Coverage & Maintainability & License**
+
+
+.. image:: https://travis-ci.org/yzhao062/combo.svg?branch=master
+   :target: https://travis-ci.org/yzhao062/combo
+   :alt: Build Status
+
+
+.. image:: https://coveralls.io/repos/github/yzhao062/combo/badge.svg
+   :target: https://coveralls.io/github/yzhao062/combo
+   :alt: Coverage Status
+
+
+.. image:: https://img.shields.io/github/license/yzhao062/combo.svg
+   :target: https://github.com/yzhao062/combo/blob/master/LICENSE
+   :alt: License
+
+
+-----
+
+
 **combo** is a comprehensive Python model combination toolbox for
 fusing/aggregating/selecting multiple base ML estimators,
 under **supervised**, **unsupervised**, and **semi-supervised** scenarios. It
