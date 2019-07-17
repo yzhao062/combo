@@ -182,36 +182,23 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
                       GradientBoostingClassifier(random_state=random_state)]
 
 
-#. Initialize an aggregator class and pass in initialized classifiers for training
+#. Initialize an aggregator class and pass in combination methods
 
    .. code-block:: python
 
 
        # combine by averaging
-       clf = BaseClassiferAggregator(classifiers)
+       clf = SimpleClassifierAggregator(classifiers, method='average')
        clf.fit(X_train, y_train)
 
 
-#. Predict by averaging base classifier results and then evaluate
+#. Predict by SimpleClassifierAggregator and then evaluate
 
    .. code-block:: python
 
 
-       # combine by averaging
-
-       y_test_predicted = clf.predict(X_test, method='average')
-       evaluate_print('Combination by avg  |', y_test, y_test_predicted)
-
-
-#. Predict by maximizing base classifier results and then evaluate
-
-   .. code-block:: python
-
-
-       # combine by maximization
-
-       y_test_predicted = clf.predict(X_test, method='maximization')
-       evaluate_print('Combination by max  |', y_test, y_test_predicted)
+       y_test_predicted = clf.predict(X_test)
+       evaluate_print('Combination by avg   |', y_test, y_test_predicted)
 
 
 #. See a sample output of classifier_comb_example.py
@@ -219,14 +206,16 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
    .. code-block:: python
 
 
-       Decision Tree       | Accuracy:0.9386, ROC:0.9383, F1:0.9521
-       Logistic Regression | Accuracy:0.9649, ROC:0.9615, F1:0.973
-       K Neighbors         | Accuracy:0.9561, ROC:0.9519, F1:0.9662
-       Gradient Boosting   | Accuracy:0.9605, ROC:0.9524, F1:0.9699
-       Random Forest       | Accuracy:0.9605, ROC:0.961, F1:0.9693
+       Decision Tree        | Accuracy:0.9386, ROC:0.9383, F1:0.9521
+       Logistic Regression  | Accuracy:0.9649, ROC:0.9615, F1:0.973
+       K Neighbors          | Accuracy:0.9561, ROC:0.9519, F1:0.9662
+       Gradient Boosting    | Accuracy:0.9605, ROC:0.9524, F1:0.9699
+       Random Forest        | Accuracy:0.9605, ROC:0.961, F1:0.9693
 
-       Combination by avg  | Accuracy:0.9693, ROC:0.9677, F1:0.9763
-       Combination by max  | Accuracy:0.9518, ROC:0.9312, F1:0.9642
+       Combination by avg   | Accuracy:0.9693, ROC:0.9677, F1:0.9763
+       Combination by w_avg | Accuracy:0.9781, ROC:0.9716, F1:0.9833
+       Combination by max   | Accuracy:0.9518, ROC:0.9312, F1:0.9642
+       Combination by w_vote| Accuracy:0.9649, ROC:0.9644, F1:0.9728
 
 
 -----

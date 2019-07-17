@@ -28,8 +28,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
 from sklearn.datasets import load_breast_cancer
+from sklearn.metrics import roc_auc_score
 
-from combo.models.classifier_comb import BaseClassiferAggregator
+from combo.models.classifier_comb import SimpleClassifierAggregator
 from combo.utils.data import evaluate_print
 
 import warnings
@@ -47,23 +48,23 @@ if __name__ == "__main__":
     # fit and predict by individual classifiers
     clf = DecisionTreeClassifier(random_state=random_state)
     clf.fit(X_train, y_train)
-    evaluate_print('Decision Tree       |', y_test, clf.predict(X_test))
+    evaluate_print('Decision Tree        |', y_test, clf.predict(X_test))
 
     clf = LogisticRegression(random_state=random_state)
     clf.fit(X_train, y_train)
-    evaluate_print('Logistic Regression |', y_test, clf.predict(X_test))
+    evaluate_print('Logistic Regression  |', y_test, clf.predict(X_test))
 
     clf = KNeighborsClassifier()
     clf.fit(X_train, y_train)
-    evaluate_print('K Neighbors         |', y_test, clf.predict(X_test))
+    evaluate_print('K Neighbors          |', y_test, clf.predict(X_test))
 
     clf = GradientBoostingClassifier(random_state=random_state)
     clf.fit(X_train, y_train)
-    evaluate_print('Gradient Boosting   |', y_test, clf.predict(X_test))
+    evaluate_print('Gradient Boosting    |', y_test, clf.predict(X_test))
 
     clf = RandomForestClassifier(random_state=random_state)
     clf.fit(X_train, y_train)
-    evaluate_print('Random Forest       |', y_test, clf.predict(X_test))
+    evaluate_print('Random Forest        |', y_test, clf.predict(X_test))
 
     print()
 
@@ -75,14 +76,29 @@ if __name__ == "__main__":
                    GradientBoostingClassifier(random_state=random_state)]
 
     # combine by averaging
-    clf = BaseClassiferAggregator(classifiers)
+    clf = SimpleClassifierAggregator(classifiers, method='average')
     clf.fit(X_train, y_train)
-    y_test_predicted = clf.predict(X_test, method='average')
-    evaluate_print('Combination by avg  |', y_test, y_test_predicted)
+    y_test_predicted = clf.predict(X_test)
+    evaluate_print('Combination by avg   |', y_test, y_test_predicted)
+
+    # combine by weighted averaging
+    clf_weights = np.array([0.1, 0.4, 0.1, 0.2, 0.2])
+    clf = SimpleClassifierAggregator(classifiers, method='average',
+                                     weights=clf_weights)
+    clf.fit(X_train, y_train)
+    y_test_predicted = clf.predict(X_test)
+    evaluate_print('Combination by w_avg |', y_test, y_test_predicted)
 
     # combine by maximization
-    clf = BaseClassiferAggregator(classifiers)
+    clf = SimpleClassifierAggregator(classifiers, method='maximization')
     clf.fit(X_train, y_train)
-    y_test_predicted = clf.predict(X_test, method='maximization')
-    y_test_prob = clf.predict_proba(X_test, method='average')
-    evaluate_print('Combination by max  |', y_test, y_test_predicted)
+    y_test_predicted = clf.predict(X_test)
+    evaluate_print('Combination by max   |', y_test, y_test_predicted)
+
+    # combine by weighted majority vote
+    clf_weights = np.array([0.1, 0.4, 0.1, 0.2, 0.2])
+    clf = SimpleClassifierAggregator(classifiers, method='majority_vote',
+                                     weights=clf_weights)
+    clf.fit(X_train, y_train)
+    y_test_predicted = clf.predict(X_test)
+    evaluate_print('Combination by w_vote|', y_test, y_test_predicted)
