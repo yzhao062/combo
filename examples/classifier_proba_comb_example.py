@@ -30,7 +30,7 @@ from sklearn.metrics import roc_auc_score
 
 from sklearn.datasets import load_breast_cancer
 
-from combo.models.classifier_comb import BaseClassiferAggregator
+from combo.models.classifier_comb import SimpleClassifierAggregator
 from combo.utils.data import evaluate_print
 
 import warnings
@@ -86,9 +86,26 @@ if __name__ == "__main__":
                    GradientBoostingClassifier(random_state=random_state)]
 
     # combine by averaging
-    clf = BaseClassiferAggregator(classifiers)
+    clf = SimpleClassifierAggregator(classifiers, method='average')
     clf.fit(X_train, y_train)
-    y_test_predicted = clf.predict_proba(X_test, method='average')
+    y_test_predicted = clf.predict_proba(X_test)
     print('Combination by avg  |', np.round(
+        roc_auc_score(y_test, clf.predict_proba(X_test)[:, 1]),
+        decimals=4))
+
+    # combine by weighted averaging
+    clf_weights = np.array([0.1, 0.4, 0.1, 0.2, 0.2])
+    clf = SimpleClassifierAggregator(classifiers, method='average')
+    clf.fit(X_train, y_train)
+    y_test_predicted = clf.predict_proba(X_test)
+    print('Combination by w_avg|', np.round(
+        roc_auc_score(y_test, clf.predict_proba(X_test)[:, 1]),
+        decimals=4))
+
+    # combine by maximization
+    clf = SimpleClassifierAggregator(classifiers, method='maximization')
+    clf.fit(X_train, y_train)
+    y_test_predicted = clf.predict_proba(X_test)
+    print('Combination by max  |', np.round(
         roc_auc_score(y_test, clf.predict_proba(X_test)[:, 1]),
         decimals=4))
