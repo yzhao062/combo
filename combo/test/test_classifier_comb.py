@@ -29,7 +29,7 @@ from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score
 from scipy.stats import rankdata
 
-# temporary solution for relative imports in case  combo is not installed
+# temporary solution for relative imports in case combo is not installed
 # if  combo is installed, no need to use the following line
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
