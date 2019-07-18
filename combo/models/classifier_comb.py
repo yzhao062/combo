@@ -250,7 +250,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
     threshold : float in (0, 1), optional (default=0.5)
         Cut-off value to convert scores into binary labels.
 
-    weights : numpy array of shape (n_classifiers,)
+    weights : numpy array of shape (1, n_classifiers)
         Classifier weights.
 
     pre_fitted : bool, optional (default=False)

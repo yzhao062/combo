@@ -219,8 +219,8 @@ def average(scores, estimator_weights=None):
     scores : numpy array of shape (n_samples, n_estimators)
         Score matrix from multiple estimators on the same samples.
 
-    estimator_weights : list of shape (1, n_estimators)
-        If specified, using weighted average
+    estimator_weights : numpy array of shape (1, n_estimators)
+        If specified, using weighted average.
 
     Returns
     -------
@@ -280,7 +280,7 @@ def majority_vote(scores, n_classes=2, weights=None):
     n_classes : int, optional (default=2)
         The number of classes in scores matrix
 
-    weights : list of shape (1, n_estimators)
+    weights : numpy array of shape (1, n_estimators)
         If specified, using weighted majority weight.
 
     Returns
