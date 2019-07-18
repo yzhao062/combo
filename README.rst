@@ -234,8 +234,8 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
 -----
 
 
-Quick Start for Cluster Combination
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Quick Start for Clustering Combination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `"examples/cluster_comb_example.py" <https://github.com/yzhao062/combo/blob/master/examples/cluster_comb_example.py>`_
 demonstrates the basic API of combining multiple base clustering estimators. **It is noted that the API across all other algorithms are consistent/similar**.
