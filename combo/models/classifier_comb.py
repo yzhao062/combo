@@ -328,8 +328,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
 
         all_scores = np.zeros([X.shape[0], self.len_classifiers_])
 
-        for i in range(self.len_classifiers_):
-            clf = self.classifiers[i]
+        for i, clf in enumerate(self.classifiers):
             if clf.fitted_ != True and self.pre_fitted == False:
                 ValueError('Classifier should be fitted first!')
             else:
