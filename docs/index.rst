@@ -155,7 +155,6 @@ for suggestions and ideas.
    :hidden:
    :caption: Getting Started
 
-
    install
    example
 
@@ -166,6 +165,13 @@ for suggestions and ideas.
    :caption: Documentation
 
    combo
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Additional Information
+
+   about
 
 
 ----
