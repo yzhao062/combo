@@ -50,7 +50,7 @@ class BaseClusteringAggregator(ABC):
         if len(estimators) < 2:
             raise ValueError('At least 2 estimators are required')
         self.estimators = estimators
-        self.len_estimators_ = len(self.estimators)
+        self.n_estimators_ = len(self.estimators)
         self.pre_fitted = pre_fitted
 
     @abstractmethod
@@ -232,17 +232,26 @@ class ClustererEnsemble(BaseClusteringAggregator):
         A list of base estimators. Estimators must have a `labels_`
         attribute once fitted. Sklearn clustering estimators are recommended.
 
-    n_clusters :
+    n_clusters : int, optional (default=8)
+        The number of clusters.
 
     weights : numpy array of shape (n_estimators,)
         Estimator weights. May be used after the alignment.
 
+    reference_idx : int in range [0, n_estimators-1], optional (default=0)
+        The ith base estimator used as the reference for label alignment.
+
     pre_fitted : bool, optional (default=False)
         Whether the base estimators are trained. If True, `fit`
         process may be skipped.
+
+    Attributes
+    ----------
+    labels_ : int
+        The predicted label of the fitted data.
     """
 
-    def __init__(self, estimators, n_clusters, weights=None,
+    def __init__(self, estimators, n_clusters, weights=None, reference_idx=0,
                  pre_fitted=False):
 
         super(ClustererEnsemble, self).__init__(
@@ -251,12 +260,16 @@ class ClustererEnsemble(BaseClusteringAggregator):
         check_parameter(n_clusters, low=2, param_name='n_clusters')
         self.n_clusters = n_clusters
 
+        check_parameter(reference_idx, low=0, high=self.n_estimators_ - 1,
+                        include_left=True, include_right=True)
+        self.reference_idx = reference_idx
+
         if weights is None:
-            self.weights = np.ones([1, self.len_estimators_])
+            self.weights = np.ones([1, self.n_estimators_])
         else:
 
             self.weights = column_or_1d(weights).reshape(1, len(weights))
-            assert (self.weights.shape[1] == self.len_estimators_)
+            assert (self.weights.shape[1] == self.n_estimators_)
 
             # adjust probability by a factor for integrity
             adjust_factor = self.weights.shape[1] / np.sum(weights)
@@ -271,12 +284,11 @@ class ClustererEnsemble(BaseClusteringAggregator):
             The input samples.
         """
 
-        # Validate inputs X and y
-        # validate inputs X and y (optional)
+        # Validate inputs X
         X = check_array(X)
 
         # initialize the score matrix to store the results
-        original_labels = np.zeros([X.shape[0], self.len_estimators_])
+        original_labels = np.zeros([X.shape[0], self.n_estimators_])
 
         if self.pre_fitted:
             print("Training Skipped")
@@ -291,10 +303,57 @@ class ClustererEnsemble(BaseClusteringAggregator):
             original_labels[:, i] = estimator.labels_
         self.oiginal_labels_ = original_labels
 
+        # get the aligned result
+        self.labels_, self.aligned_labels_ = clusterer_ensemble_scores(
+            original_labels,
+            self.n_estimators_,
+            n_clusters=self.n_clusters,
+            weights=self.weights,
+            return_results=True,
+            reference_idx=self.reference_idx)
+
+    def predict(self, X):
+        """Predict the class labels for the provided data.
+
+        Parameters
+        ----------
+        X : numpy array of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        labels : numpy array of shape (n_samples,)
+            Class labels for each data sample.
+        """
+        # TODO: decide whether enable predict function for clustering
+        raise NotImplemented("predict function is currently disabled for"
+                             "clustering due to inconsistent behaviours.")
+
+        # Validate inputs X
+        X = check_array(X)
+
+        # initialize the score matrix to store the results
+        original_labels = np.zeros([X.shape[0], self.n_estimators_])
+
+        for i, estimator in enumerate(self.estimators):
+            check_is_fitted(estimator, ['labels_'])
+            original_labels[:, i] = estimator.predict(X)
+
+        # get the aligned result
+        predicted_labels = clusterer_ensemble_scores(
+            original_labels,
+            self.n_estimators_,
+            n_clusters=self.n_clusters,
+            weights=self.weights,
+            return_results=False,
+            reference_idx=self.reference_idx)
+
+        return predicted_labels
+
 
 def clusterer_ensemble_scores(original_labels, n_estimators, n_clusters,
                               weights=None, return_results=False,
-                              selected_idx=0):
+                              reference_idx=0):
     """Function to align the raw clustering results from base estimators.
     Different from ClustererEnsemble class, this function takes in the output
     from base estimators directly without training and prediction.
@@ -316,13 +375,13 @@ def clusterer_ensemble_scores(original_labels, n_estimators, n_clusters,
     return_results : bool, optional (default=False)
         If True, also return the aligned label matrix.
 
-    selected_idx : int in range [0, n_estimators-1], optional (default=0)
+    reference_idx : int in range [0, n_estimators-1], optional (default=0)
         The ith base estimator used as the reference for label alignment.
 
     Returns
     -------
     aligned_labels : numpy array of shape (n_samples, n_estimators)
-        The aligned label results by using selected_idx estimator as the
+        The aligned label results by using reference_idx estimator as the
         reference.
 
     """
@@ -332,7 +391,7 @@ def clusterer_ensemble_scores(original_labels, n_estimators, n_clusters,
     aligned_labels = np.copy(original_labels)
 
     for i in range(n_estimators):
-        inter_mat = _intersection_mat(original_labels, selected_idx, i,
+        inter_mat = _intersection_mat(original_labels, reference_idx, i,
                                       n_clusters)
         index_mapping = _alignment(inter_mat, n_clusters, i, aligned_labels,
                                    OFFSET_FACTOR)

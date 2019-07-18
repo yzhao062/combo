@@ -19,7 +19,6 @@ sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname("__file__"), '..')))
 
 import numpy as np
-from sklearn.model_selection import train_test_split
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
@@ -28,6 +27,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
 from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score
 
 from combo.models.classifier_comb import SimpleClassifierAggregator
