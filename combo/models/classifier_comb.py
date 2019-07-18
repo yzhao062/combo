@@ -51,7 +51,7 @@ class BaseClassifierAggregator(ABC):
 
     @abstractmethod
     def fit(self, X, y):
-        """Fit detector.
+        """Fit classifier.
 
         Parameters
         ----------
@@ -240,7 +240,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
 
     Parameters
     ----------
-    classifiers: list or numpy array of shape (n_classifiers,)
+    classifiers : list or numpy array of shape (n_classifiers,)
         A list of base classifiers.
 
     method : str, optional (default='average')
@@ -253,7 +253,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
     weights : numpy array of shape (n_classifiers,)
         Classifier weights.
 
-    pre_fitted: bool, optional (default=False)
+    pre_fitted : bool, optional (default=False)
         Whether the base classifiers are trained. If True, `fit`
         process may be skipped.
     """
@@ -286,7 +286,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
             self.weights = self.weights * adjust_factor
 
     def fit(self, X, y):
-        """Fit detector.
+        """Fit classifier.
 
         Parameters
         ----------
