@@ -1,8 +1,6 @@
-combo.utils package
-===================
+Utils Functions
+===============
 
-Submodules
-----------
 
 combo.utils.data module
 -----------------------
