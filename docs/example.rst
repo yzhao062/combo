@@ -1,6 +1,11 @@
 Quick Start
 ===========
 
+
+Quick Start for Classifier Combination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 `"examples/classifier_comb_example.py" <https://github.com/yzhao062/combo/blob/master/examples/classifier_comb_example.py>`_
 demonstrates the basic API of predicting with multiple classifiers. **It is noted that the API across all other algorithms are consistent/similar**.
 
@@ -56,3 +61,43 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
 
 
 -----
+
+
+Quick Start for Cluster Combination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`"examples/cluster_comb_example.py" <https://github.com/yzhao062/combo/blob/master/examples/cluster_comb_example.py>`_
+demonstrates the basic API of combining multiple base clustering estimators. **It is noted that the API across all other algorithms are consistent/similar**.
+
+#. Initialize a group of clustering methods as base estimators
+
+   .. code-block:: python
+
+
+       from combo.models.cluster_comb import ClustererEnsemble
+
+       # Initialize a set of estimators
+       estimators = [KMeans(n_clusters=n_clusters),
+                     MiniBatchKMeans(n_clusters=n_clusters),
+                     AgglomerativeClustering(n_clusters=n_clusters)]
+
+
+#. Initialize an Clusterer Ensemble class and fit the model
+
+   .. code-block:: python
+
+
+       # combine by Clusterer Ensemble
+       clf = ClustererEnsemble(estimators, n_clusters=n_clusters)
+       clf.fit(X)
+
+
+#. Get the aligned results
+
+   .. code-block:: python
+
+
+       # generate the labels on X
+       aligned_labels = clf.aligned_labels_
+       predicted_labels = clf.labels_
+

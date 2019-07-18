@@ -92,7 +92,8 @@ combo is featured for:
 
 * `Installation <#installation>`_
 * `Proposed Algorithms <#proposed-algorithms>`_
-* `Quick Start for classifier Combination <#quick-start-for-classifier-combination>`_
+* `Quick Start for Classifier Combination <#quick-start-for-classifier-combination>`_
+* `Quick Start for Clustering Combination <#quick-start-for-clustering-combination>`_
 * `Development Status <#development-status>`_
 
 
@@ -228,6 +229,48 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
        Combination by w_avg | Accuracy:0.9781, ROC:0.9716, F1:0.9833
        Combination by max   | Accuracy:0.9518, ROC:0.9312, F1:0.9642
        Combination by w_vote| Accuracy:0.9649, ROC:0.9644, F1:0.9728
+
+
+-----
+
+
+Quick Start for Cluster Combination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`"examples/cluster_comb_example.py" <https://github.com/yzhao062/combo/blob/master/examples/cluster_comb_example.py>`_
+demonstrates the basic API of combining multiple base clustering estimators. **It is noted that the API across all other algorithms are consistent/similar**.
+
+#. Initialize a group of clustering methods as base estimators
+
+   .. code-block:: python
+
+
+       from combo.models.cluster_comb import ClustererEnsemble
+
+       # Initialize a set of estimators
+       estimators = [KMeans(n_clusters=n_clusters),
+                     MiniBatchKMeans(n_clusters=n_clusters),
+                     AgglomerativeClustering(n_clusters=n_clusters)]
+
+
+#. Initialize an Clusterer Ensemble class and fit the model
+
+   .. code-block:: python
+
+
+       # combine by Clusterer Ensemble
+       clf = ClustererEnsemble(estimators, n_clusters=n_clusters)
+       clf.fit(X)
+
+
+#. Get the aligned results
+
+   .. code-block:: python
+
+
+       # generate the labels on X
+       aligned_labels = clf.aligned_labels_
+       predicted_labels = clf.labels_
 
 
 -----
