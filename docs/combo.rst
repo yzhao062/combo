@@ -3,6 +3,7 @@ API Reference
 
 
 .. toctree::
+   :maxdepth: 3
 
    combo.models
    combo.utils

@@ -1,8 +1,6 @@
-combo.models package
-====================
+Core Models
+==========
 
-Submodules
-----------
 
 combo.models.classifier\_comb module
 ------------------------------------
@@ -11,6 +9,7 @@ combo.models.classifier\_comb module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 combo.models.cluster\_comb module
 ---------------------------------
@@ -19,6 +18,7 @@ combo.models.cluster\_comb module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 combo.models.estimator\_comb module
 -----------------------------------
@@ -27,6 +27,7 @@ combo.models.estimator\_comb module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 combo.models.score\_comb module
 -------------------------------
@@ -35,14 +36,7 @@ combo.models.score\_comb module
    :members:
    :undoc-members:
    :show-inheritance:
-
-combo.models.sklearn\_base module
----------------------------------
-
-.. automodule:: combo.models.sklearn_base
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   :inherited-members:
 
 
 Module contents
@@ -52,3 +46,4 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
