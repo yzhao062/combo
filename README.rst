@@ -58,17 +58,17 @@ combo: A Python Toolbox for Combination Tasks in Machine Learning
 -----
 
 
-**combo** is a comprehensive Python model combination toolbox for
-fusing/aggregating/selecting multiple base ML estimators,
+**combo** is a Python combination toolbox for
+fusing/aggregating/selecting ML models and scores,
 under **supervised**, **unsupervised**, and **semi-supervised** scenarios. It
 consists methods for various tasks, including **classification**,
 **clustering**, **anomaly detection**, and **raw score combination**.
 
-Model combination is an important task in
+Model and score combination is an important subtask in
 `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
-but is often beyond the scope of ensemble learning. For instance, simple
-averaging the results of the same classifiers with multiple runs is deemed as
-a good way to eliminate the randomness in the classifier for a better stability.
+but is often beyond the scope of ensemble learning. For instance,
+averaging the results of a single classifier with multiple runs is deemed as
+a good way of eliminating the randomness for a better stability.
 Model combination has been widely used in data science competitions and
 real-world tasks, such as Kaggle. See figure below for some popular combination
 approaches.
@@ -81,9 +81,9 @@ approaches.
 combo is featured for:
 
 * **Unified APIs, detailed documentation, and interactive examples** across various algorithms.
-* **Advanced models**, including dynamic classifier/ensemble selection.
-* **Comprehensive coverage** for supervised, unsupervised, and semi-supervised scenarios.
+* **Advanced models**, including dynamic classifier/ensemble selection and LSCP.
 * **Rich applications** for classification, clustering, anomaly detection, and raw score combination.
+* **Comprehensive coverage** for supervised, unsupervised, and semi-supervised scenarios.
 * **Optimized performance with JIT and parallelization** when possible, using `numba <https://github.com/numba/numba>`_ and `joblib <https://github.com/joblib/joblib>`_.
 
 

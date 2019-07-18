@@ -27,7 +27,6 @@ from sklearn.utils.testing import assert_true
 
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score
-from scipy.stats import rankdata
 
 # temporary solution for relative imports in case combo is not installed
 # if  combo is installed, no need to use the following line
@@ -35,6 +34,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from combo.models.classifier_comb import BaseClassifierAggregator
 from combo.models.classifier_comb import SimpleClassifierAggregator
+from combo.utils.data import evaluate_print
 
 
 # Check sklearn\tests\test_base
@@ -194,6 +194,9 @@ class TestAverage(unittest.TestCase):
         # check performance
         assert_greater(accuracy_score(self.y_test, y_test_predicted),
                        self.accuracy_floor)
+
+        # test utility function
+        evaluate_print('averaging', self.y_test, y_test_predicted)
 
     def test_prediction_proba(self):
         y_test_predicted = self.clf.predict_proba(self.X_test)
