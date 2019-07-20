@@ -161,7 +161,7 @@ for suggestions and ideas.
    :hidden:
    :caption: Documentation
 
-   combo
+   api
 
 .. toctree::
    :maxdepth: 2
