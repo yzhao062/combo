@@ -2,19 +2,47 @@ API Reference
 =============
 
 
+----
+
+
 Classifier Combination
 ^^^^^^^^^^^^^^^^^^^^^^
+
 
 :mod:`combo.models.classifier_comb`: a collection of classifier
 combination methods.
 
-.. automodule:: combo.models.classifier_comb
 
 .. toctree::
     :maxdepth: 4
 
     modules/classifier_comb/BaseClassifierAggregator
     modules/classifier_comb/SimpleClassifierAggregator
+
+
+----
+
+
+Cluster Combination
+^^^^^^^^^^^^^^^^^^^
+
+
+:mod:`combo.models.cluster_comb`: a collection of cluster
+combination methods.
+
+
+----
+
+
+Score Combination
+^^^^^^^^^^^^^^^^^
+
+
+:mod:`combo.models.score_comb`: a collection of (raw) score
+combination methods.
+
+
+----
 
 
 All Models
