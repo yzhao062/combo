@@ -2,6 +2,20 @@ API Reference
 =============
 
 
+Classifier Combination
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: combo.models.classifier_comb
+
+.. toctree::
+    :maxdepth: 3
+
+    modules/classifier_comb
+
+
+All Models
+^^^^^^^^^^
+
 .. toctree::
    :maxdepth: 3
 
@@ -9,12 +23,3 @@ API Reference
    combo.utils
 
 
-Module contents
----------------
-
-.. automodule:: pyod
-    :members:
-    :exclude-members: __version__
-    :undoc-members:
-    :show-inheritance:
-    :inherited-members:
