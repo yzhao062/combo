@@ -5,6 +5,9 @@ API Reference
 Classifier Combination
 ^^^^^^^^^^^^^^^^^^^^^^
 
+:class:`combo.models.classifier_comb` provides a collection of classifier
+combination methods.
+
 .. automodule:: combo.models.classifier_comb
 
 .. toctree::
