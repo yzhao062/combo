@@ -1,8 +1,9 @@
 v<0.0.0>, <07/14/2019> -- Initial release.
-v<0.0.1>, <07/15/2018> -- Add basic functionalities and examples.
-v<0.0.1>, <07/15/2018> -- Add clusterer ensemble.
-v<0.0.2>, <07/16/2018> -- Hot fixes.
-v<0.0.3>, <07/16/2018> -- Add documentation.
-v<0.0.3>, <07/17/2018> -- Add Travis-ci integration.
-v<0.0.4>, <07/17/2018> -- Update unit test and clustering algorithms.
-v<0.0.4>, <07/17/2018> -- Update documentation.
+v<0.0.1>, <07/15/2019> -- Add basic functionalities and examples.
+v<0.0.1>, <07/15/2019> -- Add clusterer ensemble.
+v<0.0.2>, <07/16/2019> -- Hot fixes.
+v<0.0.3>, <07/16/2019> -- Add documentation.
+v<0.0.3>, <07/17/2019> -- Add Travis-ci integration.
+v<0.0.4>, <07/17/2019> -- Update unit test and clustering algorithms.
+v<0.0.4>, <07/17/2019> -- Update documentation.
+v<0.0.4>, <07/21/2019> -- Add code maintainability.
