@@ -55,6 +55,11 @@ Welcome to combo's documentation!
    :alt: Coverage Status
 
 
+.. image:: https://api.codeclimate.com/v1/badges/465ebba81e990abb357b/maintainability
+   :target: https://codeclimate.com/github/yzhao062/combo/maintainability
+   :alt: Maintainability
+
+
 .. image:: https://img.shields.io/github/license/yzhao062/combo.svg
    :target: https://github.com/yzhao062/combo/blob/master/LICENSE
    :alt: License
