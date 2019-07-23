@@ -104,7 +104,7 @@ Proposed Algorithms
 
 * **Classifier combination**: combine multiple supervised classifiers together for training and prediction
 
-  1. Averaging & Weighted Averaging :cite:`a-zhou2012ensemble`
+  1. Averaging & Weighted Averaging & Median :cite:`a-zhou2012ensemble`
   2. Maximization
   3. Majority Vote & Weighted Majority Vote :cite:`a-zhou2012ensemble`
   4. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
@@ -123,7 +123,7 @@ Proposed Algorithms
 
 * **Anomaly detection**: combine unsupervised outlier detectors
 
-  1. Averaging & Weighted Averaging
+  1. Averaging & Weighted Averaging & Median
   2. Maximization
   3. Average of Maximum (AOM)
   4. Maximum of Average (MOA)
