@@ -143,12 +143,13 @@ Proposed Algorithms
 ^^^^^^^^^^^^^^^^^^^
 
 
-**combo** will include various model combination frameworks by tasks. For most of the tasks, the following combination methods for raw scores are feasible:
+**combo** will include various model combination frameworks by tasks. For most of the tasks,
+the following combination methods for raw scores are feasible:
 
-  1. Averaging & Weighted Averaging & Median [#Zhou2012Ensemble]_
-  2. Maximization
-  3. Majority Vote & Weighted Majority Vote [#Zhou2012Ensemble]_
-  4. Median
+  * Averaging & Weighted Averaging & Median [#Zhou2012Ensemble]_
+  * Maximization
+  * Majority Vote & Weighted Majority Vote [#Zhou2012Ensemble]_
+  * Median
 
 
 Some of the methods are tasks specific:
@@ -163,6 +164,7 @@ Some of the methods are tasks specific:
 * **Cluster combination**: combine unsupervised clustering results
 
   1. Clusterer Ensemble [#Zhou2006Clusterer]_
+
 
 * **Anomaly detection**: combine unsupervised outlier detectors
 
