@@ -142,22 +142,24 @@ Alternatively, you could clone and run setup.py file:
 Proposed Algorithms
 ^^^^^^^^^^^^^^^^^^^
 
-**combo** will include various model combination frameworks by tasks:
 
-* **Classifier combination**: combine multiple supervised classifiers together for training and prediction
+**combo** will include various model combination frameworks by tasks. For most
+of the tasks, the following combination methods for raw scores are feasible:
 
   1. Averaging & Weighted Averaging & Median [#Zhou2012Ensemble]_
   2. Maximization
   3. Majority Vote & Weighted Majority Vote [#Zhou2012Ensemble]_
-  4. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
-  5. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
+  4. Median
 
-* **Raw score & probability combination**: combine scores without invoking classifiers
 
-  1. Averaging & Weighted Averaging & Median
-  2. Maximization
-  3. Average of Maximum (AOM)
-  4. Maximum of Average (MOA)
+Some of the methods are tasks specific:
+
+* **Classifier combination**: combine multiple supervised classifiers together
+  for training and prediction
+
+  1. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
+  2. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
+
 
 * **Cluster combination**: combine unsupervised clustering results
 
@@ -165,12 +167,11 @@ Proposed Algorithms
 
 * **Anomaly detection**: combine unsupervised outlier detectors
 
-  1. Averaging & Weighted Averaging & Median
-  2. Maximization
-  3. Average of Maximum (AOM)
-  4. Maximum of Average (MOA)
-  5. Thresholding
-  6. Locally Selective Combination (LSCP) [#Zhao2019LSCP]_
+  1. Average of Maximum (AOM) [#Aggarwal2015Theoretical]_
+  2. Maximum of Average (MOA) [#Aggarwal2015Theoretical]_
+  3. Thresholding
+  4. Locally Selective Combination (LSCP) [#Zhao2019LSCP]_
+  5. XGBOD: a semi-supervised combination framework for outlier detection [#Zhao2018XGBOD]_
 
 
 -----
@@ -281,13 +282,14 @@ demonstrates the basic API of combining multiple base clustering estimators. **I
 Development Status
 ^^^^^^^^^^^^^^^^^^
 
-combo is currently **under development** as of July 15, 2019. A concrete plan has
+combo is currently **under development** as of July 24, 2019. A concrete plan has
 been laid out and will be implemented in the next few months.
 
 Similar to other libraries built by us, e.g., Python Outlier Detection Toolbox
 (`pyod <https://github.com/yzhao062/pyod>`_),
 combo is also targeted to be published in *Journal of Machine Learning Research (JMLR)*,
-`open-source software track <http://www.jmlr.org/mloss/>`_.
+`open-source software track <http://www.jmlr.org/mloss/>`_. A demo paper to
+*AAAI* or *IJCAI* may be submitted soon for progress update.
 
 **Watch & Star** to get the latest update! Also feel free to send me an email (zhaoy@cmu.edu)
 for suggestions and ideas.
@@ -299,10 +301,13 @@ for suggestions and ideas.
 Reference
 ^^^^^^^^^
 
+.. [#Aggarwal2015Theoretical] Aggarwal, C.C. and Sathe, S., 2015. Theoretical foundations and algorithms for outlier ensembles. *ACM SIGKDD Explorations Newsletter*, 17(1), pp.24-47.
 
 .. [#Ko2008From] Ko, A.H., Sabourin, R. and Britto Jr, A.S., 2008. From dynamic classifier selection to dynamic ensemble selection. *Pattern recognition*, 41(5), pp.1718-1731.
 
 .. [#Zhao2019LSCP] Zhao, Y., Nasrullah, Z., Hryniewicki, M.K. and Li, Z., 2019, May. LSCP: Locally selective combination in parallel outlier ensembles. In *Proceedings of the 2019 SIAM International Conference on Data Mining (SDM)*, pp. 585-593. Society for Industrial and Applied Mathematics.
+
+.. [#Zhao2018XGBOD] Zhao, Y. and Hryniewicki, M.K. XGBOD: Improving Supervised Outlier Detection with Unsupervised Representation Learning. *IEEE International Joint Conference on Neural Networks*, 2018.
 
 .. [#Zhou2006Clusterer] Zhou, Z.H. and Tang, W., 2006. Clusterer ensemble. *Knowledge-Based Systems*, 19(1), pp.77-83.
 

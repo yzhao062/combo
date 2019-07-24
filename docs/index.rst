@@ -100,22 +100,23 @@ combo is featured for:
 Proposed Algorithms
 ^^^^^^^^^^^^^^^^^^^
 
-**combo** will include various model combination frameworks by tasks:
-
-* **Classifier combination**: combine multiple supervised classifiers together for training and prediction
+**combo** will include various model combination frameworks by tasks. For most
+of the tasks, the following combination methods for raw scores are feasible:
 
   1. Averaging & Weighted Averaging & Median :cite:`a-zhou2012ensemble`
   2. Maximization
   3. Majority Vote & Weighted Majority Vote :cite:`a-zhou2012ensemble`
-  4. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
-  5. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
+  4. Median
 
-* **Raw score & probability combination**: combine scores without invoking classifiers
 
-  1. Averaging & Weighted Averaging
-  2. Maximization
-  3. Average of Maximum (AOM)
-  4. Maximum of Average (MOA)
+Some of the methods are tasks specific:
+
+* **Classifier combination**: combine multiple supervised classifiers together
+  for training and prediction
+
+  1. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
+  2. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
+
 
 * **Cluster combination**: combine unsupervised clustering results
 
@@ -123,12 +124,11 @@ Proposed Algorithms
 
 * **Anomaly detection**: combine unsupervised outlier detectors
 
-  1. Averaging & Weighted Averaging & Median
-  2. Maximization
-  3. Average of Maximum (AOM)
-  4. Maximum of Average (MOA)
-  5. Thresholding
-  6. Locally Selective Combination (LSCP) :cite:`a-zhao2019lscp`
+  1. Average of Maximum (AOM) :cite:`a-aggarwal2015theoretical`
+  2. Maximum of Average (MOA) :cite:`a-aggarwal2015theoretical`
+  3. Thresholding
+  4. Locally Selective Combination (LSCP) :cite:`a-zhao2019lscp`
+  5. XGBOD: a semi-supervised combination framework for outlier detection :cite:`a-zhao2018xgbod`
 
 
 ----
@@ -137,13 +137,14 @@ Proposed Algorithms
 Development Status
 ^^^^^^^^^^^^^^^^^^
 
-combo is currently **under development** as of July 15, 2019. A concrete plan has
+combo is currently **under development** as of July 24, 2019. A concrete plan has
 been laid out and will be implemented in the next few months.
 
 Similar to other libraries built by us, e.g., Python Outlier Detection Toolbox
 (`pyod <https://github.com/yzhao062/pyod>`_),
 combo is also targeted to be published in *Journal of Machine Learning Research (JMLR)*,
-`open-source software track <http://www.jmlr.org/mloss/>`_.
+`open-source software track <http://www.jmlr.org/mloss/>`_. A demo paper to
+*AAAI* or *IJCAI* may be submitted soon for progress update.
 
 **Watch & Star** to get the latest update! Also feel free to send me an email (zhaoy@cmu.edu)
 for suggestions and ideas.
