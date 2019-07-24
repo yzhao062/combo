@@ -143,8 +143,7 @@ Proposed Algorithms
 ^^^^^^^^^^^^^^^^^^^
 
 
-**combo** will include various model combination frameworks by tasks. For most
-of the tasks, the following combination methods for raw scores are feasible:
+**combo** will include various model combination frameworks by tasks. For most of the tasks, the following combination methods for raw scores are feasible:
 
   1. Averaging & Weighted Averaging & Median [#Zhou2012Ensemble]_
   2. Maximization
