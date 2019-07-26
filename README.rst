@@ -161,36 +161,38 @@ Proposed Algorithms
 ^^^^^^^^^^^^^^^^^^^
 
 
-**combo** will include various model combination frameworks by tasks. For most of the tasks,
-the following combination methods for raw scores are feasible [#Zhou2012Ensemble]_:
+**combo** groups combination frameworks by tasks.
+
+* For most of the tasks, the following **combination methods for raw scores** are feasible [#Zhou2012Ensemble]_:
 
   1. Averaging & Weighted Averaging & Median
   2. Maximization
   3. Majority Vote & Weighted Majority Vote
   4. Median
 
-
 Some of the methods are tasks specific:
 
 * **Classifier combination**: combine multiple supervised classifiers together
   for training and prediction
 
-  1. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
-  2. Stacking: build an additional classifier to learn base estimator weights [#Gorman2016Kaggle]_ (work-in-progress)
+  1. SimpleClassifierAggregator: combining classifiers by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
+  2. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
+  3. Stacking: build an additional classifier to learn base estimator weights [#Gorman2016Kaggle]_ (work-in-progress)
 
 
-* **Cluster combination**: combine unsupervised clustering results
+* **Cluster combination**: combine and align unsupervised clustering results
 
   1. Clusterer Ensemble [#Zhou2006Clusterer]_
 
 
-* **Anomaly detection**: combine unsupervised outlier detectors
+* **Anomaly detection**: combine unsupervised (and supervised) outlier detectors
 
-  1. Average of Maximum (AOM) [#Aggarwal2015Theoretical]_
-  2. Maximum of Average (MOA) [#Aggarwal2015Theoretical]_
-  3. Thresholding
-  4. Locally Selective Combination (LSCP) [#Zhao2019LSCP]_
-  5. XGBOD: a semi-supervised combination framework for outlier detection [#Zhao2018XGBOD]_
+  1. SimpleDetectorCombination: combining outlier score results by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
+  2. Average of Maximum (AOM) [#Aggarwal2015Theoretical]_
+  3. Maximum of Average (MOA) [#Aggarwal2015Theoretical]_
+  4. Thresholding
+  5. Locally Selective Combination (LSCP) [#Zhao2019LSCP]_
+  6. XGBOD: a semi-supervised combination framework for outlier detection [#Zhao2018XGBOD]_
 
 
 -----

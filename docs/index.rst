@@ -116,36 +116,38 @@ Key Attributes of a fitted model: to finish.
 Proposed Algorithms
 ^^^^^^^^^^^^^^^^^^^
 
-**combo** will include various model combination frameworks by tasks. For most
-of the tasks, the following combination methods for raw scores are feasible :cite:`a-zhou2012ensemble`:
+**combo** groups combination frameworks by tasks.
+
+* For most of the tasks, the following **combination methods for raw scores** (:mod:`combo.models.score_comb`) are feasible :cite:`a-zhou2012ensemble`:
 
   1. Averaging & Weighted Averaging & Median
   2. Maximization
   3. Majority Vote & Weighted Majority Vote
   4. Median
 
-
 Some of the methods are tasks specific:
 
 * **Classifier combination**: combine multiple supervised classifiers together
   for training and prediction
 
-  1. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
-  2. Stacking: build an additional classifier to learn base estimator weights :cite:`a-gorman2016kaggle` (work-in-progress)
+  1. SimpleClassifierAggregator (:class:`combo.models.classifier_comb.SimpleClassifierAggregator`): combining classifiers by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
+  2. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
+  3. Stacking (meta learner): build an additional classifier to learn base estimator weights :cite:`a-gorman2016kaggle` (work-in-progress)
 
 
-* **Cluster combination**: combine unsupervised clustering results
+* **Cluster combination**: combine and align unsupervised clustering results
 
-  1. Clusterer Ensemble :cite:`a-zhou2006clusterer`
+  1. Clusterer Ensemble (:class:`combo.models.cluster_comb.ClustererEnsemble`) :cite:`a-zhou2006clusterer`
 
 
-* **Anomaly detection**: combine unsupervised outlier detectors
+* **Anomaly detection**: combine unsupervised (and supervised) outlier detectors
 
-  1. Average of Maximum (AOM) :cite:`a-aggarwal2015theoretical`
-  2. Maximum of Average (MOA) :cite:`a-aggarwal2015theoretical`
-  3. Thresholding
-  4. Locally Selective Combination (LSCP) :cite:`a-zhao2019lscp`
-  5. XGBOD: a semi-supervised combination framework for outlier detection :cite:`a-zhao2018xgbod`
+  1. SimpleDetectorCombination: combining outlier score results by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
+  2. Average of Maximum (AOM) :cite:`a-aggarwal2015theoretical`
+  3. Maximum of Average (MOA) :cite:`a-aggarwal2015theoretical`
+  4. Thresholding
+  5. Locally Selective Combination (LSCP) :cite:`a-zhao2019lscp`
+  6. XGBOD: a semi-supervised combination framework for outlier detection :cite:`a-zhao2018xgbod`
 
 
 ----
