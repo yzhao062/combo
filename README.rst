@@ -158,7 +158,7 @@ Some of the methods are tasks specific:
   for training and prediction
 
   1. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
-  2. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
+  2. Stacking: build an additional classifier to learn base estimator weights [#Gorman2016Kaggle]_ (work-in-progress)
 
 
 * **Cluster combination**: combine unsupervised clustering results
@@ -303,6 +303,8 @@ Reference
 ^^^^^^^^^
 
 .. [#Aggarwal2015Theoretical] Aggarwal, C.C. and Sathe, S., 2015. Theoretical foundations and algorithms for outlier ensembles. *ACM SIGKDD Explorations Newsletter*, 17(1), pp.24-47.
+
+.. [#Gorman2016Kaggle] Gorman, B. (2016). A Kaggler's Guide to Model Stacking in Practice. [online] The Official Blog of Kaggle.com. Available at: http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/ [Accessed 26 Jul. 2019].
 
 .. [#Ko2008From] Ko, A.H., Sabourin, R. and Britto Jr, A.S., 2008. From dynamic classifier selection to dynamic ensemble selection. *Pattern recognition*, 41(5), pp.1718-1731.
 

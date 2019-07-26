@@ -115,7 +115,7 @@ Some of the methods are tasks specific:
   for training and prediction
 
   1. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
-  2. Stacking: build an additional classifier to learn base estimator weights (work-in-progress)
+  2. Stacking: build an additional classifier to learn base estimator weights :cite:`a-gorman2016kaggle` (work-in-progress)
 
 
 * **Cluster combination**: combine unsupervised clustering results
