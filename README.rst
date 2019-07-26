@@ -1,5 +1,5 @@
-combo: A Python Toolbox for Combination Tasks in Machine Learning
-=================================================================
+combo: A Python Toolbox for Machine Learning Model Combination
+==============================================================
 
 
 **Deployment & Documentation & Stats**
@@ -93,6 +93,7 @@ combo is featured for:
 
 
 * `Installation <#installation>`_
+* `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
 * `Proposed Algorithms <#proposed-algorithms>`_
 * `Quick Start for Classifier Combination <#quick-start-for-classifier-combination>`_
 * `Quick Start for Clustering Combination <#quick-start-for-clustering-combination>`_
@@ -136,7 +137,24 @@ Alternatively, you could clone and run setup.py file:
 * scikit_learn>=0.19.1
 
 
------
+----
+
+
+API Cheatsheet & Reference
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html). API cheatsheet for most of the models:
+
+
+* **fit(X)**\ : Fit an estimator.
+* **predict(X)**\ : Predict on a particular sample once the estimator is fitted.
+* **predict_proba(X)**\ : Predict the probability of a sample belonging to each class. Only applicable for classification tasks.
+
+
+Key Attributes of a fitted model: to finish.
+
+
+----
 
 
 Proposed Algorithms
@@ -304,7 +322,7 @@ Reference
 
 .. [#Aggarwal2015Theoretical] Aggarwal, C.C. and Sathe, S., 2015. Theoretical foundations and algorithms for outlier ensembles. *ACM SIGKDD Explorations Newsletter*, 17(1), pp.24-47.
 
-.. [#Gorman2016Kaggle] Gorman, B. (2016). A Kaggler's Guide to Model Stacking in Practice. [online] The Official Blog of Kaggle.com. Available at: http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/ [Accessed 26 Jul. 2019].
+.. [#Gorman2016Kaggle] Gorman, B. (2016). A Kaggler's Guide to Model Stacking in Practice. [online] The Official Blog of Kaggle.com. Available at: http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice [Accessed 26 Jul. 2019].
 
 .. [#Ko2008From] Ko, A.H., Sabourin, R. and Britto Jr, A.S., 2008. From dynamic classifier selection to dynamic ensemble selection. *Pattern recognition*, 41(5), pp.1718-1731.
 

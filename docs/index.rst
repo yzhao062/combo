@@ -97,6 +97,22 @@ combo is featured for:
 ----
 
 
+API Cheatsheet & Reference
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html). API cheatsheet for most of the models:
+
+
+* **fit(X)**\ : Fit an estimator.
+* **predict(X)**\ : Predict on a particular sample once the estimator is fitted.
+* **predict_proba(X)**\ : Predict the probability of a sample belonging to each class. Only applicable for classification tasks.
+
+
+Key Attributes of a fitted model: to finish.
+
+----
+
+
 Proposed Algorithms
 ^^^^^^^^^^^^^^^^^^^
 
