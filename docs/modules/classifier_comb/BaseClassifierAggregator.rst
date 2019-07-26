@@ -1,5 +1,5 @@
-Classifier Combination Base
----------------------------
+Base Class for Classifier Combination
+-------------------------------------
 
 .. automodule:: combo.models.classifier_comb
    :noindex:
