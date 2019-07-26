@@ -41,6 +41,11 @@ Score Combination
 :mod:`combo.models.score_comb`: a collection of (raw) score
 combination methods.
 
+.. toctree::
+   :maxdepth: 4
+
+   combo.models.score_comb
+
 
 ----
 
