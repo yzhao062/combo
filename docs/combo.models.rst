@@ -47,3 +47,10 @@ Module contents
    :undoc-members:
    :show-inheritance:
    :inherited-members:
+
+
+.. rubric:: References
+
+.. bibliography:: zreferences.bib
+   :cited:
+   :labelprefix: B
