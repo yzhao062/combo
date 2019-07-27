@@ -176,8 +176,8 @@ class TestAverage(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'clfs') and
-                    self.clf.clfs is not None)
+        assert_true(hasattr(self.clf, 'base_clfs') and
+                    self.clf.base_clfs is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
@@ -244,8 +244,8 @@ class TestWeightedAverage(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'clfs') and
-                    self.clf.clfs is not None)
+        assert_true(hasattr(self.clf, 'base_clfs') and
+                    self.clf.base_clfs is not None)
 
         # print clf details
         self.clf
@@ -313,8 +313,8 @@ class TestMax(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'clfs') and
-                    self.clf.clfs is not None)
+        assert_true(hasattr(self.clf, 'base_clfs') and
+                    self.clf.base_clfs is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
@@ -379,8 +379,8 @@ class TestMajorityVote(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'clfs') and
-                    self.clf.clfs is not None)
+        assert_true(hasattr(self.clf, 'base_clfs') and
+                    self.clf.base_clfs is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
@@ -445,8 +445,8 @@ class TestMedian(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'clfs') and
-                    self.clf.clfs is not None)
+        assert_true(hasattr(self.clf, 'base_clfs') and
+                    self.clf.base_clfs is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)

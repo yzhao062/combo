@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""A collection of methods for combining clfs
+"""A collection of methods for combining classifiers
 """
 # Author: Yue Zhao <zhaoy@cmu.edu>
 # License: BSD 2 clause
@@ -33,7 +33,7 @@ class BaseClassifierAggregator(ABC):
 
     Parameters
     ----------
-    clfs: list or numpy array (n_estimators,)
+    base_clfs: list or numpy array (n_estimators,)
         A list of base classifiers.
 
     pre_fitted: bool, optional (default=False)
@@ -42,12 +42,12 @@ class BaseClassifierAggregator(ABC):
     """
 
     @abstractmethod
-    def __init__(self, clfs, pre_fitted=False):
-        assert (isinstance(clfs, (list)))
-        if len(clfs) < 2:
+    def __init__(self, base_clfs, pre_fitted=False):
+        assert (isinstance(base_clfs, (list)))
+        if len(base_clfs) < 2:
             raise ValueError('At least 2 classifiers are required')
-        self.clfs = clfs
-        self.n_clfs_ = len(self.clfs)
+        self.base_clfs = base_clfs
+        self.n_base_clfs_ = len(self.base_clfs)
         self.pre_fitted = pre_fitted
 
     @abstractmethod
@@ -99,15 +99,15 @@ class BaseClassifierAggregator(ABC):
 
     def __len__(self):
         """Returns the number of estimators in the ensemble."""
-        return len(self.clfs)
+        return len(self.base_clfs)
 
     def __getitem__(self, index):
         """Returns the index'th estimator in the ensemble."""
-        return self.clfs[index]
+        return self.base_clfs[index]
 
     def __iter__(self):
         """Returns iterator over estimators in the ensemble."""
-        return iter(self.clfs)
+        return iter(self.base_clfs)
 
     # noinspection PyMethodParameters
     def _get_param_names(cls):
@@ -241,7 +241,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
 
     Parameters
     ----------
-    clfs : list or numpy array of shape (n_classifiers,)
+    base_clfs : list or numpy array of shape (n_classifiers,)
         A list of base classifiers.
 
     method : str, optional (default='average')
@@ -259,11 +259,11 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
         process may be skipped.
     """
 
-    def __init__(self, clfs, method='average', threshold=0.5,
+    def __init__(self, base_clfs, method='average', threshold=0.5,
                  weights=None, pre_fitted=False):
 
         super(SimpleClassifierAggregator, self).__init__(
-            clfs=clfs, pre_fitted=pre_fitted)
+            base_clfs=base_clfs, pre_fitted=pre_fitted)
 
         # validate input parameters
         if method not in ['average', 'maximization', 'majority_vote',
@@ -277,11 +277,11 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
         self.threshold = threshold
 
         if weights is None:
-            self.weights = np.ones([1, self.n_clfs_])
+            self.weights = np.ones([1, self.n_base_clfs_])
         else:
 
             self.weights = column_or_1d(weights).reshape(1, len(weights))
-            assert (self.weights.shape[1] == self.n_clfs_)
+            assert (self.weights.shape[1] == self.n_base_clfs_)
 
             # adjust probability by a factor for integrity
             adjust_factor = self.weights.shape[1] / np.sum(weights)
@@ -309,7 +309,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
             print("Training skipped")
             return
         else:
-            for clf in self.clfs:
+            for clf in self.base_clfs:
                 clf.fit(X, y)
                 clf.fitted_ = True
             return
@@ -328,9 +328,9 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
             Class labels for each data sample.
         """
 
-        all_scores = np.zeros([X.shape[0], self.n_clfs_])
+        all_scores = np.zeros([X.shape[0], self.n_base_clfs_])
 
-        for i, clf in enumerate(self.clfs):
+        for i, clf in enumerate(self.base_clfs):
             if clf.fitted_ != True and self.pre_fitted == False:
                 ValueError('Classifier should be fitted first!')
             else:
@@ -363,10 +363,10 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
         """
 
         all_scores = np.zeros(
-            [X.shape[0], self._classes, self.n_clfs_])
+            [X.shape[0], self._classes, self.n_base_clfs_])
 
-        for i in range(self.n_clfs_):
-            clf = self.clfs[i]
+        for i in range(self.n_base_clfs_):
+            clf = self.base_clfs[i]
             if clf.fitted_ != True and self.pre_fitted == False:
                 ValueError('Classifier should be fitted first!')
             else:
