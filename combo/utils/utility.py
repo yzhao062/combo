@@ -23,7 +23,8 @@ from sklearn.utils.random import sample_without_replacement
 MAX_INT = np.iinfo(np.int32).max
 MIN_INT = -1 * MAX_INT
 
-#TODO: change outlier detection tasks to model combination
+
+# TODO: change outlier detection tasks to model combination
 
 def check_parameter(param, low=MIN_INT, high=MAX_INT, param_name='',
                     include_left=False, include_right=False):
@@ -476,3 +477,44 @@ def generate_indices(random_state, bootstrap, n_population, n_samples):
                                              random_state=random_state)
 
     return indices
+
+
+def score_to_proba(scores):
+    """Internal function to random score matrix into probability.
+
+    Parameters
+    ----------
+    scores : numpy array of shape (n_samples, n_classes)
+        Raw score matrix.
+
+    Returns
+    -------
+    proba : numpy array of shape (n_samples, n_classes)
+        Scaled probability matrix.
+    """
+
+    scores_sum = np.sum(scores, axis=1).reshape(scores.shape[0], 1)
+    scores_sum_broadcast = np.broadcast_to(scores_sum,
+                                           (scores.shape[0], scores.shape[1]))
+    proba = scores / scores_sum_broadcast
+    return proba
+
+
+def list_diff(first_list, second_list):
+    """Utility function to calculate list difference (first_list-second_list)
+
+    Parameters
+    ----------
+    first_list : list
+        First list.
+
+    second_list : list
+        Second list.
+
+    Returns
+    -------
+    diff : different elements.
+
+    """
+    second_list = set(second_list)
+    return [item for item in first_list if item not in second_list]

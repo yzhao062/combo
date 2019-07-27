@@ -26,6 +26,8 @@ from utils.utility import argmaxn
 from utils.utility import invert_order
 from utils.utility import check_detector
 from utils.utility import score_to_label
+from utils.utility import list_diff
+from utils.utility import score_to_proba
 
 
 class TestParameters(unittest.TestCase):
@@ -200,6 +202,17 @@ class TestMetrics(unittest.TestCase):
 
         labels = score_to_label(manual_scores, outliers_fraction=0.3)
         assert_allclose(labels, [0, 0, 0, 0, 0, 1, 0, 1, 1, 0])
+
+    def test_score_to_proba(self):
+        manual_scores = np.array([[1, 2, 1], [1, 8, 1]])
+        proba = score_to_proba(manual_scores)
+        assert_allclose(proba, np.array([[0.25, 0.5, 0.25], [0.1, 0.8, 0.1]]))
+
+    def test_list_diff(self):
+        list1 = [1, 2, 5, 6, 7]
+        list2 = [2, 3, 4]
+        diff = list_diff(list1, list2)
+        assert_allclose(diff, [1, 5, 6, 7])
 
     def test_argmaxn(self):
         ind = argmaxn(self.value_lists, 3)

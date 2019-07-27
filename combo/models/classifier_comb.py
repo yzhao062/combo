@@ -20,32 +20,12 @@ from .score_comb import average, maximization, majority_vote, median
 from .sklearn_base import _sklearn_version_21
 from .sklearn_base import _pprint
 from ..utils.utility import check_parameter
+from ..utils.utility import score_to_proba
 
 if _sklearn_version_21():
     from inspect import signature
 else:
     from sklearn.externals.funcsigs import signature
-
-
-def score_to_proba(scores):
-    """Internal function to random score matrix into probability.
-
-    Parameters
-    ----------
-    scores : numpy array of shape (n_samples, n_classes)
-        Raw score matrix.
-
-    Returns
-    -------
-    proba : numpy array of shape (n_samples, n_classes)
-        Scaled probability matrix.
-    """
-
-    scores_sum = np.sum(scores, axis=1).reshape(scores.shape[0], 1)
-    scores_sum_broadcast = np.broadcast_to(scores_sum,
-                                           (scores.shape[0], scores.shape[1]))
-    proba = scores / scores_sum_broadcast
-    return proba
 
 
 class BaseClassifierAggregator(ABC):
