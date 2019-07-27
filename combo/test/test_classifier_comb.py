@@ -291,5 +291,200 @@ class TestWeightedAverage(unittest.TestCase):
         pass
 
 
+class TestMax(unittest.TestCase):
+    def setUp(self):
+        self.roc_floor = 0.9
+        self.accuracy_floor = 0.9
+
+        random_state = 42
+        X, y = load_breast_cancer(return_X_y=True)
+
+        self.X_train, self.X_test, self.y_train, self.y_test = \
+            train_test_split(X, y, test_size=0.4, random_state=random_state)
+
+        classifiers = [DecisionTreeClassifier(random_state=random_state),
+                       LogisticRegression(random_state=random_state),
+                       KNeighborsClassifier(),
+                       RandomForestClassifier(random_state=random_state),
+                       GradientBoostingClassifier(random_state=random_state)]
+
+        self.clf = SimpleClassifierAggregator(classifiers,
+                                              method='maximization')
+        self.clf.fit(self.X_train, self.y_train)
+
+    def test_parameters(self):
+        assert_true(hasattr(self.clf, 'classifiers') and
+                    self.clf.classifiers is not None)
+
+    def test_train_scores(self):
+        y_train_predicted = self.clf.predict(self.X_train)
+        assert_equal(len(y_train_predicted), self.X_train.shape[0])
+
+        # check performance
+        assert_greater(accuracy_score(self.y_train, y_train_predicted),
+                       self.accuracy_floor)
+
+    def test_prediction_scores(self):
+        y_test_predicted = self.clf.predict(self.X_test)
+        assert_equal(len(y_test_predicted), self.X_test.shape[0])
+
+        # check performance
+        assert_greater(accuracy_score(self.y_test, y_test_predicted),
+                       self.accuracy_floor)
+
+        # test utility function
+        evaluate_print('maximization', self.y_test, y_test_predicted)
+
+    def test_prediction_proba(self):
+        y_test_predicted = self.clf.predict_proba(self.X_test)
+        assert_greater_equal(y_test_predicted.min(), 0)
+        assert_less_equal(y_test_predicted.max(), 1)
+
+        # check performance
+        assert_greater(roc_auc_score(self.y_test, y_test_predicted[:, 1]),
+                       self.roc_floor)
+
+        # check shape of integrity
+        n_classes = len(np.unique(self.y_train))
+        assert_equal(y_test_predicted.shape, (self.X_test.shape[0], n_classes))
+
+        # check probability sum is 1
+        y_test_predicted_sum = np.sum(y_test_predicted, axis=1)
+        assert_allclose(np.ones([self.X_test.shape[0], ]),
+                        y_test_predicted_sum)
+
+    def tearDown(self):
+        pass
+
+
+class TestMajorityVote(unittest.TestCase):
+    def setUp(self):
+        self.roc_floor = 0.9
+        self.accuracy_floor = 0.9
+
+        random_state = 42
+        X, y = load_breast_cancer(return_X_y=True)
+
+        self.X_train, self.X_test, self.y_train, self.y_test = \
+            train_test_split(X, y, test_size=0.4, random_state=random_state)
+
+        classifiers = [DecisionTreeClassifier(random_state=random_state),
+                       LogisticRegression(random_state=random_state),
+                       KNeighborsClassifier(),
+                       RandomForestClassifier(random_state=random_state),
+                       GradientBoostingClassifier(random_state=random_state)]
+
+        self.clf = SimpleClassifierAggregator(classifiers,
+                                              method='majority_vote')
+        self.clf.fit(self.X_train, self.y_train)
+
+    def test_parameters(self):
+        assert_true(hasattr(self.clf, 'classifiers') and
+                    self.clf.classifiers is not None)
+
+    def test_train_scores(self):
+        y_train_predicted = self.clf.predict(self.X_train)
+        assert_equal(len(y_train_predicted), self.X_train.shape[0])
+
+        # check performance
+        assert_greater(accuracy_score(self.y_train, y_train_predicted),
+                       self.accuracy_floor)
+
+    def test_prediction_scores(self):
+        y_test_predicted = self.clf.predict(self.X_test)
+        assert_equal(len(y_test_predicted), self.X_test.shape[0])
+
+        # check performance
+        assert_greater(accuracy_score(self.y_test, y_test_predicted),
+                       self.accuracy_floor)
+
+        # test utility function
+        evaluate_print('majority_vote', self.y_test, y_test_predicted)
+
+    def test_prediction_proba(self):
+        y_test_predicted = self.clf.predict_proba(self.X_test)
+        assert_greater_equal(y_test_predicted.min(), 0)
+        assert_less_equal(y_test_predicted.max(), 1)
+
+        # check performance
+        assert_greater(roc_auc_score(self.y_test, y_test_predicted[:, 1]),
+                       self.roc_floor)
+
+        # check shape of integrity
+        n_classes = len(np.unique(self.y_train))
+        assert_equal(y_test_predicted.shape, (self.X_test.shape[0], n_classes))
+
+        # check probability sum is 1
+        y_test_predicted_sum = np.sum(y_test_predicted, axis=1)
+        assert_allclose(np.ones([self.X_test.shape[0], ]),
+                        y_test_predicted_sum)
+
+    def tearDown(self):
+        pass
+
+
+class TestMedian(unittest.TestCase):
+    def setUp(self):
+        self.roc_floor = 0.9
+        self.accuracy_floor = 0.9
+
+        random_state = 42
+        X, y = load_breast_cancer(return_X_y=True)
+
+        self.X_train, self.X_test, self.y_train, self.y_test = \
+            train_test_split(X, y, test_size=0.4, random_state=random_state)
+
+        classifiers = [DecisionTreeClassifier(random_state=random_state),
+                       LogisticRegression(random_state=random_state),
+                       KNeighborsClassifier(),
+                       RandomForestClassifier(random_state=random_state),
+                       GradientBoostingClassifier(random_state=random_state)]
+
+        self.clf = SimpleClassifierAggregator(classifiers,
+                                              method='median')
+        self.clf.fit(self.X_train, self.y_train)
+
+    def test_parameters(self):
+        assert_true(hasattr(self.clf, 'classifiers') and
+                    self.clf.classifiers is not None)
+
+    def test_train_scores(self):
+        y_train_predicted = self.clf.predict(self.X_train)
+        assert_equal(len(y_train_predicted), self.X_train.shape[0])
+
+        # check performance
+        assert_greater(accuracy_score(self.y_train, y_train_predicted),
+                       self.accuracy_floor)
+
+    def test_prediction_scores(self):
+        y_test_predicted = self.clf.predict(self.X_test)
+        assert_equal(len(y_test_predicted), self.X_test.shape[0])
+
+        # check performance
+        assert_greater(accuracy_score(self.y_test, y_test_predicted),
+                       self.accuracy_floor)
+
+        # test utility function
+        evaluate_print('median', self.y_test, y_test_predicted)
+
+    def test_prediction_proba(self):
+        y_test_predicted = self.clf.predict_proba(self.X_test)
+        assert_greater_equal(y_test_predicted.min(), 0)
+        assert_less_equal(y_test_predicted.max(), 1)
+
+        # check performance
+        assert_greater(roc_auc_score(self.y_test, y_test_predicted[:, 1]),
+                       self.roc_floor)
+
+        # check shape of integrity
+        n_classes = len(np.unique(self.y_train))
+        assert_equal(y_test_predicted.shape, (self.X_test.shape[0], n_classes))
+
+        # check probability sum is 1
+        y_test_predicted_sum = np.sum(y_test_predicted, axis=1)
+        assert_allclose(np.ones([self.X_test.shape[0], ]),
+                        y_test_predicted_sum)
+
+
 if __name__ == '__main__':
     unittest.main()

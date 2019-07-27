@@ -16,7 +16,7 @@ from sklearn.utils import check_consistent_length
 from sklearn.utils import column_or_1d
 from sklearn.utils.multiclass import check_classification_targets
 
-from .score_comb import average, maximization, majority_vote
+from .score_comb import average, maximization, majority_vote, median
 from .sklearn_base import _sklearn_version_21
 from .sklearn_base import _pprint
 from ..utils.utility import check_parameter
@@ -25,6 +25,27 @@ if _sklearn_version_21():
     from inspect import signature
 else:
     from sklearn.externals.funcsigs import signature
+
+
+def score_to_proba(scores):
+    """Internal function to random score matrix into probability.
+
+    Parameters
+    ----------
+    scores : numpy array of shape (n_samples, n_classes)
+        Raw score matrix.
+
+    Returns
+    -------
+    proba : numpy array of shape (n_samples, n_classes)
+        Scaled probability matrix.
+    """
+
+    scores_sum = np.sum(scores, axis=1).reshape(scores.shape[0], 1)
+    scores_sum_broadcast = np.broadcast_to(scores_sum,
+                                           (scores.shape[0], scores.shape[1]))
+    proba = scores / scores_sum_broadcast
+    return proba
 
 
 class BaseClassifierAggregator(ABC):
@@ -46,7 +67,7 @@ class BaseClassifierAggregator(ABC):
         if len(classifiers) < 2:
             raise ValueError('At least 2 classifiers are required')
         self.classifiers = classifiers
-        self.len_classifiers_ = len(self.classifiers)
+        self.n_classifiers_ = len(self.classifiers)
         self.pre_fitted = pre_fitted
 
     @abstractmethod
@@ -244,8 +265,8 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
         A list of base classifiers.
 
     method : str, optional (default='average')
-        Combination method: {'average', 'maximization', 'majority vote'}.
-        Pass in weights of classifiers for weighted version.
+        Combination method: {'average', 'maximization', 'majority vote',
+        'median'}. Pass in weights of classifiers for weighted version.
 
     threshold : float in (0, 1), optional (default=0.5)
         Cut-off value to convert scores into binary labels.
@@ -265,7 +286,8 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
             classifiers=classifiers, pre_fitted=pre_fitted)
 
         # validate input parameters
-        if method not in ['average', 'maximization', 'majority_vote']:
+        if method not in ['average', 'maximization', 'majority_vote',
+                          'median']:
             raise ValueError("{method} is not a valid parameter.".format(
                 shape=method))
 
@@ -275,11 +297,11 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
         self.threshold = threshold
 
         if weights is None:
-            self.weights = np.ones([1, self.len_classifiers_])
+            self.weights = np.ones([1, self.n_classifiers_])
         else:
 
             self.weights = column_or_1d(weights).reshape(1, len(weights))
-            assert (self.weights.shape[1] == self.len_classifiers_)
+            assert (self.weights.shape[1] == self.n_classifiers_)
 
             # adjust probability by a factor for integrity
             adjust_factor = self.weights.shape[1] / np.sum(weights)
@@ -326,7 +348,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
             Class labels for each data sample.
         """
 
-        all_scores = np.zeros([X.shape[0], self.len_classifiers_])
+        all_scores = np.zeros([X.shape[0], self.n_classifiers_])
 
         for i, clf in enumerate(self.classifiers):
             if clf.fitted_ != True and self.pre_fitted == False:
@@ -340,6 +362,8 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
             agg_score = maximization(all_scores)
         if self.method == 'majority_vote':
             agg_score = majority_vote(all_scores, weights=self.weights)
+        if self.method == 'median':
+            agg_score = median(all_scores)
 
         return (agg_score >= self.threshold).astype('int').ravel()
 
@@ -359,9 +383,9 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
         """
 
         all_scores = np.zeros(
-            [X.shape[0], self._classes, self.len_classifiers_])
+            [X.shape[0], self._classes, self.n_classifiers_])
 
-        for i in range(self.len_classifiers_):
+        for i in range(self.n_classifiers_):
             clf = self.classifiers[i]
             if clf.fitted_ != True and self.pre_fitted == False:
                 ValueError('Classifier should be fitted first!')
@@ -371,8 +395,13 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
         if self.method == 'average':
             return np.mean(all_scores * self.weights, axis=2)
         if self.method == 'maximization':
-            return np.max(all_scores * self.weights, axis=2)
+            scores = np.max(all_scores * self.weights, axis=2)
+            return score_to_proba(scores)
         if self.method == 'majority_vote':
+            Warning('average method is invoked for predict_proba as'
+                    'probability is not continuous')
+            return np.mean(all_scores * self.weights, axis=2)
+        if self.method == 'median':
             Warning('average method is invoked for predict_proba as'
                     'probability is not continuous')
             return np.mean(all_scores * self.weights, axis=2)

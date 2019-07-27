@@ -7,7 +7,6 @@
 
 import numpy as np
 from numpy.random import RandomState
-from scipy.stats import mode
 from sklearn.utils import check_array
 from sklearn.utils import column_or_1d
 # noinspection PyProtectedMember
@@ -266,6 +265,26 @@ def maximization(scores):
 
     scores = check_array(scores)
     return np.max(scores, axis=1).ravel()
+
+
+def median(scores):
+    """Combination method to merge the scores from multiple estimators
+    by taking the median.
+
+    Parameters
+    ----------
+    scores : numpy array of shape (n_samples, n_estimators)
+        Score matrix from multiple estimators on the same samples.
+
+    Returns
+    -------
+    combined_scores : numpy array of shape (n_samples, )
+        The combined scores.
+
+    """
+
+    scores = check_array(scores)
+    return np.median(scores, axis=1).ravel()
 
 
 def majority_vote(scores, n_classes=2, weights=None):

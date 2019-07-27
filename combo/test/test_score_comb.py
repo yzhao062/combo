@@ -22,6 +22,7 @@ from combo.models.score_comb import aom
 from combo.models.score_comb import moa
 from combo.models.score_comb import average
 from combo.models.score_comb import maximization
+from combo.models.score_comb import median
 from combo.models.score_comb import majority_vote
 
 
@@ -139,6 +140,10 @@ class TestStatic(unittest.TestCase):
     def test_maximization(self):
         score = maximization(self.scores)
         assert_allclose(score, np.array([2, 4, 6]))
+
+    def test_median(self):
+        score = median(np.array([[0, 1, 2], [2, 3, 4], [5, 6, 7]]))
+        assert_allclose(score, np.array([1, 3, 6]))
 
 
 class TestMajorityVote(unittest.TestCase):

@@ -58,6 +58,7 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
        Combination by w_avg | Accuracy:0.9781, ROC:0.9716, F1:0.9833
        Combination by max   | Accuracy:0.9518, ROC:0.9312, F1:0.9642
        Combination by w_vote| Accuracy:0.9649, ROC:0.9644, F1:0.9728
+       Combination by median| Accuracy:0.9693, ROC:0.9677, F1:0.9763
 
 
 -----

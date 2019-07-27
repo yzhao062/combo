@@ -102,3 +102,9 @@ if __name__ == "__main__":
     clf.fit(X_train, y_train)
     y_test_predicted = clf.predict(X_test)
     evaluate_print('Combination by w_vote|', y_test, y_test_predicted)
+
+    # combine by median
+    clf = SimpleClassifierAggregator(classifiers, method='median')
+    clf.fit(X_train, y_train)
+    y_test_predicted = clf.predict(X_test)
+    evaluate_print('Combination by median|', y_test, y_test_predicted)
