@@ -241,7 +241,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
 
     Parameters
     ----------
-    base_clfs : list or numpy array of shape (n_classifiers,)
+    base_clfs: list or numpy array (n_estimators,)
         A list of base classifiers.
 
     method : str, optional (default='average')
