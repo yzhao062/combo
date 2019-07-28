@@ -268,7 +268,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
         if method not in ['average', 'maximization', 'majority_vote',
                           'median']:
             raise ValueError("{method} is not a valid parameter.".format(
-                shape=method))
+                method=method))
 
         self.method = method
         check_parameter(threshold, 0, 1, include_left=False,
@@ -346,7 +346,7 @@ class SimpleClassifierAggregator(BaseClassifierAggregator):
 
         return (agg_score >= self.threshold).astype('int').ravel()
 
-    def predict_proba(self, X, method='average'):
+    def predict_proba(self, X):
         """Return probability estimates for the test data X.
 
         Parameters

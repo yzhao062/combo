@@ -51,16 +51,13 @@ class BaseClusteringAggregator(ABC):
         self.pre_fitted = pre_fitted
 
     @abstractmethod
-    def fit(self, X, y):
+    def fit(self, X):
         """Fit detector.
 
         Parameters
         ----------
         X : numpy array of shape (n_samples, n_features)
             The input samples.
-
-        y : numpy array of shape (n_samples,), optional (default=None)
-            The ground truth of the input samples (labels).
         """
         pass
 

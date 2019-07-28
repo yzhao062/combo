@@ -248,7 +248,7 @@ class TestWeightedAverage(unittest.TestCase):
                     self.clf.base_clfs is not None)
 
         # print clf details
-        self.clf
+        print(self.clf)
 
         # set parameters
         self.clf.set_params()
