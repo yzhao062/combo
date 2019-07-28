@@ -132,7 +132,7 @@ Some of the methods are tasks specific:
 
   1. SimpleClassifierAggregator (:class:`combo.models.classifier_comb.SimpleClassifierAggregator`): combining classifiers by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
   2. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
-  3. Stacking (meta learner :class:`combo.models.stacking.Stacking`): build an additional classifier to learn base estimator weights :cite:`a-gorman2016kaggle`
+  3. Stacking (meta ensembling :class:`combo.models.stacking.Stacking`): build an additional classifier to learn base estimator weights :cite:`a-gorman2016kaggle`
 
 
 * **Cluster combination**: combine and align unsupervised clustering results

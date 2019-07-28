@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Stacking (Meta-learner). See http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/
+"""Stacking (meta ensembling). See http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/
 for more information.
 """
 # Author: Yue Zhao <zhaoy@cmu.edu>
@@ -82,7 +82,7 @@ def split_datasets(X, y, n_folds=3, shuffle_data=False, random_state=None):
 
 
 class Stacking(BaseClassifierAggregator):
-    """Meta learner, also known as stacking. See
+    """Meta ensembling, also known as stacking. See
     http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/
     for more information
 
@@ -92,7 +92,7 @@ class Stacking(BaseClassifierAggregator):
         A list of base classifiers.
 
     meta_clf : object, optional (default=LogisticRegression)
-        The meta learner to make the final prediction
+        The meta classifier to make the final prediction.
 
     n_folds : int, optional (default=2)
         The number of splits of the training sample.
@@ -211,7 +211,7 @@ class Stacking(BaseClassifierAggregator):
             X_new_comb = new_features
         y_new_comb = y_new
 
-        # train the meta learner
+        # train the meta classifier
         self.meta_clf.fit(X_new_comb, y_new_comb)
         self.fitted_ = True
 
