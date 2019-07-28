@@ -212,6 +212,7 @@ for suggestions and ideas.
    :caption: Additional Information
 
    about
+   faq
 
 
 ----

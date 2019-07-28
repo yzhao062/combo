@@ -22,6 +22,7 @@ combination methods.
 :mod:`combo.models.stacking`: Stacking (meta ensembling). Check this `introductory
 article by Kaggle <http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/>`_.
 
+
 ----
 
 
