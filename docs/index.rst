@@ -94,6 +94,26 @@ combo is featured for:
 * **Optimized performance with JIT and parallelization** when possible, using `numba <https://github.com/numba/numba>`_ and `joblib <https://github.com/joblib/joblib>`_.
 
 
+**API Demo**\ :
+
+
+   .. code-block:: python
+
+
+       from combo.models.stacking import Stacking
+       # base classifiers
+       classifiers = [DecisionTreeClassifier(), LogisticRegression(),
+                      KNeighborsClassifier(), RandomForestClassifier(),
+                      GradientBoostingClassifier()]
+
+       clf = Stacking(base_clfs=classifiers) # initialize a Stacking model
+       clf.fit(X_train)
+
+       # predict on unseen data
+       y_test_labels = clf.predict(X_test)  # label prediction
+       y_test_proba = clf.predict_proba(X_test)  # probability prediction
+
+
 ----
 
 

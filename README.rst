@@ -89,6 +89,26 @@ combo is featured for:
 * **Optimized performance with JIT and parallelization** when possible, using `numba <https://github.com/numba/numba>`_ and `joblib <https://github.com/joblib/joblib>`_.
 
 
+**API Demo**\ :
+
+
+   .. code-block:: python
+
+
+       from combo.models.stacking import Stacking
+       # base classifiers
+       classifiers = [DecisionTreeClassifier(), LogisticRegression(),
+                      KNeighborsClassifier(), RandomForestClassifier(),
+                      GradientBoostingClassifier()]
+
+       clf = Stacking(base_clfs=classifiers) # initialize a Stacking model
+       clf.fit(X_train)
+
+       # predict on unseen data
+       y_test_labels = clf.predict(X_test)  # label prediction
+       y_test_proba = clf.predict_proba(X_test)  # probability prediction
+
+
 **Table of Contents**\ :
 
 
@@ -211,11 +231,9 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
 
 
        # initialize a group of classifiers
-       classifiers = [DecisionTreeClassifier(random_state=random_state),
-                      LogisticRegression(random_state=random_state),
-                      KNeighborsClassifier(),
-                      RandomForestClassifier(random_state=random_state),
-                      GradientBoostingClassifier(random_state=random_state)]
+       classifiers = [DecisionTreeClassifier(), LogisticRegression(),
+                      KNeighborsClassifier(), RandomForestClassifier(),
+                      GradientBoostingClassifier()]
 
 
 #. Initialize, fit, predict, and evaluate with a simple aggregator (average)
@@ -308,11 +326,9 @@ demonstrates the basic API of stacking (meta ensembling).
 
 
        # initialize a group of classifiers
-       classifiers = [DecisionTreeClassifier(random_state=random_state),
-                      LogisticRegression(random_state=random_state),
-                      KNeighborsClassifier(),
-                      RandomForestClassifier(random_state=random_state),
-                      GradientBoostingClassifier(random_state=random_state)]
+       classifiers = [DecisionTreeClassifier(), LogisticRegression(),
+                      KNeighborsClassifier(), RandomForestClassifier(),
+                      GradientBoostingClassifier()]
 
 
 #. Initialize, fit, predict, and evaluate with Stacking
