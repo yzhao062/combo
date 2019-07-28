@@ -128,8 +128,6 @@ Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html). API che
 * **predict_proba(X)**\ : Predict the probability of a sample belonging to each class. Only applicable for classification tasks.
 
 
-Key Attributes of a fitted model: to finish.
-
 ----
 
 
