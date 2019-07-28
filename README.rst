@@ -177,7 +177,7 @@ Some of the methods are tasks specific:
 
   1. SimpleClassifierAggregator: combining classifiers by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
   2. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
-  3. Stacking: build an additional classifier to learn base estimator weights [#Gorman2016Kaggle]_ (work-in-progress)
+  3. Stacking (meta learner): build an additional classifier to learn base estimator weights [#Gorman2016Kaggle]_
 
 
 * **Cluster combination**: combine and align unsupervised clustering results
