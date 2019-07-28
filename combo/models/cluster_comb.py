@@ -4,7 +4,6 @@
 # Author: Yue Zhao <zhaoy@cmu.edu>
 # License: BSD 2 clause
 
-import os
 import warnings
 from collections import defaultdict
 from abc import ABC, abstractmethod
@@ -12,16 +11,14 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 from sklearn.utils import check_array
-from sklearn.utils import check_X_y
-from sklearn.utils import check_consistent_length
 from sklearn.utils.validation import check_is_fitted
 from sklearn.utils import column_or_1d
 from sklearn.utils.testing import assert_equal
 
 from .score_comb import majority_vote
-from .sklearn_base import _sklearn_version_21
 from .sklearn_base import _pprint
 from ..utils.utility import check_parameter
+from ..utils.utility import _sklearn_version_21
 
 if _sklearn_version_21():
     from inspect import signature

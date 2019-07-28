@@ -12,15 +12,14 @@ import numpy as np
 
 from sklearn.utils import check_array
 from sklearn.utils import check_X_y
-from sklearn.utils import check_consistent_length
 from sklearn.utils import column_or_1d
 from sklearn.utils.multiclass import check_classification_targets
 
 from .score_comb import average, maximization, majority_vote, median
-from .sklearn_base import _sklearn_version_21
 from .sklearn_base import _pprint
 from ..utils.utility import check_parameter
 from ..utils.utility import score_to_proba
+from ..utils.utility import _sklearn_version_21
 
 if _sklearn_version_21():
     from inspect import signature
