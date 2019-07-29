@@ -19,7 +19,6 @@ import numpy as np
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from combo.models.base import BaseAggregator
-from pyod.utils.data import generate_data
 
 
 # Check sklearn\tests\test_base
