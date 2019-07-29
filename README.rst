@@ -419,23 +419,23 @@ demonstrates the basic API of combining multiple base outlier detectors.
 
 #. Evaluate the prediction using ROC and Precision @ Rank n.
 
-    .. code-block:: python
+   .. code-block:: python
 
-        # evaluate and print the results
-        print("\nOn Training Data:")
-        evaluate_print(clf_name, y_train, y_train_scores)
-        print("\nOn Test Data:")
-        evaluate_print(clf_name, y_test, y_test_scores)
+       # evaluate and print the results
+       print("\nOn Training Data:")
+       evaluate_print(clf_name, y_train, y_train_scores)
+       print("\nOn Test Data:")
+       evaluate_print(clf_name, y_test, y_test_scores)
 
 #. See sample outputs on both training and test data.
 
-    .. code-block:: bash
+   .. code-block:: bash
 
-        On Training Data:
-        Aggregation by Averaging ROC:0.9994, precision @ rank n:0.95
+      On Training Data:
+      Aggregation by Averaging ROC:0.9994, precision @ rank n:0.95
 
-        On Test Data:
-        Aggregation by Averaging ROC:1.0, precision @ rank n:1.0
+      On Test Data:
+      Aggregation by Averaging ROC:1.0, precision @ rank n:1.0
 
 
 ----
