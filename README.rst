@@ -170,8 +170,8 @@ Alternatively, you could clone and run setup.py file:
 API Cheatsheet & Reference
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html). API cheatsheet for most of the models:
-
+Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html). The
+following APIs are applicable for most models for easy use.
 
 * **fit(X)**\ : Fit estimator. y is optional for unsupervised methods.
 * **predict(X)**\ : Predict on a particular sample once the estimator is fitted.
