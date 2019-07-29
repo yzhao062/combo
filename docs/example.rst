@@ -2,7 +2,59 @@ Examples by Tasks
 =================
 
 
------
+----
+
+
+An Example of Stacking
+^^^^^^^^^^^^^^^^^^^^^^
+
+`"examples/stacking_example.py" <https://github.com/yzhao062/combo/blob/master/examples/stacking_example.py>`_
+demonstrates the basic API of stacking (meta ensembling).
+
+
+#. Initialize a group of classifiers as base estimators
+
+   .. code-block:: python
+
+
+       # initialize a group of classifiers
+       classifiers = [DecisionTreeClassifier(random_state=random_state),
+                      LogisticRegression(random_state=random_state),
+                      KNeighborsClassifier(),
+                      RandomForestClassifier(random_state=random_state),
+                      GradientBoostingClassifier(random_state=random_state)]
+
+
+#. Initialize, fit, predict, and evaluate with Stacking
+
+   .. code-block:: python
+
+
+       from combo.models.stacking import Stacking
+
+       clf = Stacking(base_estimators=classifiers, n_folds=4, shuffle_data=False,
+                   keep_original=True, use_proba=False, random_state=random_state)
+
+       clf.fit(X_train, y_train)
+       y_test_predict = clf.predict(X_test)
+       evaluate_print('Stacking | ', y_test, y_test_predict)
+
+
+#. See a sample output of stacking_example.py
+
+   .. code-block:: python
+
+
+       Decision Tree        | Accuracy:0.9386, ROC:0.9383, F1:0.9521
+       Logistic Regression  | Accuracy:0.9649, ROC:0.9615, F1:0.973
+       K Neighbors          | Accuracy:0.9561, ROC:0.9519, F1:0.9662
+       Gradient Boosting    | Accuracy:0.9605, ROC:0.9524, F1:0.9699
+       Random Forest        | Accuracy:0.9605, ROC:0.961, F1:0.9693
+
+       Stacking             | Accuracy:0.9868, ROC:0.9841, F1:0.9899
+       
+
+----
 
 
 Quick Start for Classifier Combination
@@ -56,7 +108,7 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
        Combination by median| Accuracy:0.9693, ROC:0.9677, F1:0.9763
 
 
------
+----
 
 
 Quick Start for Clustering Combination
@@ -98,54 +150,5 @@ demonstrates the basic API of combining multiple base clustering estimators.
        predicted_labels = clf.labels_
 
 
------
 
-
-An Example of Stacking
-^^^^^^^^^^^^^^^^^^^^^^
-
-`"examples/stacking_example.py" <https://github.com/yzhao062/combo/blob/master/examples/stacking_example.py>`_
-demonstrates the basic API of stacking (meta ensembling).
-
-
-#. Initialize a group of classifiers as base estimators
-
-   .. code-block:: python
-
-
-       # initialize a group of classifiers
-       classifiers = [DecisionTreeClassifier(random_state=random_state),
-                      LogisticRegression(random_state=random_state),
-                      KNeighborsClassifier(),
-                      RandomForestClassifier(random_state=random_state),
-                      GradientBoostingClassifier(random_state=random_state)]
-
-
-#. Initialize, fit, predict, and evaluate with Stacking
-
-   .. code-block:: python
-
-
-       from combo.models.stacking import Stacking
-
-       clf = Stacking(base_estimators=classifiers, n_folds=4, shuffle_data=False,
-                   keep_original=True, use_proba=False, random_state=random_state)
-
-       clf.fit(X_train, y_train)
-       y_test_predict = clf.predict(X_test)
-       evaluate_print('Stacking | ', y_test, y_test_predict)
-
-
-#. See a sample output of stacking_example.py
-
-   .. code-block:: python
-
-
-       Decision Tree        | Accuracy:0.9386, ROC:0.9383, F1:0.9521
-       Logistic Regression  | Accuracy:0.9649, ROC:0.9615, F1:0.973
-       K Neighbors          | Accuracy:0.9561, ROC:0.9519, F1:0.9662
-       Gradient Boosting    | Accuracy:0.9605, ROC:0.9524, F1:0.9699
-       Random Forest        | Accuracy:0.9605, ROC:0.961, F1:0.9693
-
-       Stacking             | Accuracy:0.9868, ROC:0.9841, F1:0.9899
 
