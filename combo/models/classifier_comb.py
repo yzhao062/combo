@@ -84,8 +84,7 @@ class SimpleClassifierAggregator(BaseAggregator):
         # Validate inputs X and y
         X, y = check_X_y(X, y)
         X = check_array(X)
-        check_classification_targets(y)
-        self._classes = len(np.unique(y))
+        self._set_n_classes(y)
 
         if self.pre_fitted:
             print("Training skipped")
@@ -116,7 +115,11 @@ class SimpleClassifierAggregator(BaseAggregator):
             if clf.fitted_ != True and self.pre_fitted == False:
                 ValueError('Classifier should be fitted first!')
             else:
-                all_scores[:, i] = clf.predict(X)
+                if hasattr(clf, 'predict'):
+                    all_scores[:, i] = clf.predict(X)
+                else:
+                    raise ValueError(
+                        "{clf} does not have predict.".format(clf=clf))
 
         if self.method == 'average':
             agg_score = average(all_scores, estimator_weights=self.weights)
@@ -152,7 +155,11 @@ class SimpleClassifierAggregator(BaseAggregator):
             if clf.fitted_ != True and self.pre_fitted == False:
                 ValueError('Classifier should be fitted first!')
             else:
-                all_scores[:, :, i] = clf.predict_proba(X)
+                if hasattr(clf, 'predict_proba'):
+                    all_scores[:, :, i] = clf.predict_proba(X)
+                else:
+                    raise ValueError(
+                        "{clf} does not have predict_proba.".format(clf=clf))
 
         if self.method == 'average':
             return np.mean(all_scores * self.weights, axis=2)
