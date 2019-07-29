@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Compare all detection algorithms by plotting decision boundaries and
+"""Compare select algorithms by plotting decision boundaries and
 the number of decision boundaries.
 """
 # Author: Yue Zhao <zhaoy@cmu.edu>
@@ -11,8 +11,8 @@ from __future__ import print_function
 import os
 import sys
 
-# temporary solution for relative imports in case pyod is not installed
-# if pyod is installed, no need to use the following line
+# temporary solution for relative imports in case combo is not installed
+# if combo is installed, no need to use the following line
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname("__file__"), '..')))
 
@@ -51,11 +51,9 @@ ground_truth = np.zeros(n_samples, dtype=int)
 ground_truth[-n_outliers:] = 1
 
 # Show the statics of the data
-print('Number of inliers: %i' % n_inliers)
-print('Number of outliers: %i' % n_outliers)
-print(
-    'Ground truth shape is {shape}. Outlier are 1 and inliers are 0.\n'.format(
-        shape=ground_truth.shape))
+print('Number of Class 0: %i' % n_inliers)
+print('Number of Class 1: %i' % n_outliers)
+print('Ground truth shape is {shape}.\n'.format(shape=ground_truth.shape))
 print(ground_truth, '\n')
 
 random_state = np.random.RandomState(42)
@@ -69,15 +67,15 @@ classifiers = {
     'Logistic Regression': LogisticRegression(),
     # 'Ada': AdaBoostClassifier(random_state=random_state),
     # 'Random Forest': RandomForestClassifier(random_state=random_state),
-    'Gaussian': GaussianNB(),
-    'SVM': SVC(probability=True),
-    'kNN': KNeighborsClassifier(),
-    'Average': SimpleClassifierAggregator(base_estimators=classifiers,
-                                          method='average'),
-    'Max': SimpleClassifierAggregator(base_estimators=classifiers,
-                                      method='maximization'),
-    'Stacking': Stacking(base_clfs=classifiers, shuffle_data=True),
-    'Stacking_RF': Stacking(base_clfs=classifiers, shuffle_data=True,
+    'Gaussian NB': GaussianNB(),
+    'Support Vector Machine': SVC(probability=True),
+    'k Nearst Neighbors': KNeighborsClassifier(),
+    'Simple Average': SimpleClassifierAggregator(base_estimators=classifiers,
+                                                 method='average'),
+    'Simple Maximization': SimpleClassifierAggregator(
+        base_estimators=classifiers, method='maximization'),
+    'Stacking': Stacking(base_estimators=classifiers, shuffle_data=True),
+    'Stacking_RF': Stacking(base_estimators=classifiers, shuffle_data=True,
                             meta_clf=RandomForestClassifier(
                                 random_state=random_state))
 }
