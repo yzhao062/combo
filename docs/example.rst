@@ -158,8 +158,8 @@ demonstrates the basic API of combining multiple base clustering estimators.
 
 
 
-Example of Outlier Detection Combination
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example of Outlier Detector Combination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 `"examples/detector_comb_example.py" <https://github.com/yzhao062/combo/blob/master/examples/detector_comb_example.py>`_
