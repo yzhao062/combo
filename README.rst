@@ -119,7 +119,7 @@ combo is featured for:
 
 * `Installation <#installation>`_
 * `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
-* `Proposed Algorithms <#proposed-algorithms>`_
+* `Implemented Algorithms <#implemented-algorithms>`_
 * `An Example of Stacking <#an-example-of-stacking>`_
 * `Quick Start for Classifier Combination <#quick-start-for-classifier-combination>`_
 * `Quick Start for Clustering Combination <#quick-start-for-clustering-combination>`_
@@ -181,42 +181,30 @@ following APIs are applicable for most models for easy use.
 ----
 
 
-Proposed Algorithms
-^^^^^^^^^^^^^^^^^^^
+Implemented Algorithms
+^^^^^^^^^^^^^^^^^^^^^^
 
+**combo** groups combination frameworks by tasks. General purpose methods are
+fundamental ones which can be applied to various tasks.
 
-**combo** groups combination frameworks by tasks.
-
-* For most of the tasks, the following **combination methods for raw scores** are feasible [#Zhou2012Ensemble]_:
-
-  1. Averaging & Weighted Averaging & Median
-  2. Maximization
-  3. Majority Vote & Weighted Majority Vote
-  4. Median
-
-Some of the methods are tasks specific:
-
-* **Classifier combination**: combine multiple supervised classifiers together
-  for training and prediction
-
-  1. SimpleClassifierAggregator: combining classifiers by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
-  2. Dynamic Classifier Selection & Dynamic Ensemble Selection [#Ko2008From]_ (work-in-progress)
-  3. Stacking (meta ensembling): build an additional classifier to learn base estimator weights [#Gorman2016Kaggle]_
-
-
-* **Cluster combination**: combine and align unsupervised clustering results
-
-  1. Clusterer Ensemble [#Zhou2006Clusterer]_
-
-
-* **Anomaly detection**: combine unsupervised (and supervised) outlier detectors
-
-  1. SimpleDetectorCombination: combining outlier score results by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
-  2. Average of Maximum (AOM) [#Aggarwal2015Theoretical]_
-  3. Maximum of Average (MOA) [#Aggarwal2015Theoretical]_
-  4. Thresholding
-  5. Locally Selective Combination (LSCP) [#Zhao2019LSCP]_
-  6. XGBOD: a semi-supervised combination framework for outlier detection [#Zhao2018XGBOD]_
+===================  ======================================================================================================  =====  ===========================================
+Task                 Algorithm                                                                                               Year   Ref
+===================  ======================================================================================================  =====  ===========================================
+General Purpose      Average & Weighted Average: average across all scores/prediction results, maybe with weights            N/A    [#Zhou2012Ensemble]_
+General Purpose      Maximization: simple combination by taking the maximum scores                                           N/A    [#Zhou2012Ensemble]_
+General Purpose      Median: take the median value across all scores/prediction results                                      N/A    [#Zhou2012Ensemble]_
+General Purpose      Majority Vote & Weighted Majority Vote                                                                  N/A    [#Zhou2012Ensemble]_
+Classification       SimpleClassifierAggregator: combining classifiers by general purpose methods above                      N/A    N/A
+Classification       DCS: Dynamic Classifier Selection (Combination of multiple classifiers using local accuracy estimates)  1997   [#Woods1997Combination]_ (work-in-progress)
+Classification       DES: Dynamic Ensemble Selection (From dynamic classifier selection to dynamic ensemble selection)       2008   [#Ko2008From]_ (work-in-progress)
+Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    [#Gorman2016Kaggle]_
+Clustering           Clusterer Ensemble: combine the results of multiple clustering results by relabeling                    2006   [#Zhou2006Clusterer]_
+Anomaly Detection    SimpleDetectorCombination: combining outlier detectors by general purpose methods above                 N/A    [#Aggarwal2017Outlier]_
+Anomaly Detection    Average of Maximum (AOM): divide base detectors into subgroups to take the maximum, and then average    2015   [#Aggarwal2015Theoretical]_
+Anomaly Detection    Maximum of Average (MOA): divide base detectors into subgroups to take the average, and then maximize   2015   [#Aggarwal2015Theoretical]_
+Anomaly Detection    XGBOD: a semi-supervised combination framework for outlier detection                                    2018   [#Zhao2018XGBOD]_
+Anomaly Detection    Locally Selective Combination (LSCP)                                                                    2019   [#Zhao2019LSCP]_
+===================  ======================================================================================================  =====  ===========================================
 
 
 **The comparison among selected implemented models** is made available below
@@ -412,11 +400,15 @@ Reference
 
 .. [#Aggarwal2015Theoretical] Aggarwal, C.C. and Sathe, S., 2015. Theoretical foundations and algorithms for outlier ensembles. *ACM SIGKDD Explorations Newsletter*, 17(1), pp.24-47.
 
+.. [#Aggarwal2017Outlier] Aggarwal, C.C. and Sathe, S., 2017. Outlier ensembles: An introduction. Springer.
+
 .. [#Bell2007Lessons] Bell, R.M. and Koren, Y., 2007. Lessons from the Netflix prize challenge. *SIGKDD Explorations*, 9(2), pp.75-79.
 
 .. [#Gorman2016Kaggle] Gorman, B. (2016). A Kaggler's Guide to Model Stacking in Practice. [online] The Official Blog of Kaggle.com. Available at: http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice [Accessed 26 Jul. 2019].
 
 .. [#Ko2008From] Ko, A.H., Sabourin, R. and Britto Jr, A.S., 2008. From dynamic classifier selection to dynamic ensemble selection. *Pattern recognition*, 41(5), pp.1718-1731.
+
+.. [#Woods1997Combination] Woods, K., Kegelmeyer, W.P. and Bowyer, K., 1997. Combination of multiple classifiers using local accuracy estimates. *IEEE transactions on pattern analysis and machine intelligence*, 19(4), pp.405-410.
 
 .. [#Zhao2019LSCP] Zhao, Y., Nasrullah, Z., Hryniewicki, M.K. and Li, Z., 2019, May. LSCP: Locally selective combination in parallel outlier ensembles. In *Proceedings of the 2019 SIAM International Conference on Data Mining (SDM)*, pp. 585-593. Society for Industrial and Applied Mathematics.
 

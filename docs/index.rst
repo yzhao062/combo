@@ -136,41 +136,31 @@ following APIs are applicable for most models for easy use.
 ----
 
 
-Proposed Algorithms
-^^^^^^^^^^^^^^^^^^^
-
-**combo** groups combination frameworks by tasks.
-
-* For most of the tasks, the following **combination methods for raw scores** (:mod:`combo.models.score_comb`) are feasible :cite:`a-zhou2012ensemble`:
-
-  1. Averaging & Weighted Averaging & Median
-  2. Maximization
-  3. Majority Vote & Weighted Majority Vote
-  4. Median
-
-Some of the methods are tasks specific:
-
-* **Classifier combination**: combine multiple supervised classifiers together
-  for training and prediction
-
-  1. SimpleClassifierAggregator (:class:`combo.models.classifier_comb.SimpleClassifierAggregator`): combining classifiers by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
-  2. Dynamic Classifier Selection & Dynamic Ensemble Selection :cite:`a-ko2008dynamic` (work-in-progress)
-  3. Stacking (meta ensembling :class:`combo.models.stacking.Stacking`): build an additional classifier to learn base estimator weights :cite:`a-gorman2016kaggle`
+Implemented Algorithms
+^^^^^^^^^^^^^^^^^^^^^^
 
 
-* **Cluster combination**: combine and align unsupervised clustering results
+**combo** groups combination frameworks by tasks. General purpose methods are
+fundamental ones which can be applied to various tasks.
 
-  1. Clusterer Ensemble (:class:`combo.models.cluster_comb.ClustererEnsemble`) :cite:`a-zhou2006clusterer`
-
-
-* **Anomaly detection**: combine unsupervised (and supervised) outlier detectors
-
-  1. SimpleDetectorCombination: combining outlier score results by (i) (weighted) average (ii) maximization (iii) median and (iv) (weighted) majority vote
-  2. Average of Maximum (AOM) :cite:`a-aggarwal2015theoretical`
-  3. Maximum of Average (MOA) :cite:`a-aggarwal2015theoretical`
-  4. Thresholding
-  5. Locally Selective Combination (LSCP) :cite:`a-zhao2019lscp`
-  6. XGBOD: a semi-supervised combination framework for outlier detection :cite:`a-zhao2018xgbod`
+===================  ======================================================================================================  =====  ===========================================  ==================================================================
+Task                 Algorithm                                                                                               Year   Ref                                          Class/Function
+===================  ======================================================================================================  =====  ===========================================  ==================================================================
+General Purpose      Average & Weighted Average: average across all scores/prediction results, maybe with weights            N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.average`
+General Purpose      Maximization: simple combination by taking the maximum scores                                           N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.max`
+General Purpose      Median: take the median value across all scores/prediction results                                      N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.median`
+General Purpose      Majority Vote & Weighted Majority Vote                                                                  N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.majority_vote`
+Classification       SimpleClassifierAggregator: combining classifiers by general purpose methods above                      N/A    N/A                                          :class:`combo.models.classifier_comb.SimpleClassifierAggregator`
+Classification       DCS: Dynamic Classifier Selection (Combination of multiple classifiers using local accuracy estimates)  1997   :cite:`a-woods1997combination` (WIP)
+Classification       DES: Dynamic Ensemble Selection (From dynamic classifier selection to dynamic ensemble selection)       2008   :cite:`a-ko2008dynamic` (WIP)
+Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    :cite:`a-gorman2016kaggle`                   :class:`combo.models.stacking.Stacking`
+Clustering           Clusterer Ensemble: combine the results of multiple clustering results by relabeling                    2006   :cite:`a-zhou2006clusterer`                  :class:`combo.models.cluster_comb.ClustererEnsemble`
+Anomaly Detection    SimpleDetectorCombination: combining outlier detectors by general purpose methods above                 N/A
+Anomaly Detection    Average of Maximum (AOM): divide base detectors into subgroups to take the maximum, and then average    2015   :cite:`a-aggarwal2015theoretical`            :mod:`combo.models.score_comb.aom`
+Anomaly Detection    Maximum of Average (MOA): divide base detectors into subgroups to take the average, and then maximize   2015   :cite:`a-aggarwal2015theoretical`            :mod:`combo.models.score_comb.moa`
+Anomaly Detection    XGBOD: a semi-supervised combination framework for outlier detection                                    2018   :cite:`a-zhao2018xgbod`                      :class:`combo.models.xgbod.XGBOD`
+Anomaly Detection    Locally Selective Combination (LSCP)                                                                    2019   :cite:`a-zhao2019lscp`                       :class:`combo.models.lscp.LSCP`
+===================  ======================================================================================================  =====  ===========================================  ==================================================================
 
 
 **The comparison among selected implemented models** is made available below
