@@ -10,3 +10,4 @@ v<0.0.4>, <07/21/2019> -- Add code maintainability.
 v<0.0.5>, <07/27/2019> -- Add median combination and score_to_proba function.
 v<0.0.5>, <07/28/2019> -- Add Stacking (meta ensembling).
 v<0.0.6>, <07/29/2019> -- Enable Appveyor integration.
+v<0.0.6>, <07/29/2019> -- Update requirements file.

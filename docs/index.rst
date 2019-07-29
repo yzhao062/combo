@@ -73,16 +73,16 @@ Welcome to combo's documentation!
 -----
 
 
-**combo** is a Python toolbox for combining or aggregating ML models and
-scores for various tasks, including **classification**, **clustering**,
-**anomaly detection**, and **raw score**. It has been widely used in data
-science competitions and real-world tasks, such as Kaggle.
+**combo** is a comprehensive Python toolbox for combining machine
+learning (ML) models and scores for various tasks, including **classification**,
+**clustering**, **anomaly detection**, and **raw score**.
 
-Model and score combination can be regarded as a subtask of
+Model combination has been widely used in data science competitions and
+real-world tasks, such as Kaggle. It can be considered as a subtask of
 `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
 but is often beyond the scope of ensemble learning. For instance,
 averaging the results of multiple runs of a ML model is deemed as
-a reliable way of eliminating the randomness for better stability. See
+a reliable way of eliminating the randomness. See
 figure below for some popular combination approaches.
 
 .. image:: https://raw.githubusercontent.com/yzhao062/combo/master/docs/figs/framework_demo.png
@@ -93,9 +93,8 @@ figure below for some popular combination approaches.
 combo is featured for:
 
 * **Unified APIs, detailed documentation, and interactive examples** across various algorithms.
-* **Advanced models**, including dynamic classifier/ensemble selection and LSCP.
-* **Broad applications** for classification, clustering, anomaly detection, and raw score.
-* **Comprehensive coverage** for supervised, unsupervised, and semi-supervised scenarios.
+* **Advanced models**, such as dynamic classifier/ensemble selection.
+* **Comprehensive coverage** for classification, clustering, anomaly detection, and raw score.
 * **Optimized performance with JIT and parallelization** when possible, using `numba <https://github.com/numba/numba>`_ and `joblib <https://github.com/joblib/joblib>`_.
 
 

@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     print()
     # build a Stacking model and evaluate
-    clf = Stacking(base_clfs=classifiers, n_folds=4, shuffle_data=False,
+    clf = Stacking(classifiers, n_folds=4, shuffle_data=False,
                    keep_original=True, use_proba=False,
                    random_state=random_state)
 
