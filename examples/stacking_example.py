@@ -22,7 +22,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_breast_cancer
 
-from combo.models.stacking import Stacking
+from combo.models.classifier_stacking import Stacking
 from combo.utils.data import evaluate_print
 
 import warnings

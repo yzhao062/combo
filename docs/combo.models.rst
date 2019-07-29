@@ -20,10 +20,10 @@ combo.models.detector\_comb module
    :show-inheritance:
    :inherited-members:
 
-combo.models.stacking module
-----------------------------
+combo.models.classifier\_stacking module
+----------------------------------------
 
-.. automodule:: combo.models.stacking
+.. automodule:: combo.models.classifier_stacking
    :members:
    :undoc-members:
    :show-inheritance:

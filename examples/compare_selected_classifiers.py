@@ -35,7 +35,7 @@ from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 
 from combo.models.classifier_comb import SimpleClassifierAggregator
-from combo.models.stacking import Stacking
+from combo.models.classifier_stacking import Stacking
 
 # Define the number of class 0 and class 1
 n_samples = 300

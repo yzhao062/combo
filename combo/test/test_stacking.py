@@ -32,7 +32,7 @@ from sklearn.metrics import accuracy_score
 # if  combo is installed, no need to use the following line
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from combo.models.stacking import Stacking
+from combo.models.classifier_stacking import Stacking
 from combo.utils.data import evaluate_print
 
 

@@ -36,7 +36,7 @@ demonstrates the basic API of stacking (meta ensembling).
    .. code-block:: python
 
 
-       from combo.models.stacking import Stacking
+       from combo.models.classifier_stacking import Stacking
 
        clf = Stacking(base_estimators=classifiers, n_folds=4, shuffle_data=False,
                    keep_original=True, use_proba=False, random_state=random_state)

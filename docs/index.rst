@@ -105,7 +105,7 @@ combo is featured for:
    .. code-block:: python
 
 
-       from combo.models.stacking import Stacking
+       from combo.models.classifier_stacking import Stacking
        # base classifiers
        classifiers = [DecisionTreeClassifier(), LogisticRegression(),
                       KNeighborsClassifier(), RandomForestClassifier(),
@@ -161,7 +161,7 @@ General Purpose      Majority Vote & Weighted Majority Vote                     
 Classification       SimpleClassifierAggregator: combining classifiers by general purpose methods above                      N/A    N/A                                          :class:`combo.models.classifier_comb.SimpleClassifierAggregator`
 Classification       DCS: Dynamic Classifier Selection (Combination of multiple classifiers using local accuracy estimates)  1997   :cite:`a-woods1997combination` (WIP)
 Classification       DES: Dynamic Ensemble Selection (From dynamic classifier selection to dynamic ensemble selection)       2008   :cite:`a-ko2008dynamic` (WIP)
-Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    :cite:`a-gorman2016kaggle`                   :class:`combo.models.stacking.Stacking`
+Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    :cite:`a-gorman2016kaggle`                   :class:`combo.models.classifier_stacking.Stacking`
 Clustering           Clusterer Ensemble: combine the results of multiple clustering results by relabeling                    2006   :cite:`a-zhou2006clusterer`                  :class:`combo.models.cluster_comb.ClustererEnsemble`
 Anomaly Detection    SimpleDetectorCombination: combining outlier detectors by general purpose methods above                 N/A    :cite:`a-aggarwal2017outlier`                :class:`combo.models.detector_comb.SimpleDetectorAggregator`
 Anomaly Detection    Average of Maximum (AOM): divide base detectors into subgroups to take the maximum, and then average    2015   :cite:`a-aggarwal2015theoretical`            :mod:`combo.models.score_comb.aom`
