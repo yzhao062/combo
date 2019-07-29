@@ -32,127 +32,8 @@ from sklearn.metrics import accuracy_score
 # if  combo is installed, no need to use the following line
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from combo.models.classifier_comb import BaseClassifierAggregator
 from combo.models.classifier_comb import SimpleClassifierAggregator
 from combo.utils.data import evaluate_print
-
-
-# Check sklearn\tests\test_base
-# A few test classes
-# noinspection PyMissingConstructor,PyPep8Naming
-class MyEstimator(BaseClassifierAggregator):
-
-    def __init__(self, l1=0, empty=None):
-        self.l1 = l1
-        self.empty = empty
-
-    def fit(self, X, y=None):
-        pass
-
-    def predict(self, X):
-        pass
-
-    def predict_proba(self, X):
-        pass
-
-
-# noinspection PyMissingConstructor
-class K(BaseClassifierAggregator):
-    def __init__(self, c=None, d=None):
-        self.c = c
-        self.d = d
-
-    def fit(self, X, y=None):
-        pass
-
-    def predict(self, X):
-        pass
-
-    def predict_proba(self, X):
-        pass
-
-
-# noinspection PyMissingConstructor
-class T(BaseClassifierAggregator):
-    def __init__(self, a=None, b=None):
-        self.a = a
-        self.b = b
-
-    def fit(self, X, y=None):
-        pass
-
-    def predict(self, X):
-        pass
-
-    def predict_proba(self, X):
-        pass
-
-
-# noinspection PyMissingConstructor
-class ModifyInitParams(BaseClassifierAggregator):
-    """Deprecated behavior.
-    Equal parameters but with a type cast.
-    Doesn't fulfill a is a
-    """
-
-    def __init__(self, a=np.array([0])):
-        self.a = a.copy()
-
-    def fit(self, X, y=None):
-        pass
-
-    def predict(self, X):
-        pass
-
-    def predict_proba(self, X):
-        pass
-
-
-# noinspection PyMissingConstructor
-class VargEstimator(BaseClassifierAggregator):
-    """scikit-learn estimators shouldn't have vargs."""
-
-    def __init__(self, *vargs):
-        pass
-
-    def fit(self, X, y=None):
-        pass
-
-    def predict(self, X):
-        pass
-
-    def predict_proba(self, X):
-        pass
-
-
-class TestBase(unittest.TestCase):
-    def test_repr(self):
-        # Smoke test the repr of the base estimator.
-        my_estimator = MyEstimator()
-        repr(my_estimator)
-        test = T(K(), K())
-        assert_equal(
-            repr(test),
-            "T(a=K(c=None, d=None), b=K(c=None, d=None))"
-        )
-
-        some_est = T(a=["long_params"] * 1000)
-        assert_equal(len(repr(some_est)), 415)
-
-    def test_str(self):
-        # Smoke test the str of the base estimator
-        my_estimator = MyEstimator()
-        str(my_estimator)
-
-    def test_get_params(self):
-        test = T(K(), K())
-
-        assert_true('a__d' in test.get_params(deep=True))
-        assert_true('a__d' not in test.get_params(deep=False))
-
-        test.set_params(a__d=2)
-        assert_true(test.a.d == 2)
-        assert_raises(ValueError, test.set_params, a__a=2)
 
 
 class TestAverage(unittest.TestCase):
@@ -176,8 +57,8 @@ class TestAverage(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_clfs') and
-                    self.clf.base_clfs is not None)
+        assert_true(hasattr(self.clf, 'base_estimators') and
+                    self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
@@ -244,8 +125,8 @@ class TestWeightedAverage(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_clfs') and
-                    self.clf.base_clfs is not None)
+        assert_true(hasattr(self.clf, 'base_estimators') and
+                    self.clf.base_estimators is not None)
 
         # print clf details
         print(self.clf)
@@ -313,8 +194,8 @@ class TestMax(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_clfs') and
-                    self.clf.base_clfs is not None)
+        assert_true(hasattr(self.clf, 'base_estimators') and
+                    self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
@@ -379,8 +260,8 @@ class TestMajorityVote(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_clfs') and
-                    self.clf.base_clfs is not None)
+        assert_true(hasattr(self.clf, 'base_estimators') and
+                    self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
@@ -445,8 +326,8 @@ class TestMedian(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_clfs') and
-                    self.clf.base_clfs is not None)
+        assert_true(hasattr(self.clf, 'base_estimators') and
+                    self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)

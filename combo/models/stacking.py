@@ -18,7 +18,7 @@ from sklearn.utils.multiclass import check_classification_targets
 
 from ..utils.utility import check_parameter
 from ..utils.utility import list_diff
-from .classifier_comb import BaseClassifierAggregator
+from .base import BaseAggregator
 
 
 def split_datasets(X, y, n_folds=3, shuffle_data=False, random_state=None):
@@ -81,14 +81,14 @@ def split_datasets(X, y, n_folds=3, shuffle_data=False, random_state=None):
     return X, y, index_lists
 
 
-class Stacking(BaseClassifierAggregator):
+class Stacking(BaseAggregator):
     """Meta ensembling, also known as stacking. See
     http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/
     for more information
 
     Parameters
     ----------
-    base_clfs: list or numpy array (n_estimators,)
+    base_estimators: list or numpy array (n_estimators,)
         A list of base classifiers.
 
     meta_clf : object, optional (default=LogisticRegression)
@@ -121,12 +121,12 @@ class Stacking(BaseClassifierAggregator):
 
     """
 
-    def __init__(self, base_clfs, meta_clf=None, n_folds=2, keep_original=True,
+    def __init__(self, base_estimators, meta_clf=None, n_folds=2, keep_original=True,
                  use_proba=False, shuffle_data=False, random_state=None,
                  threshold=None, pre_fitted=None):
 
         super(Stacking, self).__init__(
-            base_clfs=base_clfs, pre_fitted=pre_fitted)
+            base_estimators=base_estimators, pre_fitted=pre_fitted)
 
         # validate input parameters
         if not isinstance(n_folds, int):
@@ -176,7 +176,7 @@ class Stacking(BaseClassifierAggregator):
         n_samples = X.shape[0]
 
         # initialize matrix for storing newly generated features
-        new_features = np.zeros([n_samples, self.n_base_clfs_])
+        new_features = np.zeros([n_samples, self.n_base_estimators_])
 
         # build CV datasets
         X_new, y_new, index_lists = split_datasets(
@@ -184,7 +184,7 @@ class Stacking(BaseClassifierAggregator):
             random_state=self.random_state)
 
         # iterate over all base classifiers
-        for i, clf in enumerate(self.base_clfs):
+        for i, clf in enumerate(self.base_estimators):
             # iterate over all folds
             for j in range(self.n_folds):
                 # build train and test index
@@ -217,7 +217,7 @@ class Stacking(BaseClassifierAggregator):
 
         # train all base classifiers on the full train dataset
         # iterate over all base classifiers
-        for i, clf in enumerate(self.base_clfs):
+        for i, clf in enumerate(self.base_estimators):
             clf.fit(X_new, y_new)
 
         return
@@ -240,11 +240,11 @@ class Stacking(BaseClassifierAggregator):
         n_samples = X.shape[0]
 
         # initialize matrix for storing newly generated features
-        new_features = np.zeros([n_samples, self.n_base_clfs_])
+        new_features = np.zeros([n_samples, self.n_base_estimators_])
 
         # build the new features for unknown samples
         # iterate over all base classifiers
-        for i, clf in enumerate(self.base_clfs):
+        for i, clf in enumerate(self.base_estimators):
             # generate the new features on the test set
             if self.use_proba:
                 new_features[:, i] = clf.predict_proba(X)[:, 1]

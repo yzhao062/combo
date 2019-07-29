@@ -9,17 +9,9 @@ Classifier Combination
 ^^^^^^^^^^^^^^^^^^^^^^
 
 
-:mod:`combo.models.classifier_comb`: a collection of classifier
-combination methods.
-
-
-.. toctree::
-    :maxdepth: 4
-
-    modules/classifier_comb/BaseClassifierAggregator
-    modules/classifier_comb/SimpleClassifierAggregator
-
-:mod:`combo.models.stacking`: Stacking (meta ensembling). Check this `introductory
+* :class:`combo.models.classifier_comb.SimpleClassifierAggregator`: a collection of classifier
+combination methods, e.g., average, median, and majority vote.
+* :class:`combo.models.stacking.Stacking`: Stacking (meta ensembling). Check this `introductory
 article by Kaggle <http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/>`_.
 
 
@@ -30,8 +22,8 @@ Cluster Combination
 ^^^^^^^^^^^^^^^^^^^
 
 
-:mod:`combo.models.cluster_comb`: a collection of cluster
-combination methods.
+* :class:`combo.models.cluster_comb.ClustererEnsemble`: Clusterer Ensemble combines multiple base clustering estimators by alignment.
+* :func:`combo.models.cluster_comb.clusterer_ensemble_scores`: Clusterer Ensemble on clustering results directly.
 
 
 ----

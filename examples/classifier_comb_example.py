@@ -28,7 +28,6 @@ from sklearn.neighbors import KNeighborsClassifier
 
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import roc_auc_score
 
 from combo.models.classifier_comb import SimpleClassifierAggregator
 from combo.utils.data import evaluate_print

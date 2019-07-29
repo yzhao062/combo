@@ -217,8 +217,8 @@ class BaseClusteringAggregator(ABC):
 
 
 class ClustererEnsemble(BaseClusteringAggregator):
-    """Clusterer Ensemble combines base cluster results by alignment.
-    See :cite:`zhou2006clusterer` for details.
+    """Clusterer Ensemble combines multiple base clustering estimators by
+    alignment. See :cite:`zhou2006clusterer` for details.
 
     Parameters
     ----------

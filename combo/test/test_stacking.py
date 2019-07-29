@@ -57,8 +57,8 @@ class TestStacking(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_clfs') and
-                    self.clf.base_clfs is not None)
+        assert_true(hasattr(self.clf, 'base_estimators') and
+                    self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
