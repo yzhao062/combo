@@ -8,6 +8,13 @@ import warnings
 from collections import defaultdict
 from abc import ABC, abstractmethod
 
+import numpy as np
+from numpy import percentile
+from scipy.special import erf
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.utils.validation import check_is_fitted
+from sklearn.utils.multiclass import check_classification_targets
+
 from .sklearn_base import _pprint
 from ..utils.utility import _sklearn_version_21
 
@@ -85,6 +92,125 @@ class BaseAggregator(ABC):
             Classes are ordered by lexicographic order.
         """
         pass
+
+    def _process_decision_scores(self):
+        """Internal function to calculate key attributes for outlier detection
+        combination tasks.
+
+        - threshold_: used to decide the binary label
+        - labels_: binary labels of training data
+
+        Returns
+        -------
+        self
+        """
+
+        self.threshold_ = percentile(self.decision_scores_,
+                                     100 * (1 - self.contamination))
+        self.labels_ = (self.decision_scores_ > self.threshold_).astype(
+            'int').ravel()
+
+        # calculate for predict_proba()
+
+        self._mu = np.mean(self.decision_scores_)
+        self._sigma = np.std(self.decision_scores_)
+
+        return self
+
+    def _detector_predict(self, X):
+        """Internal function to predict if a particular sample is an outlier or not.
+
+        Parameters
+        ----------
+        X : numpy array of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        outlier_labels : numpy array of shape (n_samples,)
+            For each observation, tells whether or not
+            it should be considered as an outlier according to the
+            fitted model. 0 stands for inliers and 1 for outliers.
+        """
+
+        check_is_fitted(self, ['decision_scores_', 'threshold_', 'labels_'])
+
+        pred_score = self.decision_function(X)
+        return (pred_score > self.threshold_).astype('int').ravel()
+
+    def _detector_predict_proba(self, X, proba_method='linear'):
+        """Predict the probability of a sample being outlier. Two approaches
+        are possible:
+
+        1. simply use Min-max conversion to linearly transform the outlier
+           scores into the range of [0,1]. The model must be
+           fitted first.
+        2. use unifying scores, see :cite:`kriegel2011interpreting`.
+
+        Parameters
+        ----------
+        X : numpy array of shape (n_samples, n_features)
+            The input samples.
+
+        proba_method : str, optional (default='linear')
+            Probability conversion method. It must be one of
+            'linear' or 'unify'.
+
+        Returns
+        -------
+        outlier_labels : numpy array of shape (n_samples,)
+            For each observation, tells whether or not
+            it should be considered as an outlier according to the
+            fitted model. Return the outlier probability, ranging
+            in [0,1].
+        """
+
+        check_is_fitted(self, ['decision_scores_', 'threshold_', 'labels_'])
+        train_scores = self.decision_scores_
+
+        test_scores = self.decision_function(X)
+
+        probs = np.zeros([X.shape[0], int(self._classes)])
+        if proba_method == 'linear':
+            scaler = MinMaxScaler().fit(train_scores.reshape(-1, 1))
+            probs[:, 1] = scaler.transform(
+                test_scores.reshape(-1, 1)).ravel().clip(0, 1)
+            probs[:, 0] = 1 - probs[:, 1]
+            return probs
+
+        elif proba_method == 'unify':
+            # turn output into probability
+            pre_erf_score = (test_scores - self._mu) / (
+                    self._sigma * np.sqrt(2))
+            erf_score = erf(pre_erf_score)
+            probs[:, 1] = erf_score.clip(0, 1).ravel()
+            probs[:, 0] = 1 - probs[:, 1]
+            return probs
+        else:
+            raise ValueError(proba_method,
+                             'is not a valid probability conversion method')
+
+    def _set_n_classes(self, y):
+        """Set the number of classes if `y` is presented, which is not
+        expected. It could be useful for multi-class outlier detection.
+
+        Parameters
+        ----------
+        y : numpy array of shape (n_samples,)
+            Ground truth.
+
+        Returns
+        -------
+        self
+        """
+
+        self._classes = 2  # default as binary classification
+        if y is not None:
+            check_classification_targets(y)
+            self._classes = len(np.unique(y))
+            warnings.warn(
+                "y should not be presented in unsupervised learning.")
+        return self
 
     def __len__(self):
         """Returns the number of estimators in the ensemble."""

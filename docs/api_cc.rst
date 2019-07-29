@@ -15,6 +15,8 @@ Helpful functions:
 * Each base estimator can be accessed by calling clf[i] where i is the estimator index.
 
 
+
+
 See base class definition below:
 
 combo.models.base module

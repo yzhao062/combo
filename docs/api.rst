@@ -29,6 +29,18 @@ Cluster Combination
 ----
 
 
+Outlier Detector Combination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* :class:`combo.models.detector_comb.SimpleDetectorAggregator`: a collection of
+  outlier detector combination methods, e.g., average, median, and maximization.
+  Refer `PyOD <https://github.com/yzhao062/pyod>`_ for more information.
+
+
+----
+
+
 Score Combination
 ^^^^^^^^^^^^^^^^^
 

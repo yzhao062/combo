@@ -11,6 +11,15 @@ combo.models.classifier\_comb module
    :show-inheritance:
    :inherited-members:
 
+combo.models.detector\_comb module
+------------------------------------
+
+.. automodule:: combo.models.detector_comb
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
 combo.models.stacking module
 ----------------------------
 
