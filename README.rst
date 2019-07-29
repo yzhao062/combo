@@ -114,15 +114,23 @@ combo is featured for:
        y_test_proba = clf.predict_proba(X_test)  # probability prediction
 
 
+**Key Links and Resources**\ :
+
+
+* `View the latest codes on Github <https://github.com/yzhao062/combo>`_
+* `View the documentation & API <https://pycombo.readthedocs.io/>`_
+* `View all examples <https://github.com/yzhao062/combo/tree/master/examples>`_
+
+
 **Table of Contents**\ :
 
 
 * `Installation <#installation>`_
 * `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
 * `Implemented Algorithms <#implemented-algorithms>`_
-* `An Example of Stacking <#an-example-of-stacking>`_
-* `Quick Start for Classifier Combination <#quick-start-for-classifier-combination>`_
-* `Quick Start for Clustering Combination <#quick-start-for-clustering-combination>`_
+* `Example of Stacking <#example-of-stacking>`_
+* `Example of Classifier Combination <#example-of-classifier-combination>`_
+* `Example of Clustering Combination <#example-of-clustering-combination>`_
 * `Development Status <#development-status>`_
 
 
@@ -220,8 +228,14 @@ Anomaly Detection    Locally Selective Combination (LSCP)                       
 ----
 
 
-An Example of Stacking
-^^^^^^^^^^^^^^^^^^^^^^
+**All implemented modes** are associated with examples, check
+`"combo examples" <https://github.com/yzhao062/combo/blob/master/examples>`_
+for more information.
+
+
+Example of Stacking
+^^^^^^^^^^^^^^^^^^^
+
 
 `"examples/stacking_example.py" <https://github.com/yzhao062/combo/blob/master/examples/stacking_example.py>`_
 demonstrates the basic API of stacking (meta ensembling).
@@ -233,9 +247,11 @@ demonstrates the basic API of stacking (meta ensembling).
 
 
        # initialize a group of classifiers
-       classifiers = [DecisionTreeClassifier(), LogisticRegression(),
-                      KNeighborsClassifier(), RandomForestClassifier(),
-                      GradientBoostingClassifier()]
+       classifiers = [DecisionTreeClassifier(random_state=random_state),
+                      LogisticRegression(random_state=random_state),
+                      KNeighborsClassifier(),
+                      RandomForestClassifier(random_state=random_state),
+                      GradientBoostingClassifier(random_state=random_state)]
 
 
 #. Initialize, fit, predict, and evaluate with Stacking
@@ -255,7 +271,7 @@ demonstrates the basic API of stacking (meta ensembling).
 
 #. See a sample output of stacking_example.py
 
-   .. code-block:: python
+   .. code-block:: bash
 
 
        Decision Tree        | Accuracy:0.9386, ROC:0.9383, F1:0.9521
@@ -270,8 +286,9 @@ demonstrates the basic API of stacking (meta ensembling).
 ----
 
 
-Quick Start for Classifier Combination
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example of Classifier Combination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 `"examples/classifier_comb_example.py" <https://github.com/yzhao062/combo/blob/master/examples/classifier_comb_example.py>`_
 demonstrates the basic API of predicting with multiple classifiers. **It is noted that the API across all other algorithms are consistent/similar**.
@@ -282,9 +299,11 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
 
 
        # initialize a group of classifiers
-       classifiers = [DecisionTreeClassifier(), LogisticRegression(),
-                      KNeighborsClassifier(), RandomForestClassifier(),
-                      GradientBoostingClassifier()]
+       classifiers = [DecisionTreeClassifier(random_state=random_state),
+                      LogisticRegression(random_state=random_state),
+                      KNeighborsClassifier(),
+                      RandomForestClassifier(random_state=random_state),
+                      GradientBoostingClassifier(random_state=random_state)]
 
 
 #. Initialize, fit, predict, and evaluate with a simple aggregator (average)
@@ -303,7 +322,7 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
 
 #. See a sample output of classifier_comb_example.py
 
-   .. code-block:: python
+   .. code-block:: bash
 
 
        Decision Tree        | Accuracy:0.9386, ROC:0.9383, F1:0.9521
@@ -322,8 +341,9 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
 ----
 
 
-Quick Start for Clustering Combination
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example of Clustering Combination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 `"examples/cluster_comb_example.py" <https://github.com/yzhao062/combo/blob/master/examples/cluster_comb_example.py>`_
 demonstrates the basic API of combining multiple base clustering estimators.
@@ -332,8 +352,6 @@ demonstrates the basic API of combining multiple base clustering estimators.
 
    .. code-block:: python
 
-
-       from combo.models.cluster_comb import ClustererEnsemble
 
        # Initialize a set of estimators
        estimators = [KMeans(n_clusters=n_clusters),
@@ -346,6 +364,7 @@ demonstrates the basic API of combining multiple base clustering estimators.
    .. code-block:: python
 
 
+       from combo.models.cluster_comb import ClustererEnsemble
        # combine by Clusterer Ensemble
        clf = ClustererEnsemble(estimators, n_clusters=n_clusters)
        clf.fit(X)
@@ -359,6 +378,63 @@ demonstrates the basic API of combining multiple base clustering estimators.
        # generate the labels on X
        aligned_labels = clf.aligned_labels_
        predicted_labels = clf.labels_
+
+
+
+Example of Outlier Detection Combination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+`"examples/detector_comb_example.py" <https://github.com/yzhao062/combo/blob/master/examples/detector_comb_example.py>`_
+demonstrates the basic API of combining multiple base outlier detectors.
+
+#. Initialize a group of outlier detection methods as base estimators
+
+   .. code-block:: python
+
+
+       # Initialize a set of estimators
+       detectors = [KNN(), LOF(), OCSVM()]
+
+
+#. Initialize a simple averaging aggregator, fit the model, and make
+   the prediction.
+
+   .. code-block:: python
+
+
+       from combo.models.detector combination import SimpleDetectorAggregator
+       clf = SimpleDetectorAggregator(base_estimators=detectors)
+       clf_name = 'Aggregation by Averaging'
+       clf.fit(X_train)
+
+       y_train_pred = clf.labels_  # binary labels (0: inliers, 1: outliers)
+       y_train_scores = clf.decision_scores_  # raw outlier scores
+
+       # get the prediction on the test data
+       y_test_pred = clf.predict(X_test)  # outlier labels (0 or 1)
+       y_test_scores = clf.decision_function(X_test)  # outlier scores
+
+
+#. Evaluate the prediction using ROC and Precision @ Rank n.
+
+    .. code-block:: python
+
+        # evaluate and print the results
+        print("\nOn Training Data:")
+        evaluate_print(clf_name, y_train, y_train_scores)
+        print("\nOn Test Data:")
+        evaluate_print(clf_name, y_test, y_test_scores)
+
+#. See sample outputs on both training and test data.
+
+    .. code-block:: bash
+
+        On Training Data:
+        Aggregation by Averaging ROC:0.9994, precision @ rank n:0.95
+
+        On Test Data:
+        Aggregation by Averaging ROC:1.0, precision @ rank n:1.0
 
 
 ----

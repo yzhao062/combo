@@ -1,7 +1,7 @@
 .. combo documentation master file, created by
-   sphinx-quickstart on Tue Jul 16 15:42:55 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+sphinx-quickstart on Tue Jul 16 15:42:55 2019.
+You can adapt this file completely to your liking, but it should at least
+contain the root `toctree` directive.
 
 Welcome to combo's documentation!
 =================================
@@ -117,6 +117,14 @@ combo is featured for:
        # predict on unseen data
        y_test_labels = clf.predict(X_test)  # label prediction
        y_test_proba = clf.predict_proba(X_test)  # probability prediction
+
+
+**Key Links and Resources**\ :
+
+
+* `View the latest codes on Github <https://github.com/yzhao062/combo>`_
+* `View the documentation & API <https://pycombo.readthedocs.io/>`_
+* `View all examples <https://github.com/yzhao062/combo/tree/master/examples>`_
 
 
 ----
