@@ -14,8 +14,8 @@ from sklearn.utils import check_random_state
 
 import numpy as np
 
-# temporary solution for relative imports in case pyod is not installed
-# if pyod is installed, no need to use the following line
+# temporary solution for relative imports in case combo is not installed
+# if combo is installed, no need to use the following line
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from utils.utility import check_parameter

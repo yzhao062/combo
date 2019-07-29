@@ -128,9 +128,9 @@ API Cheatsheet & Reference
 Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html). The
 following APIs are applicable for most models for easy use.
 
-* :func:`pyod.models.base.BaseAggregator.fit`: Fit estimator. y is optional for unsupervised methods.
-* :func:`pyod.models.base.BaseAggregator.predict`: Predict on a particular sample once the estimator is fitted.
-* :func:`pyod.models.base.BaseAggregator.predict_proba`: Predict the probability of a sample belonging to each class once the estimator is fitted.
+* :func:`combo.models.base.BaseAggregator.fit`: Fit estimator. y is optional for unsupervised methods.
+* :func:`combo.models.base.BaseAggregator.predict`: Predict on a particular sample once the estimator is fitted.
+* :func:`combo.models.base.BaseAggregator.predict_proba`: Predict the probability of a sample belonging to each class once the estimator is fitted.
 
 
 ----
