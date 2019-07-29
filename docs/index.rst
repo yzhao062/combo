@@ -177,8 +177,8 @@ Some of the methods are tasks specific:
 `compare_selected_classifiers.py <https://github.com/yzhao062/combo/blob/master/examples/compare_selected_classifiers.py>`_\).
 
 
-.. figure:: figs/ALL.png
-    :alt: Comparison of selected models
+.. image:: https://raw.githubusercontent.com/yzhao062/combo/master/examples/ALL.png
+   :target: https://raw.githubusercontent.com/yzhao062/combo/master/examples/ALL.png
 
 
 ----
