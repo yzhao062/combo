@@ -5,6 +5,6 @@ numpy>=1.13
 numba>=0.35
 pyod
 pytest
-scipy>=0.19.1
+scipy==1.1.0
 scikit_learn>=0.19.1
 sphinxcontrib-bibtex
