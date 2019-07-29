@@ -29,8 +29,9 @@ class BaseAggregator(ABC):
 
     Parameters
     ----------
-    base_estimators: list or numpy array (n_estimators,)
-        A list of base estimators.
+    base_estimators: list, length must be greater than 1
+        A list of base estimators. Certain methods must be present, e.g.,
+        `fit` and `predict`.
 
     pre_fitted: bool, optional (default=False)
         Whether the base estimators are trained. If True, `fit`
