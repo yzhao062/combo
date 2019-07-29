@@ -39,7 +39,7 @@ Welcome to combo's documentation!
    :alt: Downloads
 
 
------
+----
 
 
 **Build Status & Coverage & Maintainability & License**
@@ -70,7 +70,7 @@ Welcome to combo's documentation!
    :alt: License
 
 
------
+----
 
 
 **combo** is a comprehensive Python toolbox for combining machine

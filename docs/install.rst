@@ -28,5 +28,6 @@ Alternatively, you could clone and run setup.py file:
 * matplotlib
 * numpy>=1.13
 * numba>=0.35
+* pyod
 * scipy>=0.19.1
 * scikit_learn>=0.19.1
