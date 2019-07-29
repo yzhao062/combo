@@ -166,8 +166,8 @@ Clustering           Clusterer Ensemble: combine the results of multiple cluster
 Anomaly Detection    SimpleDetectorCombination: combining outlier detectors by general purpose methods above                 N/A    :cite:`a-aggarwal2017outlier`                :class:`combo.models.detector_comb.SimpleDetectorAggregator`
 Anomaly Detection    Average of Maximum (AOM): divide base detectors into subgroups to take the maximum, and then average    2015   :cite:`a-aggarwal2015theoretical`            :mod:`combo.models.score_comb.aom`
 Anomaly Detection    Maximum of Average (MOA): divide base detectors into subgroups to take the average, and then maximize   2015   :cite:`a-aggarwal2015theoretical`            :mod:`combo.models.score_comb.moa`
-Anomaly Detection    XGBOD: a semi-supervised combination framework for outlier detection                                    2018   :cite:`a-zhao2018xgbod`                      :class:`combo.models.xgbod.XGBOD`
-Anomaly Detection    Locally Selective Combination (LSCP)                                                                    2019   :cite:`a-zhao2019lscp`                       :class:`combo.models.lscp.LSCP`
+Anomaly Detection    XGBOD: a semi-supervised combination framework for outlier detection                                    2018   :cite:`a-zhao2018xgbod`                      :class:`combo.models.detector_xgbod.XGBOD`
+Anomaly Detection    Locally Selective Combination (LSCP)                                                                    2019   :cite:`a-zhao2019lscp`                       :class:`combo.models.detector_lscp.LSCP`
 ===================  ======================================================================================================  =====  ===========================================  ==================================================================
 
 

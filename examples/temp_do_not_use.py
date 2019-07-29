@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Compare select algorithms by plotting decision boundaries and
-the number of decision boundaries.
+"""Example of using LSCP for outlier detection
 """
 # Author: Yue Zhao <zhaoy@cmu.edu>
 # License: BSD 2 clause
@@ -28,7 +27,7 @@ from pyod.utils.data import generate_data
 from pyod.utils.data import evaluate_print
 from pyod.utils.example import visualize
 
-from combo.models.detector_comb import SimpleDetectorAggregator
+from combo.models.detector_lscp import LSCP
 
 contamination = 0.1  # percentage of outliers
 n_train = 200  # number of training points
@@ -44,7 +43,8 @@ X_train, y_train, X_test, y_test = \
 
 detectors = [KNN(), LOF(), OCSVM()]
 
-clf = SimpleDetectorAggregator(base_estimators=detectors)
+clf_name = 'LSCP'
+clf = LSCP(base_estimators=detectors)
 clf.fit(X_train)
 
 # get the prediction labels and outlier scores of the training data
@@ -61,4 +61,6 @@ evaluate_print('Average', y_train, y_train_scores)
 print("\nOn Test Data:")
 evaluate_print('Average', y_test, y_test_scores)
 
-
+# visualize the results
+visualize(clf_name, X_train, y_train, X_test, y_test, y_train_pred,
+          y_test_pred, show_figure=True, save_figure=False)

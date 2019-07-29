@@ -11,14 +11,6 @@ combo.models.classifier\_comb module
    :show-inheritance:
    :inherited-members:
 
-combo.models.detector\_comb module
-----------------------------------
-
-.. automodule:: combo.models.detector_comb
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :inherited-members:
 
 combo.models.classifier\_stacking module
 ----------------------------------------
@@ -38,10 +30,19 @@ combo.models.cluster\_comb module
    :show-inheritance:
    :inherited-members:
 
-combo.models.estimator\_comb module
------------------------------------
+combo.models.detector\_comb module
+----------------------------------
 
-.. automodule:: combo.models.estimator_comb
+.. automodule:: combo.models.detector_comb
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
+combo.models.detector\_lscp module
+----------------------------------
+
+.. automodule:: combo.models.detector_lscp
    :members:
    :undoc-members:
    :show-inheritance:

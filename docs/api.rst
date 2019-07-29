@@ -36,7 +36,7 @@ Outlier Detector Combination
 * :class:`combo.models.detector_comb.SimpleDetectorAggregator`: a collection of
   outlier detector combination methods, e.g., average, median, and maximization.
   Refer `PyOD <https://github.com/yzhao062/pyod>`_ for more information.
-
+* :class:`combo.models.detector_lscp.LSCP`: Locally Selective Combination of Parallel Outlier Ensembles (LSCP).
 
 ----
 
