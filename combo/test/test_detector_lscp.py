@@ -39,7 +39,7 @@ class TestLSCP(unittest.TestCase):
             n_train=self.n_train, n_test=self.n_test,
             contamination=self.contamination, random_state=42)
 
-        detectors = [KNN(), LOF(), OCSVM()]
+        detectors = [LOF(), LOF()]
 
         self.clf = LSCP(base_estimators=detectors,
                         contamination=self.contamination)
