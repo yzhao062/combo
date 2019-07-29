@@ -179,6 +179,7 @@ Some of the methods are tasks specific:
 
 .. image:: https://raw.githubusercontent.com/yzhao062/combo/master/examples/ALL.png
    :target: https://raw.githubusercontent.com/yzhao062/combo/master/examples/ALL.png
+   :alt: Comparison of Selected Models
 
 
 ----
