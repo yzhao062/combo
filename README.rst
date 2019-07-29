@@ -70,15 +70,16 @@ combo: A Python Toolbox for Machine Learning Model Combination
 
 **combo** is a comprehensive Python toolbox for combining machine
 learning (ML) models and scores for various tasks, including **classification**,
-**clustering**, **anomaly detection**, and **raw score**.
+**clustering**, and **anomaly detection**.
 
-Model combination has been widely used in data science competitions and
-real-world tasks, such as Kaggle. It can be considered as a subtask of
+**Model combination** has been widely used in data science competitions and
+real-world tasks, such as Kaggle [#Bell2007Lessons]_.
+It can be considered as a subtask of
 `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
 but is often beyond the scope of ensemble learning. For instance,
 averaging the results of multiple runs of a ML model is deemed as
 a reliable way of eliminating the randomness. See
-figure below for some popular combination approaches.
+figure below for basic combination approaches.
 
 .. image:: https://raw.githubusercontent.com/yzhao062/combo/master/docs/figs/framework_demo.png
    :target: https://raw.githubusercontent.com/yzhao062/combo/master/docs/figs/framework_demo.png
@@ -172,9 +173,9 @@ API Cheatsheet & Reference
 Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html). API cheatsheet for most of the models:
 
 
-* **fit(X)**\ : Fit an estimator.
+* **fit(X)**\ : Fit estimator. y is optional for unsupervised methods.
 * **predict(X)**\ : Predict on a particular sample once the estimator is fitted.
-* **predict_proba(X)**\ : Predict the probability of a sample belonging to each class. Only applicable for classification tasks.
+* **predict_proba(X)**\ : Predict the probability of a sample belonging to each class once the estimator is fitted.
 
 
 ----
@@ -410,6 +411,8 @@ Reference
 ^^^^^^^^^
 
 .. [#Aggarwal2015Theoretical] Aggarwal, C.C. and Sathe, S., 2015. Theoretical foundations and algorithms for outlier ensembles. *ACM SIGKDD Explorations Newsletter*, 17(1), pp.24-47.
+
+.. [#Bell2007Lessons] Bell, R.M. and Koren, Y., 2007. Lessons from the Netflix prize challenge. *SIGKDD Explorations*, 9(2), pp.75-79.
 
 .. [#Gorman2016Kaggle] Gorman, B. (2016). A Kaggler's Guide to Model Stacking in Practice. [online] The Official Blog of Kaggle.com. Available at: http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice [Accessed 26 Jul. 2019].
 
