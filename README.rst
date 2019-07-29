@@ -131,7 +131,7 @@ combo is featured for:
 * `Example of Stacking <#example-of-stacking>`_
 * `Example of Classifier Combination <#example-of-classifier-combination>`_
 * `Example of Clustering Combination <#example-of-clustering-combination>`_
-* `Example of Outlier Detector Combination <#example-of-outlier-detection-combination>`_
+* `Example of Outlier Detector Combination <#example-of-outlier-detector-combination>`_
 * `Development Status <#development-status>`_
 
 
