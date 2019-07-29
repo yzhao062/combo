@@ -12,7 +12,7 @@ combo.models.classifier\_comb module
    :inherited-members:
 
 combo.models.detector\_comb module
-------------------------------------
+----------------------------------
 
 .. automodule:: combo.models.detector_comb
    :members:
