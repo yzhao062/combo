@@ -12,7 +12,7 @@ Classifier Combination
 * :class:`combo.models.classifier_comb.SimpleClassifierAggregator`: a collection of classifier
   combination methods, e.g., average, median, and majority vote.
 * :class:`combo.models.stacking.Stacking`: Stacking (meta ensembling). Check this `introductory
-article by Kaggle <http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/>`_.
+  article by Kaggle <http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/>`_.
 
 
 ----
