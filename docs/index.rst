@@ -172,6 +172,15 @@ Some of the methods are tasks specific:
   6. XGBOD: a semi-supervised combination framework for outlier detection :cite:`a-zhao2018xgbod`
 
 
+**The comparison among selected implemented models** is made available below
+(\ `Figure <https://raw.githubusercontent.com/yzhao062/combo/master/examples/ALL.png>`_\ ,
+`compare_selected_classifiers.py <https://github.com/yzhao062/combo/blob/master/examples/compare_selected_classifiers.py>`_\).
+
+
+.. figure:: figs/ALL.png
+    :alt: Comparison of selected models
+
+
 ----
 
 
