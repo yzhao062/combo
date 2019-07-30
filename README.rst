@@ -96,22 +96,21 @@ combo is featured for:
 
 **API Demo**\ :
 
+.. code-block:: python
 
-   .. code-block:: python
 
+   from combo.models.stacking import Stacking
+   # initialize a group of base classifiers
+   classifiers = [DecisionTreeClassifier(), LogisticRegression(),
+                  KNeighborsClassifier(), RandomForestClassifier(),
+                  GradientBoostingClassifier()]
 
-       from combo.models.stacking import Stacking
-       # base classifiers
-       classifiers = [DecisionTreeClassifier(), LogisticRegression(),
-                      KNeighborsClassifier(), RandomForestClassifier(),
-                      GradientBoostingClassifier()]
+   clf = Stacking(base_estimators=classifiers) # initialize a Stacking model
+   clf.fit(X_train, y_train) # fit the model
 
-       clf = Stacking(base_estimators=classifiers) # initialize a Stacking model
-       clf.fit(X_train)
-
-       # predict on unseen data
-       y_test_labels = clf.predict(X_test)  # label prediction
-       y_test_proba = clf.predict_proba(X_test)  # probability prediction
+   # predict on unseen data
+   y_test_labels = clf.predict(X_test)  # label prediction
+   y_test_proba = clf.predict_proba(X_test)  # probability prediction
 
 
 **Key Links and Resources**\ :
