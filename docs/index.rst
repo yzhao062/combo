@@ -82,7 +82,7 @@ real-world tasks, such as Kaggle :cite:`a-bell2007lessons`.
 It can be considered as a subtask of
 `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
 but is often beyond the scope of ensemble learning. For instance,
-averaging the results of multiple runs of a ML model is deemed as
+averaging the results of multiple runs of an ML model is deemed as
 a reliable way of reducing the randomness. See
 figure below for basic combination approaches.
 
@@ -186,7 +186,7 @@ Anomaly Detection    Locally Selective Combination (LSCP)                       
 Development Status
 ^^^^^^^^^^^^^^^^^^
 
-combo is currently **under development** as of July 24, 2019. A concrete plan has
+combo is currently **under development** as of July 30, 2019. A concrete plan has
 been laid out and will be implemented in the next few months.
 
 Similar to other libraries built by us, e.g., Python Outlier Detection Toolbox

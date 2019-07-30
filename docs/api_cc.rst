@@ -16,8 +16,8 @@ Helpful functions:
 * Each base estimator can be accessed by calling clf[i] where i is the estimator index.
 
 For raw score combination (after the score matrix is generated),
-use individual methods, e.g., average and median, directly in
-`"score_comb.py" <https://github.com/yzhao062/combo/blob/master/models/score_comb.py>`_.
+use individual methods from
+`"score_comb.py" <https://github.com/yzhao062/combo/blob/master/combo/models/score_comb.py>`_ directly.
 Raw score combination API: (https://pycombo.readthedocs.io/en/latest/api.html#score-combination).
 
 

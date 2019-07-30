@@ -77,7 +77,7 @@ real-world tasks, such as Kaggle [#Bell2007Lessons]_.
 It can be considered as a subtask of
 `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
 but is often beyond the scope of ensemble learning. For instance,
-averaging the results of multiple runs of a ML model is deemed as
+averaging the results of multiple runs of an ML model is deemed as
 a reliable way of reducing the randomness. See
 figure below for basic combination approaches.
 
@@ -188,8 +188,8 @@ The following APIs are consistent for most of the models
 * **predict_proba(X)**\ : Predict the probability of a sample belonging to each class once the estimator is fitted.
 
 For raw score combination (after the score matrix is generated),
-use individual methods, e.g., average and median, directly in
-`"score_comb.py" <https://github.com/yzhao062/combo/blob/master/models/score_comb.py>`_.
+use individual methods from
+`"score_comb.py" <https://github.com/yzhao062/combo/blob/master/combo/models/score_comb.py>`_ directly.
 Raw score combination API: (https://pycombo.readthedocs.io/en/latest/api.html#score-combination).
 
 
@@ -366,7 +366,7 @@ demonstrates the basic API of combining multiple base clustering estimators.
                     AgglomerativeClustering(n_clusters=n_clusters)]
 
 
-#. Initialize an Clusterer Ensemble class and fit the model
+#. Initialize a Clusterer Ensemble class and fit the model
 
    .. code-block:: python
 
@@ -450,7 +450,7 @@ demonstrates the basic API of combining multiple base outlier detectors.
 Development Status
 ^^^^^^^^^^^^^^^^^^
 
-combo is currently **under development** as of July 24, 2019. A concrete plan has
+combo is currently **under development** as of July 30, 2019. A concrete plan has
 been laid out and will be implemented in the next few months.
 
 Similar to other libraries built by us, e.g., Python Outlier Detection Toolbox

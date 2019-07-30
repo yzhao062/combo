@@ -136,7 +136,7 @@ demonstrates the basic API of combining multiple base clustering estimators.
                     AgglomerativeClustering(n_clusters=n_clusters)]
 
 
-#. Initialize an Clusterer Ensemble class and fit the model
+#. Initialize a Clusterer Ensemble class and fit the model
 
    .. code-block:: python
 
