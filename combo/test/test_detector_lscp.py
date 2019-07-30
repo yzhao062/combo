@@ -31,7 +31,7 @@ from combo.models.detector_lscp import LSCP
 
 class TestLSCP(unittest.TestCase):
     def setUp(self):
-        self.n_train = 200
+        self.n_train = 500
         self.n_test = 100
         self.contamination = 0.1
         self.roc_floor = 0.8

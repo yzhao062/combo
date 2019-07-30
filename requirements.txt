@@ -3,5 +3,5 @@ matplotlib
 numpy>=1.13
 numba>=0.35
 pyod
-scipy==1.1.0
+scipy
 scikit_learn>=0.19.1
