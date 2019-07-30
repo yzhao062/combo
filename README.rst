@@ -127,9 +127,12 @@ combo is featured for:
 * `Installation <#installation>`_
 * `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
 * `Implemented Algorithms <#implemented-algorithms>`_
-* `Example of Stacking <#example-of-stacking>`_ | `Example of Classifier Combination <#example-of-classifier-combination>`_
-* `Example of Clustering Combination <#example-of-clustering-combination>`_ | `Example of Outlier Detector Combination <#example-of-outlier-detector-combination>`_
+* `<1> Example of Stacking <#example-of-stacking>`_
+* `<2> Example of Classifier Combination <#example-of-classifier-combination>`_
+* `<3> Example of Clustering Combination <#example-of-clustering-combination>`_
+* `<4> Example of Outlier Detector Combination <#example-of-outlier-detector-combination>`_
 * `Development Status <#development-status>`_
+* `Inclusion Criteria <#inclusion-criteria>`_
 
 
 ----
