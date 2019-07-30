@@ -97,7 +97,7 @@ combo is featured for:
 **API Demo**\ :
 
 .. code-block:: python
-
+   :emphasize-lines: 6-7,10-11
 
    from combo.models.stacking import Stacking
    # initialize a group of base classifiers
@@ -127,10 +127,8 @@ combo is featured for:
 * `Installation <#installation>`_
 * `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
 * `Implemented Algorithms <#implemented-algorithms>`_
-* `Example of Stacking <#example-of-stacking>`_
-* `Example of Classifier Combination <#example-of-classifier-combination>`_
-* `Example of Clustering Combination <#example-of-clustering-combination>`_
-* `Example of Outlier Detector Combination <#example-of-outlier-detector-combination>`_
+* `Example of Stacking <#example-of-stacking>`_ | `Example of Classifier Combination <#example-of-classifier-combination>`_
+* `Example of Clustering Combination <#example-of-clustering-combination>`_ | `Example of Outlier Detector Combination <#example-of-outlier-detector-combination>`_
 * `Development Status <#development-status>`_
 
 
@@ -246,12 +244,12 @@ demonstrates the basic API of stacking (meta ensembling).
    .. code-block:: python
 
 
-       # initialize a group of classifiers
-       classifiers = [DecisionTreeClassifier(random_state=random_state),
-                      LogisticRegression(random_state=random_state),
-                      KNeighborsClassifier(),
-                      RandomForestClassifier(random_state=random_state),
-                      GradientBoostingClassifier(random_state=random_state)]
+      # initialize a group of classifiers
+      classifiers = [DecisionTreeClassifier(random_state=random_state),
+                     LogisticRegression(random_state=random_state),
+                     KNeighborsClassifier(),
+                     RandomForestClassifier(random_state=random_state),
+                     GradientBoostingClassifier(random_state=random_state)]
 
 
 #. Initialize, fit, predict, and evaluate with Stacking
@@ -259,14 +257,14 @@ demonstrates the basic API of stacking (meta ensembling).
    .. code-block:: python
 
 
-       from combo.models.stacking import Stacking
+      from combo.models.stacking import Stacking
 
-       clf = Stacking(base_estimators=classifiers, n_folds=4, shuffle_data=False,
+      clf = Stacking(base_estimators=classifiers, n_folds=4, shuffle_data=False,
                    keep_original=True, use_proba=False, random_state=random_state)
 
-       clf.fit(X_train, y_train)
-       y_test_predict = clf.predict(X_test)
-       evaluate_print('Stacking | ', y_test, y_test_predict)
+      clf.fit(X_train, y_train)
+      y_test_predict = clf.predict(X_test)
+      evaluate_print('Stacking | ', y_test, y_test_predict)
 
 
 #. See a sample output of stacking_example.py
@@ -274,13 +272,13 @@ demonstrates the basic API of stacking (meta ensembling).
    .. code-block:: bash
 
 
-       Decision Tree        | Accuracy:0.9386, ROC:0.9383, F1:0.9521
-       Logistic Regression  | Accuracy:0.9649, ROC:0.9615, F1:0.973
-       K Neighbors          | Accuracy:0.9561, ROC:0.9519, F1:0.9662
-       Gradient Boosting    | Accuracy:0.9605, ROC:0.9524, F1:0.9699
-       Random Forest        | Accuracy:0.9605, ROC:0.961, F1:0.9693
+      Decision Tree        | Accuracy:0.9386, ROC:0.9383, F1:0.9521
+      Logistic Regression  | Accuracy:0.9649, ROC:0.9615, F1:0.973
+      K Neighbors          | Accuracy:0.9561, ROC:0.9519, F1:0.9662
+      Gradient Boosting    | Accuracy:0.9605, ROC:0.9524, F1:0.9699
+      Random Forest        | Accuracy:0.9605, ROC:0.961, F1:0.9693
 
-       Stacking             | Accuracy:0.9868, ROC:0.9841, F1:0.9899
+      Stacking             | Accuracy:0.9868, ROC:0.9841, F1:0.9899
 
 
 ----

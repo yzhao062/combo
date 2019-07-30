@@ -102,7 +102,7 @@ combo is featured for:
 **API Demo**\ :
 
 .. code-block:: python
-
+   :emphasize-lines: 6-7,10-11
 
    from combo.models.stacking import Stacking
    # initialize a group of base classifiers
