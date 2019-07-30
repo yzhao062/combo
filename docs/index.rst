@@ -140,6 +140,12 @@ following APIs are applicable for most models for easy use.
 * :func:`combo.models.base.BaseAggregator.predict_proba`: Predict the probability of a sample belonging to each class once the estimator is fitted.
 
 
+For raw score combination (after the score matrix is generated),
+use individual methods from
+`"score_comb.py" <https://github.com/yzhao062/combo/blob/master/combo/models/score_comb.py>`_ directly.
+Raw score combination API: (https://pycombo.readthedocs.io/en/latest/api.html#score-combination).
+
+
 ----
 
 
