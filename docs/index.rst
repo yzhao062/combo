@@ -75,7 +75,9 @@ Welcome to combo's documentation!
 
 **combo** is a comprehensive Python toolbox for **combining machine
 learning (ML) models and scores** for various tasks, including **classification**,
-**clustering**, and **anomaly detection**.
+**clustering**, and **anomaly detection**. It supports the combination of ML models from
+core libraries such as `scikit-learn <https://scikit-learn.org/stable/index.html>`_
+and `xgboost <https://xgboost.ai/>`_.
 
 **Model combination** has been widely used in data science competitions and
 real-world tasks, such as Kaggle :cite:`a-bell2007lessons`.
