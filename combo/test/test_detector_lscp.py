@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+from os import path
 
-import numpy as np
 import unittest
 # noinspection PyProtectedMember
+from sklearn.model_selection import train_test_split
 from sklearn.utils.testing import assert_allclose
 from sklearn.utils.testing import assert_array_less
 from sklearn.utils.testing import assert_equal
@@ -14,6 +15,8 @@ from sklearn.utils.testing import assert_less_equal
 from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_true
 from sklearn.utils.estimator_checks import check_estimator
+from sklearn.utils.validation import check_X_y
+from scipy.io import loadmat
 
 from sklearn.metrics import roc_auc_score
 
@@ -31,19 +34,34 @@ from combo.models.detector_lscp import LSCP
 
 class TestLSCP(unittest.TestCase):
     def setUp(self):
-        self.n_train = 1000
-        self.n_test = 50
-        self.contamination = 0.1
-        self.roc_floor = 0.6
-        self.X_train, self.y_train, self.X_test, self.y_test = generate_data(
-            n_train=self.n_train, n_test=self.n_test,
-            contamination=self.contamination, random_state=42)
+        # Define data file and read X and y
+        # Generate some data if the source data is missing
+        this_directory = path.abspath(path.dirname(__file__))
+        mat_file = 'cardio.mat'
+        try:
+            mat = loadmat(path.join(*[this_directory, 'data', mat_file]))
+
+        except TypeError:
+            print('{data_file} does not exist. Use generated data'.format(
+                data_file=mat_file))
+            X, y = generate_data(train_only=True)  # load data
+        except IOError:
+            print('{data_file} does not exist. Use generated data'.format(
+                data_file=mat_file))
+            X, y = generate_data(train_only=True)  # load data
+        else:
+            X = mat['X']
+            y = mat['y'].ravel()
+            X, y = check_X_y(X, y)
+
+        self.X_train, self.X_test, self.y_train, self.y_test = \
+            train_test_split(X, y, test_size=0.4, random_state=42)
 
         detectors = [LOF(), LOF()]
 
-        self.clf = LSCP(base_estimators=detectors,
-                        contamination=self.contamination)
+        self.clf = LSCP(base_estimators=detectors)
         self.clf.fit(self.X_train)
+        self.roc_floor = 0.6
 
     def test_parameters(self):
         assert_true(hasattr(self.clf, 'decision_scores_') and
