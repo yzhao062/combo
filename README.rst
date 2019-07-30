@@ -127,10 +127,10 @@ combo is featured for:
 * `Installation <#installation>`_
 * `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
 * `Implemented Algorithms <#implemented-algorithms>`_
-* `<1> Example of Stacking <#example-of-stacking>`_
-* `<2> Example of Classifier Combination <#example-of-classifier-combination>`_
-* `<3> Example of Clustering Combination <#example-of-clustering-combination>`_
-* `<4> Example of Outlier Detector Combination <#example-of-outlier-detector-combination>`_
+* `Example 1: Stacking <#example-of-stacking>`_
+* `Example 2: Classifier Combination <#example-of-classifier-combination>`_
+* `Example 3: Clustering Combination <#example-of-clustering-combination>`_
+* `Example 4: Outlier Detector Combination <#example-of-outlier-detector-combination>`_
 * `Development Status <#development-status>`_
 * `Inclusion Criteria <#inclusion-criteria>`_
 
@@ -165,7 +165,7 @@ Alternatively, you could clone and run setup.py file:
 
 * Python 3.5, 3.6, or 3.7
 * joblib
-* matplotlib
+* matplotlib (**optional for running examples**)
 * numpy>=1.13
 * numba>=0.35
 * pyod
@@ -179,8 +179,9 @@ Alternatively, you could clone and run setup.py file:
 API Cheatsheet & Reference
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html). The
-following APIs are applicable for most models for easy use.
+Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html).
+The following APIs are consistent for most of the models 
+(API Cheatsheet: https://pycombo.readthedocs.io/en/latest/api_cc.html).
 
 * **fit(X)**\ : Fit estimator. y is optional for unsupervised methods.
 * **predict(X)**\ : Predict on a particular sample once the estimator is fitted.

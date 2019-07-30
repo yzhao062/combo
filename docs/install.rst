@@ -25,7 +25,7 @@ Alternatively, you could clone and run setup.py file:
 
 * Python 3.5, 3.6, or 3.7
 * joblib
-* matplotlib
+* matplotlib (**optional for running examples**)
 * numpy>=1.13
 * numba>=0.35
 * pyod
