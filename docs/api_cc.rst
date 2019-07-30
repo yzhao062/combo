@@ -1,8 +1,9 @@
 API CheatSheet
 ==============
 
-Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html). The
-following APIs are applicable for most models for easy use.
+Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html).
+The following APIs are consistent for most of the models
+(API Cheatsheet: https://pycombo.readthedocs.io/en/latest/api_cc.html).
 
 * :func:`combo.models.base.BaseAggregator.fit`: Fit estimator. y is optional for unsupervised methods.
 * :func:`combo.models.base.BaseAggregator.predict`: Predict on a particular sample once the estimator is fitted.
@@ -14,7 +15,10 @@ Helpful functions:
 * :func:`combo.models.base.BaseAggregator.set_params`: Set the parameters of the model.
 * Each base estimator can be accessed by calling clf[i] where i is the estimator index.
 
-
+For raw score combination (after the score matrix is generated),
+use individual methods, e.g., average and median, directly in
+`"score_comb.py" <https://github.com/yzhao062/combo/blob/master/models/score_comb.py>`_.
+Raw score combination API: (https://pycombo.readthedocs.io/en/latest/api.html#score-combination).
 
 
 See base class definition below:

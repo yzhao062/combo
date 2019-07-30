@@ -73,8 +73,8 @@ Welcome to combo's documentation!
 ----
 
 
-**combo** is a comprehensive Python toolbox for combining machine
-learning (ML) models and scores for various tasks, including **classification**,
+**combo** is a comprehensive Python toolbox for **combining machine
+learning (ML) models and scores** for various tasks, including **classification**,
 **clustering**, and **anomaly detection**.
 
 **Model combination** has been widely used in data science competitions and
@@ -83,7 +83,7 @@ It can be considered as a subtask of
 `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
 but is often beyond the scope of ensemble learning. For instance,
 averaging the results of multiple runs of a ML model is deemed as
-a reliable way of eliminating the randomness. See
+a reliable way of reducing the randomness. See
 figure below for basic combination approaches.
 
 .. image:: https://raw.githubusercontent.com/yzhao062/combo/master/docs/figs/framework_demo.png

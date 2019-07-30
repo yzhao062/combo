@@ -68,8 +68,8 @@ combo: A Python Toolbox for Machine Learning Model Combination
 ----
 
 
-**combo** is a comprehensive Python toolbox for combining machine
-learning (ML) models and scores for various tasks, including **classification**,
+**combo** is a comprehensive Python toolbox for **combining machine
+learning (ML) models and scores** for various tasks, including **classification**,
 **clustering**, and **anomaly detection**.
 
 **Model combination** has been widely used in data science competitions and
@@ -78,7 +78,7 @@ It can be considered as a subtask of
 `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
 but is often beyond the scope of ensemble learning. For instance,
 averaging the results of multiple runs of a ML model is deemed as
-a reliable way of eliminating the randomness. See
+a reliable way of reducing the randomness. See
 figure below for basic combination approaches.
 
 .. image:: https://raw.githubusercontent.com/yzhao062/combo/master/docs/figs/framework_demo.png
@@ -180,12 +180,17 @@ API Cheatsheet & Reference
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html).
-The following APIs are consistent for most of the models 
+The following APIs are consistent for most of the models
 (API Cheatsheet: https://pycombo.readthedocs.io/en/latest/api_cc.html).
 
 * **fit(X)**\ : Fit estimator. y is optional for unsupervised methods.
 * **predict(X)**\ : Predict on a particular sample once the estimator is fitted.
 * **predict_proba(X)**\ : Predict the probability of a sample belonging to each class once the estimator is fitted.
+
+For raw score combination (after the score matrix is generated),
+use individual methods, e.g., average and median, directly in
+`"score_comb.py" <https://github.com/yzhao062/combo/blob/master/models/score_comb.py>`_.
+Raw score combination API: (https://pycombo.readthedocs.io/en/latest/api.html#score-combination).
 
 
 ----
