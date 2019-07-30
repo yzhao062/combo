@@ -97,7 +97,7 @@ combo is featured for:
 **API Demo**\ :
 
 .. code-block:: python
-   :emphasize-lines: 6-7,10-11
+
 
    from combo.models.stacking import Stacking
    # initialize a group of base classifiers
@@ -296,12 +296,12 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
    .. code-block:: python
 
 
-       # initialize a group of classifiers
-       classifiers = [DecisionTreeClassifier(random_state=random_state),
-                      LogisticRegression(random_state=random_state),
-                      KNeighborsClassifier(),
-                      RandomForestClassifier(random_state=random_state),
-                      GradientBoostingClassifier(random_state=random_state)]
+      # initialize a group of classifiers
+      classifiers = [DecisionTreeClassifier(random_state=random_state),
+                     LogisticRegression(random_state=random_state),
+                     KNeighborsClassifier(),
+                     RandomForestClassifier(random_state=random_state),
+                     GradientBoostingClassifier(random_state=random_state)]
 
 
 #. Initialize, fit, predict, and evaluate with a simple aggregator (average)
@@ -309,12 +309,12 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
    .. code-block:: python
 
 
-       from combo.models.classifier_comb import SimpleClassifierAggregator
+      from combo.models.classifier_comb import SimpleClassifierAggregator
 
-       clf = SimpleClassifierAggregator(classifiers, method='average')
-       clf.fit(X_train, y_train)
-       y_test_predicted = clf.predict(X_test)
-       evaluate_print('Combination by avg   |', y_test, y_test_predicted)
+      clf = SimpleClassifierAggregator(classifiers, method='average')
+      clf.fit(X_train, y_train)
+      y_test_predicted = clf.predict(X_test)
+      evaluate_print('Combination by avg   |', y_test, y_test_predicted)
 
 
 
@@ -323,17 +323,17 @@ demonstrates the basic API of predicting with multiple classifiers. **It is note
    .. code-block:: bash
 
 
-       Decision Tree        | Accuracy:0.9386, ROC:0.9383, F1:0.9521
-       Logistic Regression  | Accuracy:0.9649, ROC:0.9615, F1:0.973
-       K Neighbors          | Accuracy:0.9561, ROC:0.9519, F1:0.9662
-       Gradient Boosting    | Accuracy:0.9605, ROC:0.9524, F1:0.9699
-       Random Forest        | Accuracy:0.9605, ROC:0.961, F1:0.9693
+      Decision Tree        | Accuracy:0.9386, ROC:0.9383, F1:0.9521
+      Logistic Regression  | Accuracy:0.9649, ROC:0.9615, F1:0.973
+      K Neighbors          | Accuracy:0.9561, ROC:0.9519, F1:0.9662
+      Gradient Boosting    | Accuracy:0.9605, ROC:0.9524, F1:0.9699
+      Random Forest        | Accuracy:0.9605, ROC:0.961, F1:0.9693
 
-       Combination by avg   | Accuracy:0.9693, ROC:0.9677, F1:0.9763
-       Combination by w_avg | Accuracy:0.9781, ROC:0.9716, F1:0.9833
-       Combination by max   | Accuracy:0.9518, ROC:0.9312, F1:0.9642
-       Combination by w_vote| Accuracy:0.9649, ROC:0.9644, F1:0.9728
-       Combination by median| Accuracy:0.9693, ROC:0.9677, F1:0.9763
+      Combination by avg   | Accuracy:0.9693, ROC:0.9677, F1:0.9763
+      Combination by w_avg | Accuracy:0.9781, ROC:0.9716, F1:0.9833
+      Combination by max   | Accuracy:0.9518, ROC:0.9312, F1:0.9642
+      Combination by w_vote| Accuracy:0.9649, ROC:0.9644, F1:0.9728
+      Combination by median| Accuracy:0.9693, ROC:0.9677, F1:0.9763
 
 
 ----
@@ -351,10 +351,10 @@ demonstrates the basic API of combining multiple base clustering estimators.
    .. code-block:: python
 
 
-       # Initialize a set of estimators
-       estimators = [KMeans(n_clusters=n_clusters),
-                     MiniBatchKMeans(n_clusters=n_clusters),
-                     AgglomerativeClustering(n_clusters=n_clusters)]
+      # Initialize a set of estimators
+      estimators = [KMeans(n_clusters=n_clusters),
+                    MiniBatchKMeans(n_clusters=n_clusters),
+                    AgglomerativeClustering(n_clusters=n_clusters)]
 
 
 #. Initialize an Clusterer Ensemble class and fit the model
@@ -362,10 +362,10 @@ demonstrates the basic API of combining multiple base clustering estimators.
    .. code-block:: python
 
 
-       from combo.models.cluster_comb import ClustererEnsemble
-       # combine by Clusterer Ensemble
-       clf = ClustererEnsemble(estimators, n_clusters=n_clusters)
-       clf.fit(X)
+      from combo.models.cluster_comb import ClustererEnsemble
+      # combine by Clusterer Ensemble
+      clf = ClustererEnsemble(estimators, n_clusters=n_clusters)
+      clf.fit(X)
 
 
 #. Get the aligned results
@@ -373,9 +373,9 @@ demonstrates the basic API of combining multiple base clustering estimators.
    .. code-block:: python
 
 
-       # generate the labels on X
-       aligned_labels = clf.aligned_labels_
-       predicted_labels = clf.labels_
+      # generate the labels on X
+      aligned_labels = clf.aligned_labels_
+      predicted_labels = clf.labels_
 
 
 
@@ -391,8 +391,8 @@ demonstrates the basic API of combining multiple base outlier detectors.
    .. code-block:: python
 
 
-       # Initialize a set of estimators
-       detectors = [KNN(), LOF(), OCSVM()]
+      # Initialize a set of estimators
+      detectors = [KNN(), LOF(), OCSVM()]
 
 
 #. Initialize a simple averaging aggregator, fit the model, and make
@@ -401,28 +401,28 @@ demonstrates the basic API of combining multiple base outlier detectors.
    .. code-block:: python
 
 
-       from combo.models.detector combination import SimpleDetectorAggregator
-       clf = SimpleDetectorAggregator(base_estimators=detectors)
-       clf_name = 'Aggregation by Averaging'
-       clf.fit(X_train)
+      from combo.models.detector combination import SimpleDetectorAggregator
+      clf = SimpleDetectorAggregator(base_estimators=detectors)
+      clf_name = 'Aggregation by Averaging'
+      clf.fit(X_train)
 
-       y_train_pred = clf.labels_  # binary labels (0: inliers, 1: outliers)
-       y_train_scores = clf.decision_scores_  # raw outlier scores
+      y_train_pred = clf.labels_  # binary labels (0: inliers, 1: outliers)
+      y_train_scores = clf.decision_scores_  # raw outlier scores
 
-       # get the prediction on the test data
-       y_test_pred = clf.predict(X_test)  # outlier labels (0 or 1)
-       y_test_scores = clf.decision_function(X_test)  # outlier scores
+      # get the prediction on the test data
+      y_test_pred = clf.predict(X_test)  # outlier labels (0 or 1)
+      y_test_scores = clf.decision_function(X_test)  # outlier scores
 
 
 #. Evaluate the prediction using ROC and Precision @ Rank n.
 
    .. code-block:: python
 
-       # evaluate and print the results
-       print("\nOn Training Data:")
-       evaluate_print(clf_name, y_train, y_train_scores)
-       print("\nOn Test Data:")
-       evaluate_print(clf_name, y_test, y_test_scores)
+      # evaluate and print the results
+      print("\nOn Training Data:")
+      evaluate_print(clf_name, y_train, y_train_scores)
+      print("\nOn Test Data:")
+      evaluate_print(clf_name, y_test, y_test_scores)
 
 #. See sample outputs on both training and test data.
 
