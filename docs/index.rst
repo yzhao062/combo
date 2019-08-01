@@ -19,6 +19,10 @@ Welcome to combo's documentation!
    :alt: Documentation Status
 
 
+.. image:: https://mybinder.org/badge_logo.svg
+   :target: https://mybinder.org/v2/gh/yzhao062/combo/master
+   :alt: Binder
+
 .. image:: https://img.shields.io/github/stars/yzhao062/combo.svg
    :target: https://github.com/yzhao062/combo/stargazers
    :alt: GitHub stars
@@ -179,12 +183,12 @@ Anomaly Detection    Locally Selective Combination (LSCP)                       
 
 
 **The comparison among selected implemented models** is made available below
-(\ `Figure <https://raw.githubusercontent.com/yzhao062/combo/master/examples/ALL.png>`_\ ,
+(\ `Figure <https://raw.githubusercontent.com/yzhao062/combo/master/examples/compare_selected_classifiers.png>`_\ ,
 `compare_selected_classifiers.py <https://github.com/yzhao062/combo/blob/master/examples/compare_selected_classifiers.py>`_\).
 
 
-.. image:: https://raw.githubusercontent.com/yzhao062/combo/master/examples/ALL.png
-   :target: https://raw.githubusercontent.com/yzhao062/combo/master/examples/ALL.png
+.. image:: https://raw.githubusercontent.com/yzhao062/combo/master/examples/compare_selected_classifiers.png
+   :target: https://raw.githubusercontent.com/yzhao062/combo/master/examples/compare_selected_classifiers.png
    :alt: Comparison of Selected Models
 
 

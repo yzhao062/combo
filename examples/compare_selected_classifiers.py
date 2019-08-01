@@ -5,8 +5,6 @@ the number of decision boundaries.
 # Author: Yue Zhao <zhaoy@cmu.edu>
 # License: BSD 2 clause
 
-from __future__ import division
-from __future__ import print_function
 
 import os
 import sys
@@ -131,5 +129,5 @@ for i, offset in enumerate(clusters_separation):
         subplot.set_ylim((-7, 7))
     plt.subplots_adjust(0.04, 0.1, 0.96, 0.94, 0.1, 0.26)
     plt.suptitle("Model Combination")
-plt.savefig('ALL.png', dpi=300)
+plt.savefig('compare_selected_classifiers.png', dpi=300)
 plt.show()
