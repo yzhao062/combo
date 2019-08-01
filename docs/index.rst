@@ -110,7 +110,7 @@ combo is featured for:
 .. code-block:: python
 
 
-   from combo.models.stacking import Stacking
+   from combo.models.classifier_stacking import Stacking
    # initialize a group of base classifiers
    classifiers = [DecisionTreeClassifier(), LogisticRegression(),
                   KNeighborsClassifier(), RandomForestClassifier(),

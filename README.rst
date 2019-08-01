@@ -106,7 +106,7 @@ combo is featured for:
 .. code-block:: python
 
 
-   from combo.models.stacking import Stacking
+   from combo.models.classifier_stacking import Stacking
    # initialize a group of base classifiers
    classifiers = [DecisionTreeClassifier(), LogisticRegression(),
                   KNeighborsClassifier(), RandomForestClassifier(),
@@ -258,11 +258,7 @@ For Jupyter Notebooks, please navigate to **"/notebooks/compare_selected_classif
 for more information.
 
 
-Example of Stacking
-^^^^^^^^^^^^^^^^^^^
-
-
-`"examples/stacking_example.py" <https://github.com/yzhao062/combo/blob/master/examples/stacking_example.py>`_
+`"examples/classifier_stacking_example.py" <https://github.com/yzhao062/combo/blob/master/examples/classifier_stacking_example.py>`_
 demonstrates the basic API of stacking (meta ensembling).
 
 
@@ -284,7 +280,7 @@ demonstrates the basic API of stacking (meta ensembling).
    .. code-block:: python
 
 
-      from combo.models.stacking import Stacking
+      from combo.models.classifier_stacking import Stacking
 
       clf = Stacking(base_estimators=classifiers, n_folds=4, shuffle_data=False,
                    keep_original=True, use_proba=False, random_state=random_state)
@@ -294,7 +290,7 @@ demonstrates the basic API of stacking (meta ensembling).
       evaluate_print('Stacking | ', y_test, y_test_predict)
 
 
-#. See a sample output of stacking_example.py
+#. See a sample output of classifier_stacking_example.py
 
    .. code-block:: bash
 
