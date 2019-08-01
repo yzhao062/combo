@@ -130,6 +130,7 @@ combo is featured for:
 * `View the latest codes on Github <https://github.com/yzhao062/combo>`_
 * `View the documentation & API <https://pycombo.readthedocs.io/>`_
 * `View all examples <https://github.com/yzhao062/combo/tree/master/examples>`_
+* `Execute Interactive Jupyter Notebooks <https://mybinder.org/v2/gh/yzhao062/combo/master>`_
 
 
 ----
@@ -184,7 +185,8 @@ Anomaly Detection    Locally Selective Combination (LSCP)                       
 
 **The comparison among selected implemented models** is made available below
 (\ `Figure <https://raw.githubusercontent.com/yzhao062/combo/master/examples/compare_selected_classifiers.png>`_\ ,
-`compare_selected_classifiers.py <https://github.com/yzhao062/combo/blob/master/examples/compare_selected_classifiers.py>`_\).
+`compare_selected_classifiers.py <https://github.com/yzhao062/combo/blob/master/examples/compare_selected_classifiers.py>`_\, `Interactive Jupyter Notebooks <https://mybinder.org/v2/gh/yzhao062/combo/master>`_\ ).
+For Jupyter Notebooks, please navigate to **"/notebooks/compare_selected_classifiers.ipynb"**.
 
 
 .. image:: https://raw.githubusercontent.com/yzhao062/combo/master/examples/compare_selected_classifiers.png
