@@ -171,7 +171,7 @@ General Purpose      Maximization: simple combination by taking the maximum scor
 General Purpose      Median: take the median value across all scores/prediction results                                      N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.median`
 General Purpose      Majority Vote & Weighted Majority Vote                                                                  N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.majority_vote`
 Classification       SimpleClassifierAggregator: combining classifiers by general purpose methods above                      N/A    N/A                                          :class:`combo.models.classifier_comb.SimpleClassifierAggregator`
-Classification       DCS: Dynamic Classifier Selection (Combination of multiple classifiers using local accuracy estimates)  1997   :cite:`a-woods1997combination` (WIP)
+Classification       DCS: Dynamic Classifier Selection (Combination of multiple classifiers using local accuracy estimates)  1997   :cite:`a-woods1997combination`               :class:`combo.models.classifier_dcs.DCS_LA`
 Classification       DES: Dynamic Ensemble Selection (From dynamic classifier selection to dynamic ensemble selection)       2008   :cite:`a-ko2008dynamic` (WIP)
 Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    :cite:`a-gorman2016kaggle`                   :class:`combo.models.classifier_stacking.Stacking`
 Clustering           Clusterer Ensemble: combine the results of multiple clustering results by relabeling                    2006   :cite:`a-zhou2006clusterer`                  :class:`combo.models.cluster_comb.ClustererEnsemble`

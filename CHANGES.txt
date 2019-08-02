@@ -13,3 +13,4 @@ v<0.0.6>, <07/29/2019> -- Enable Appveyor integration.
 v<0.0.6>, <07/29/2019> -- Update requirements file.
 v<0.0.6>, <07/29/2019> -- Add simple outlier detector combination methods.
 v<0.0.6>, <07/30/2019> -- Add LSCP.
+v<0.0.7>, <08/02/2019> -- Add DCS_LA.

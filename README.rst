@@ -227,7 +227,7 @@ General Purpose      Maximization: simple combination by taking the maximum scor
 General Purpose      Median: take the median value across all scores/prediction results                                      N/A    [#Zhou2012Ensemble]_
 General Purpose      Majority Vote & Weighted Majority Vote                                                                  N/A    [#Zhou2012Ensemble]_
 Classification       SimpleClassifierAggregator: combining classifiers by general purpose methods above                      N/A    N/A
-Classification       DCS: Dynamic Classifier Selection (Combination of multiple classifiers using local accuracy estimates)  1997   [#Woods1997Combination]_ (work-in-progress)
+Classification       DCS: Dynamic Classifier Selection (Combination of multiple classifiers using local accuracy estimates)  1997   [#Woods1997Combination]_
 Classification       DES: Dynamic Ensemble Selection (From dynamic classifier selection to dynamic ensemble selection)       2008   [#Ko2008From]_ (work-in-progress)
 Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    [#Gorman2016Kaggle]_
 Clustering           Clusterer Ensemble: combine the results of multiple clustering results by relabeling                    2006   [#Zhou2006Clusterer]_

@@ -13,6 +13,7 @@ Classifier Combination
   combination methods, e.g., average, median, and majority vote.
 * :class:`combo.models.classifier_stacking.Stacking`: Stacking (meta ensembling). Check this `introductory
   article by Kaggle <http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice/>`_.
+* :class:`combo.models.classifier_dcs.DCS_LA`: Dynamic classifier selection (DCS) by local accuracy.
 
 
 ----

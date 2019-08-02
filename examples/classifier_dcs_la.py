@@ -13,7 +13,6 @@ import sys
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname("__file__"), '..')))
 
-import numpy as np
 from scipy.io import loadmat
 
 from sklearn.tree import DecisionTreeClassifier
@@ -21,15 +20,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neighbors import KDTree
-
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import f1_score
 
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_breast_cancer
-from sklearn.utils.multiclass import check_classification_targets
 
 from combo.models.classifier_dcs import DCS_LA
 from combo.utils.data import evaluate_print

@@ -11,6 +11,14 @@ combo.models.classifier\_comb module
    :show-inheritance:
    :inherited-members:
 
+combo.models.classifier\_dcs module
+-----------------------------------
+
+.. automodule:: combo.models.classifier_dcs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
 
 combo.models.classifier\_stacking module
 ----------------------------------------
