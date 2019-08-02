@@ -108,6 +108,7 @@ class SimpleClassifierAggregator(BaseAggregator):
         labels : numpy array of shape (n_samples,)
             Class labels for each data sample.
         """
+        X = check_array(X)
 
         all_scores = np.zeros([X.shape[0], self.n_base_estimators_])
 
@@ -146,7 +147,7 @@ class SimpleClassifierAggregator(BaseAggregator):
             The class probabilities of the input samples.
             Classes are ordered by lexicographic order.
         """
-
+        X = check_array(X)
         all_scores = np.zeros(
             [X.shape[0], self._classes, self.n_base_estimators_])
 

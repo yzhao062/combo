@@ -14,7 +14,6 @@ from sklearn.utils import check_random_state
 from sklearn.utils import check_array
 from sklearn.utils import check_X_y
 from sklearn.utils.validation import check_is_fitted
-from sklearn.utils.multiclass import check_classification_targets
 
 from ..utils.utility import check_parameter
 from ..utils.utility import list_diff
@@ -121,7 +120,8 @@ class Stacking(BaseAggregator):
 
     """
 
-    def __init__(self, base_estimators, meta_clf=None, n_folds=2, keep_original=True,
+    def __init__(self, base_estimators, meta_clf=None, n_folds=2,
+                 keep_original=True,
                  use_proba=False, shuffle_data=False, random_state=None,
                  threshold=None, pre_fitted=None):
 
@@ -170,8 +170,7 @@ class Stacking(BaseAggregator):
         # Validate inputs X and y
         X, y = check_X_y(X, y)
         X = check_array(X)
-        check_classification_targets(y)
-        self._classes = len(np.unique(y))
+        self._set_n_classes(y)
 
         n_samples = X.shape[0]
 
