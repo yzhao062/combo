@@ -123,7 +123,7 @@ combo is featured for:
 **Key Links and Resources**\ :
 
 
-* `awesome-ensemble-learning <https://github.com/yzhao062/awesome-ensemble-learning>`_: ensemble learning related books, papers, and more.
+* `awesome-ensemble-learning <https://github.com/yzhao062/awesome-ensemble-learning>`_ (ensemble learning related books, papers, and more)
 * `View the latest codes on Github <https://github.com/yzhao062/combo>`_
 * `View the documentation & API <https://pycombo.readthedocs.io/>`_
 * `View all examples <https://github.com/yzhao062/combo/tree/master/examples>`_
