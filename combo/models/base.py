@@ -192,8 +192,7 @@ class BaseAggregator(ABC):
                              'is not a valid probability conversion method')
 
     def _set_n_classes(self, y):
-        """Set the number of classes if `y` is presented, which is not
-        expected. It could be useful for multi-class outlier detection.
+        """Set the number of classes if `y` is presented.
 
         Parameters
         ----------
@@ -209,8 +208,7 @@ class BaseAggregator(ABC):
         if y is not None:
             check_classification_targets(y)
             self._classes = len(np.unique(y))
-            warnings.warn(
-                "y should not be presented in unsupervised learning.")
+
         return self
 
     def __len__(self):
