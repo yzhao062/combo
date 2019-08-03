@@ -122,7 +122,11 @@ class TestWeightedAverage(unittest.TestCase):
 
         self.clf = SimpleClassifierAggregator(classifiers, method='average',
                                               weights=clf_weights)
+
         self.clf.fit(self.X_train, self.y_train)
+
+    def test_weights(self):
+        assert_equal(np.sum(self.clf.weights), self.clf.n_base_estimators_)
 
     def test_parameters(self):
         assert_true(hasattr(self.clf, 'base_estimators') and

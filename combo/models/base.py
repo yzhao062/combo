@@ -12,6 +12,7 @@ import numpy as np
 from numpy import percentile
 from scipy.special import erf
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.utils import column_or_1d
 from sklearn.utils.validation import check_is_fitted
 from sklearn.utils.multiclass import check_classification_targets
 
@@ -209,6 +210,33 @@ class BaseAggregator(ABC):
             check_classification_targets(y)
             self._classes = len(np.unique(y))
 
+        return self
+
+    def _set_weights(self, weights):
+        """Internal function to set estimator weights.
+
+        Parameters
+        ----------
+        weights : numpy array of shape (n_estimators,)
+            Estimator weights. May be used after the alignment.
+
+        Returns
+        -------
+        self
+
+        """
+
+        if weights is None:
+            self.weights = np.ones([1, self.n_base_estimators_])
+        else:
+            self.weights = column_or_1d(weights).reshape(1, len(weights))
+            assert (self.weights.shape[1] == self.n_base_estimators_)
+
+            # adjust probability by a factor for integrity （added to 1）
+            adjust_factor = self.weights.shape[1] / np.sum(weights)
+            self.weights = self.weights * adjust_factor
+
+            print(self.weights)
         return self
 
     def __len__(self):

@@ -7,7 +7,6 @@ import unittest
 
 import numpy as np
 
-
 from sklearn.cluster import KMeans
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.cluster import AgglomerativeClustering
@@ -45,6 +44,10 @@ class TestClustererEnsemble(unittest.TestCase):
 
         self.estimator = ClustererEnsemble(estimators, n_clusters=n_clusters)
         self.estimator.fit(self.X)
+
+    def test_weights(self):
+        assert_equal(np.sum(self.estimator.weights),
+                     self.estimator.n_base_estimators_)
 
     def test_parameters(self):
         assert_true(hasattr(self.estimator, 'base_estimators') and

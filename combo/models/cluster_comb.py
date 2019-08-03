@@ -4,15 +4,11 @@
 # Author: Yue Zhao <zhaoy@cmu.edu>
 # License: BSD 2 clause
 
-import warnings
-from collections import defaultdict
-from abc import ABC, abstractmethod
 
 import numpy as np
 
 from sklearn.utils import check_array
 from sklearn.utils.validation import check_is_fitted
-from sklearn.utils import column_or_1d
 from sklearn.utils.testing import assert_equal
 
 from .base import BaseAggregator
@@ -65,16 +61,8 @@ class ClustererEnsemble(BaseAggregator):
                         include_left=True, include_right=True)
         self.reference_idx = reference_idx
 
-        if weights is None:
-            self.weights = np.ones([1, self.n_base_estimators_])
-        else:
-
-            self.weights = column_or_1d(weights).reshape(1, len(weights))
-            assert (self.weights.shape[1] == self.n_base_estimators_)
-
-            # adjust probability by a factor for integrity
-            adjust_factor = self.weights.shape[1] / np.sum(weights)
-            self.weights = self.weights * adjust_factor
+        # set estimator weights
+        self._set_weights(weights)
 
     def fit(self, X):
         """Fit estimators.

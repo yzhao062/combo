@@ -10,7 +10,6 @@ import numpy as np
 from sklearn.utils import check_array
 from sklearn.utils import check_X_y
 from sklearn.utils import column_or_1d
-from sklearn.utils.multiclass import check_classification_targets
 
 from .base import BaseAggregator
 from .score_comb import average, maximization, majority_vote, median
@@ -58,16 +57,8 @@ class SimpleClassifierAggregator(BaseAggregator):
                         include_right=False, param_name='threshold')
         self.threshold = threshold
 
-        if weights is None:
-            self.weights = np.ones([1, self.n_base_estimators_])
-        else:
-
-            self.weights = column_or_1d(weights).reshape(1, len(weights))
-            assert (self.weights.shape[1] == self.n_base_estimators_)
-
-            # adjust probability by a factor for integrity
-            adjust_factor = self.weights.shape[1] / np.sum(weights)
-            self.weights = self.weights * adjust_factor
+        # set estimator weights
+        self._set_weights(weights)
 
     def fit(self, X, y):
         """Fit classifier.
