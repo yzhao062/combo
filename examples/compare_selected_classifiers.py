@@ -34,6 +34,8 @@ from sklearn.neighbors import KNeighborsClassifier
 
 from combo.models.classifier_comb import SimpleClassifierAggregator
 from combo.models.classifier_stacking import Stacking
+from combo.models.classifier_dcs import DCS_LA
+from combo.models.classifier_des import DES_LA
 
 # Define the number of class 0 and class 1
 n_samples = 300
@@ -73,7 +75,9 @@ classifiers = {
     'Stacking': Stacking(base_estimators=classifiers, shuffle_data=True),
     'Stacking_RF': Stacking(base_estimators=classifiers, shuffle_data=True,
                             meta_clf=RandomForestClassifier(
-                                random_state=random_state))
+                                random_state=random_state)),
+    'DCS_LA': DCS_LA(base_estimators=classifiers),
+    'DEC_LA': DES_LA(base_estimators=classifiers)
 }
 
 # Show all classifiers
@@ -92,9 +96,8 @@ for i, offset in enumerate(clusters_separation):
     X = np.r_[X, np.random.uniform(low=-6, high=6, size=(n_class1, 2))]
 
     # Fit the model
-    plt.figure(figsize=(15, 8))
+    plt.figure(figsize=(15, 12))
     for i, (clf_name, clf) in enumerate(classifiers.items()):
-        print()
         print(i + 1, 'fitting', clf_name)
         # fit the data and tag class 1
 
@@ -107,7 +110,7 @@ for i, offset in enumerate(clusters_separation):
         # plot the levels lines and the points
         Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1] * -1
         Z = Z.reshape(xx.shape)
-        subplot = plt.subplot(2, 4, i + 1)
+        subplot = plt.subplot(3, 4, i + 1)
         subplot.contourf(xx, yy, Z, levels=np.linspace(Z.min(), threshold, 7),
                          cmap=plt.cm.Blues_r)
         a = subplot.contour(xx, yy, Z, levels=[threshold],

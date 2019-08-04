@@ -31,7 +31,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_breast_cancer
 from sklearn.utils.multiclass import check_classification_targets
 
-from combo.models.classifier_dcs import DCS_LA
+from combo.models.classifier_des import DES_LA
 from combo.utils.data import evaluate_print
 
 import warnings
@@ -87,8 +87,9 @@ if __name__ == "__main__":
     evaluate_print('Random Forest        |', y_test, clf.predict(X_test))
 
     print()
-    clf = DCS_LA(classifiers)
+    clf = DES_LA(classifiers, use_weights=True)
     clf.fit(X_train, y_train)
     y_test_predicted = clf.predict(X_test)
     y_test_proba_predicted = clf.predict_proba(X_test)
     evaluate_print('DCS_LA               |', y_test, y_test_predicted)
+    print(roc_auc_score(y_test, y_test_proba_predicted[:, 1]))
