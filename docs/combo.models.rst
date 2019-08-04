@@ -20,6 +20,15 @@ combo.models.classifier\_dcs module
    :show-inheritance:
    :inherited-members:
 
+combo.models.classifier\_des module
+-----------------------------------
+
+.. automodule:: combo.models.classifier_des
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
 combo.models.classifier\_stacking module
 ----------------------------------------
 
