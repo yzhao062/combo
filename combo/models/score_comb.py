@@ -314,7 +314,6 @@ def majority_vote(scores, n_classes=2, weights=None):
 
     # assert only discrete scores are combined with majority vote
     check_classification_targets(scores)
-    assert (len(np.unique(scores)) == n_classes)
 
     n_samples, n_estimators = scores.shape[0], scores.shape[1]
 
