@@ -10,12 +10,16 @@ for more information.
 ----
 
 
-Example of Stacking
-^^^^^^^^^^^^^^^^^^^
+Example of Stacking/DCS/DES
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 `"examples/classifier_stacking_example.py" <https://github.com/yzhao062/combo/blob/master/examples/classifier_stacking_example.py>`_
-demonstrates the basic API of stacking (meta ensembling).
+demonstrates the basic API of stacking (meta ensembling). `"examples/classifier_dcs_la_example.py" <https://github.com/yzhao062/combo/blob/master/examples/classifier_dcs_la_example.py>`_
+demonstrates the basic API of Dynamic Classifier Selection by Local Accuracy. `"examples/classifier_des_la_example.py" <https://github.com/yzhao062/combo/blob/master/examples/classifier_des_la_example.py>`_
+demonstrates the basic API of Dynamic Ensemble Selection by Local Accuracy.
+
+It is noted **the basic API is consistent across all these models**.
 
 
 #. Initialize a group of classifiers as base estimators

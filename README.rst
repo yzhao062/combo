@@ -136,8 +136,8 @@ combo is featured for:
 * `Installation <#installation>`_
 * `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
 * `Implemented Algorithms <#implemented-algorithms>`_
-* `Example 1: Stacking <#example-of-stacking>`_
-* `Example 2: Classifier Combination <#example-of-classifier-combination>`_
+* `Example 1: Classifier Combination with Stacking/DCS/DES <#example-of-stackingdcsdes>`_
+* `Example 2: Simple Classifier Combination <#example-of-classifier-combination>`_
 * `Example 3: Clustering Combination <#example-of-clustering-combination>`_
 * `Example 4: Outlier Detector Combination <#example-of-outlier-detector-combination>`_
 * `Development Status <#development-status>`_
@@ -258,8 +258,16 @@ For Jupyter Notebooks, please navigate to **"/notebooks/compare_selected_classif
 for more information.
 
 
+Example of Stacking/DCS/DES
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 `"examples/classifier_stacking_example.py" <https://github.com/yzhao062/combo/blob/master/examples/classifier_stacking_example.py>`_
-demonstrates the basic API of stacking (meta ensembling).
+demonstrates the basic API of stacking (meta ensembling). `"examples/classifier_dcs_la_example.py" <https://github.com/yzhao062/combo/blob/master/examples/classifier_dcs_la_example.py>`_
+demonstrates the basic API of Dynamic Classifier Selection by Local Accuracy. `"examples/classifier_des_la_example.py" <https://github.com/yzhao062/combo/blob/master/examples/classifier_des_la_example.py>`_
+demonstrates the basic API of Dynamic Ensemble Selection by Local Accuracy.
+
+It is noted **the basic API is consistent across all these models**.
 
 
 #. Initialize a group of classifiers as base estimators
