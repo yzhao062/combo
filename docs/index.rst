@@ -246,6 +246,7 @@ for suggestions and ideas.
 
    about
    faq
+   whats_new
 
 
 ----

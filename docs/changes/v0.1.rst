@@ -1,0 +1,54 @@
+Version 0.1 and earlier
+=======================
+
+
+Changelog
+---------
+
+Initialize the project by Yue Zhao in Jul 2019
+
+v<0.0.0>, <07/14/2019> -- Initial release.
+v<0.0.1>, <07/15/2019> -- Add basic functionalities and examples.
+
+
+API
+~~~
+
+
+New methods
+~~~~~~~~~~~
+
+* clustering combination
+
+  * v<0.0.1>, <07/15/2019> -- Add clusterer ensemble.
+
+* classifier combination
+
+  * v<0.0.5>, <07/28/2019> -- Add Stacking (meta ensembling).
+  * v<0.0.7>, <08/02/2019> -- Add DCS_LA.
+  * v<0.0.7>, <08/03/2019> -- Refactor code for setting weights in Base class.
+  * v<0.0.7>, <08/04/2019> -- Add DES_LA.
+
+* score combination
+
+  * v<0.0.5>, <07/27/2019> -- Add median combination and score_to_proba function.
+
+* detector combination
+
+  * v<0.0.6>, <07/29/2019> -- Add simple outlier detector combination methods.
+  * v<0.0.6>, <07/30/2019> -- Add LSCP.
+
+
+Logistics
+~~~~~~~~~
+
+* v<0.0.3>, <07/17/2019> -- Add Travis-ci integration.
+* v<0.0.4>, <07/17/2019> -- Update unit test and clustering algorithms.
+* v<0.0.4>, <07/21/2019> -- Add code maintainability.
+* v<0.0.6>, <07/29/2019> -- Enable Appveyor integration.
+
+**Requirement Change**:
+
+* v<0.0.6>, <07/29/2019> -- Update requirements file.
+
+
