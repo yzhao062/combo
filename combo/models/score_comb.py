@@ -15,7 +15,8 @@ from sklearn.utils.extmath import weighted_mode
 from sklearn.utils.random import sample_without_replacement
 from sklearn.utils.testing import assert_equal
 from sklearn.utils.multiclass import check_classification_targets
-from ..utils.utility import check_parameter
+
+from pyod.utils.utility import check_parameter
 
 
 def _aom_moa_helper(mode, scores, n_buckets, method, bootstrap_estimators,

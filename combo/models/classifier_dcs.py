@@ -15,7 +15,7 @@ from sklearn.utils import check_X_y
 from sklearn.utils.validation import check_is_fitted
 from sklearn.utils.multiclass import check_classification_targets
 
-from ..utils.utility import check_parameter
+from pyod.utils.utility import check_parameter
 
 from .base import BaseAggregator
 
@@ -61,17 +61,17 @@ class DCS_LA(BaseAggregator):
         # validate input parameters
         if not isinstance(local_region_size, int):
             raise ValueError('local_region_size must be an integer variable')
-        check_parameter(local_region_size, low=1, include_left=True,
-                        param_name='n_folds')
+        check_parameter(local_region_size, low=2, include_left=True,
+                        param_name='local_region_size')
         self.local_region_size = local_region_size
 
         if threshold is not None:
             warnings.warn(
-                "Stacking does not support threshold setting option. "
+                "DCS does not support threshold setting option. "
                 "Please set the threshold in classifiers directly.")
 
         if pre_fitted is not None:
-            warnings.warn("Stacking does not support pre_fitted option.")
+            warnings.warn("DCS does not support pre_fitted option.")
 
     def fit(self, X, y):
         """Fit classifier.

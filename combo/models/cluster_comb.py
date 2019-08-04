@@ -11,9 +11,10 @@ from sklearn.utils import check_array
 from sklearn.utils.validation import check_is_fitted
 from sklearn.utils.testing import assert_equal
 
+from pyod.utils.utility import check_parameter
+
 from .base import BaseAggregator
 from .score_comb import majority_vote
-from ..utils.utility import check_parameter
 
 OFFSET_FACTOR = 1000000
 

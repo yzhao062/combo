@@ -14,8 +14,6 @@ from pyod.utils.utility import standardizer
 
 from .base import BaseAggregator
 from .score_comb import average, maximization, median
-from ..utils.utility import check_parameter
-from ..utils.utility import score_to_proba
 
 
 class SimpleDetectorAggregator(BaseAggregator):

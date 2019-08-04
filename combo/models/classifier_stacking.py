@@ -15,7 +15,8 @@ from sklearn.utils import check_array
 from sklearn.utils import check_X_y
 from sklearn.utils.validation import check_is_fitted
 
-from ..utils.utility import check_parameter
+from pyod.utils.utility import check_parameter
+
 from ..utils.utility import list_diff
 from .base import BaseAggregator
 

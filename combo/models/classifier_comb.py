@@ -11,9 +11,11 @@ from sklearn.utils import check_array
 from sklearn.utils import check_X_y
 from sklearn.utils import column_or_1d
 
+from pyod.utils.utility import check_parameter
+
 from .base import BaseAggregator
 from .score_comb import average, maximization, majority_vote, median
-from ..utils.utility import check_parameter
+
 from ..utils.utility import score_to_proba
 
 
