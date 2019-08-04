@@ -54,6 +54,11 @@ Welcome to combo's documentation!
    :alt: Build Status
 
 
+.. image:: https://circleci.com/gh/yzhao062/combo.svg?style=svg
+   :target: https://circleci.com/gh/yzhao062/combo
+   :alt: Circle CI
+
+
 .. image:: https://ci.appveyor.com/api/projects/status/te7uieha87305ike/branch/master?svg=true
    :target: https://ci.appveyor.com/project/yzhao062/combo/branch/master
    :alt: Build status
@@ -163,24 +168,24 @@ Implemented Algorithms
 **combo** groups combination frameworks by tasks. General purpose methods are
 fundamental ones which can be applied to various tasks.
 
-===================  ======================================================================================================  =====  ===========================================  ==================================================================
-Task                 Algorithm                                                                                               Year   Ref                                          Class/Function
-===================  ======================================================================================================  =====  ===========================================  ==================================================================
-General Purpose      Average & Weighted Average: average across all scores/prediction results, maybe with weights            N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.average`
-General Purpose      Maximization: simple combination by taking the maximum scores                                           N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.maximization`
-General Purpose      Median: take the median value across all scores/prediction results                                      N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.median`
-General Purpose      Majority Vote & Weighted Majority Vote                                                                  N/A    :cite:`a-zhou2012ensemble`                   :mod:`combo.models.score_comb.majority_vote`
-Classification       SimpleClassifierAggregator: combining classifiers by general purpose methods above                      N/A    N/A                                          :class:`combo.models.classifier_comb.SimpleClassifierAggregator`
-Classification       DCS: Dynamic Classifier Selection (Combination of multiple classifiers using local accuracy estimates)  1997   :cite:`a-woods1997combination`               :class:`combo.models.classifier_dcs.DCS_LA`
-Classification       DES: Dynamic Ensemble Selection (From dynamic classifier selection to dynamic ensemble selection)       2008   :cite:`a-ko2008dynamic`                      :class:`combo.models.classifier_des.DES_LA`
-Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    :cite:`a-gorman2016kaggle`                   :class:`combo.models.classifier_stacking.Stacking`
-Clustering           Clusterer Ensemble: combine the results of multiple clustering results by relabeling                    2006   :cite:`a-zhou2006clusterer`                  :class:`combo.models.cluster_comb.ClustererEnsemble`
-Anomaly Detection    SimpleDetectorCombination: combining outlier detectors by general purpose methods above                 N/A    :cite:`a-aggarwal2017outlier`                :class:`combo.models.detector_comb.SimpleDetectorAggregator`
-Anomaly Detection    Average of Maximum (AOM): divide base detectors into subgroups to take the maximum, and then average    2015   :cite:`a-aggarwal2015theoretical`            :mod:`combo.models.score_comb.aom`
-Anomaly Detection    Maximum of Average (MOA): divide base detectors into subgroups to take the average, and then maximize   2015   :cite:`a-aggarwal2015theoretical`            :mod:`combo.models.score_comb.moa`
-Anomaly Detection    XGBOD: a semi-supervised combination framework for outlier detection                                    2018   :cite:`a-zhao2018xgbod`                      :class:`combo.models.detector_xgbod.XGBOD`
-Anomaly Detection    Locally Selective Combination (LSCP)                                                                    2019   :cite:`a-zhao2019lscp`                       :class:`combo.models.detector_lscp.LSCP`
-===================  ======================================================================================================  =====  ===========================================  ==================================================================
+==================================================================  ===================  ======================================================================================================  =====  ===========================================
+Class/Function                                                      Task                 Algorithm                                                                                               Year   Ref
+==================================================================  ===================  ======================================================================================================  =====  ===========================================
+:mod:`combo.models.score_comb.average`                              General Purpose      Average & Weighted Average: average across all scores/prediction results, maybe with weights            N/A    :cite:`a-zhou2012ensemble`
+:mod:`combo.models.score_comb.maximization`                         General Purpose      Maximization: simple combination by taking the maximum scores                                           N/A    :cite:`a-zhou2012ensemble`
+:mod:`combo.models.score_comb.median`                               General Purpose      Median: take the median value across all scores/prediction results                                      N/A    :cite:`a-zhou2012ensemble`
+:mod:`combo.models.score_comb.majority_vote`                        General Purpose      Majority Vote & Weighted Majority Vote                                                                  N/A    :cite:`a-zhou2012ensemble`
+:class:`combo.models.classifier_comb.SimpleClassifierAggregator`    Classification       SimpleClassifierAggregator: combining classifiers by general purpose methods above                      N/A    N/A
+:class:`combo.models.classifier_dcs.DCS_LA`                         Classification       DCS: Dynamic Classifier Selection (Combination of multiple classifiers using local accuracy estimates)  1997   :cite:`a-woods1997combination`
+:class:`combo.models.classifier_des.DES_LA`                         Classification       DES: Dynamic Ensemble Selection (From dynamic classifier selection to dynamic ensemble selection)       2008   :cite:`a-ko2008dynamic`
+:class:`combo.models.classifier_stacking.Stacking`                  Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    :cite:`a-gorman2016kaggle`
+:class:`combo.models.cluster_comb.ClustererEnsemble`                Clustering           Clusterer Ensemble: combine the results of multiple clustering results by relabeling                    2006   :cite:`a-zhou2006clusterer`
+:class:`combo.models.detector_comb.SimpleDetectorAggregator`        Anomaly Detection    SimpleDetectorCombination: combining outlier detectors by general purpose methods above                 N/A    :cite:`a-aggarwal2017outlier`
+:mod:`combo.models.score_comb.aom`                                  Anomaly Detection    Average of Maximum (AOM): divide base detectors into subgroups to take the maximum, and then average    2015   :cite:`a-aggarwal2015theoretical`
+:mod:`combo.models.score_comb.moa`                                  Anomaly Detection    Maximum of Average (MOA): divide base detectors into subgroups to take the average, and then maximize   2015   :cite:`a-aggarwal2015theoretical`
+:class:`combo.models.detector_xgbod.XGBOD`                          Anomaly Detection    XGBOD: a semi-supervised combination framework for outlier detection                                    2018   :cite:`a-zhao2018xgbod`
+:class:`combo.models.detector_lscp.LSCP`                            Anomaly Detection    Locally Selective Combination (LSCP)                                                                    2019   :cite:`a-zhao2019lscp`
+==================================================================  ===================  ======================================================================================================  =====  ===========================================
 
 
 **The comparison among selected implemented models** is made available below

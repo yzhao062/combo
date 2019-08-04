@@ -50,6 +50,11 @@ combo: A Python Toolbox for Machine Learning Model Combination
    :alt: Build Status
 
 
+.. image:: https://circleci.com/gh/yzhao062/combo.svg?style=svg
+   :target: https://circleci.com/gh/yzhao062/combo
+   :alt: Circle CI
+
+
 .. image:: https://ci.appveyor.com/api/projects/status/te7uieha87305ike/branch/master?svg=true
    :target: https://ci.appveyor.com/project/yzhao062/combo/branch/master
    :alt: Build status
