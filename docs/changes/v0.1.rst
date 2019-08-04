@@ -1,3 +1,6 @@
+.. _changes_0_1:
+
+
 Version 0.1 and earlier
 =======================
 
