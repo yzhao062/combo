@@ -20,8 +20,7 @@ See `Issues <https://github.com/yzhao062/combo/issues>`_.
 Inclusion Criteria
 ^^^^^^^^^^^^^^^^^^
 
-Similarly to `scikit-learn <https://scikit-learn.org/stable/faq.html#what-are-the-inclusion-criteria-for-new-algorithms>`_,
-We mainly consider well-established algorithms for inclusion.
+Similarly to Similarly to scikit-learn, We mainly consider well-established algorithms for inclusion.
 A rule of thumb is at least two years since publication, 50+ citations, and usefulness.
 
 However, we encourage the author(s) of newly proposed models to share and add your implementation into combo
