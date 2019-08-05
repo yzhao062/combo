@@ -236,6 +236,7 @@ Classification       DCS: Dynamic Classifier Selection (Combination of multiple 
 Classification       DES: Dynamic Ensemble Selection (From dynamic classifier selection to dynamic ensemble selection)       2008   [#Ko2008From]_
 Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    [#Gorman2016Kaggle]_
 Clustering           Clusterer Ensemble: combine the results of multiple clustering results by relabeling                    2006   [#Zhou2006Clusterer]_
+Clustering           Combining multiple clusterings using evidence accumulation (EAC)                                        2002   [#Fred2005Combining]_ (work-in-progress)
 Anomaly Detection    SimpleDetectorCombination: combining outlier detectors by general purpose methods above                 N/A    [#Aggarwal2017Outlier]_
 Anomaly Detection    Average of Maximum (AOM): divide base detectors into subgroups to take the maximum, and then average    2015   [#Aggarwal2015Theoretical]_
 Anomaly Detection    Maximum of Average (MOA): divide base detectors into subgroups to take the average, and then maximize   2015   [#Aggarwal2015Theoretical]_
@@ -516,6 +517,8 @@ Reference
 .. [#Gorman2016Kaggle] Gorman, B. (2016). A Kaggler's Guide to Model Stacking in Practice. [online] The Official Blog of Kaggle.com. Available at: http://blog.kaggle.com/2016/12/27/a-kagglers-guide-to-model-stacking-in-practice [Accessed 26 Jul. 2019].
 
 .. [#Ko2008From] Ko, A.H., Sabourin, R. and Britto Jr, A.S., 2008. From dynamic classifier selection to dynamic ensemble selection. *Pattern recognition*, 41(5), pp.1718-1731.
+
+.. [#Fred2005Combining] Fred, A. L. N., & Jain, A. K. (2005). Combining multiple clusterings using evidence accumulation. *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 27(6), 835–850. https://doi.org/10.1109/TPAMI.2005.113
 
 .. [#Woods1997Combination] Woods, K., Kegelmeyer, W.P. and Bowyer, K., 1997. Combination of multiple classifiers using local accuracy estimates. *IEEE transactions on pattern analysis and machine intelligence*, 19(4), pp.405-410.
 
