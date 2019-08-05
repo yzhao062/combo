@@ -35,7 +35,6 @@ class TestClustererEnsemble(unittest.TestCase):
         self.X, self.y = load_breast_cancer(return_X_y=True)
 
         n_clusters = 5
-        n_estimators = 3
 
         # Initialize a set of estimators
         estimators = [KMeans(n_clusters=n_clusters),
@@ -56,6 +55,11 @@ class TestClustererEnsemble(unittest.TestCase):
     def test_scores(self):
         predicted_labels = self.estimator.labels_
         assert_equal(predicted_labels.shape[0], self.X.shape[0])
+
+    def test_fit_predict(self):
+        predicted_labels = self.estimator.fit_predict(self.X)
+        assert_equal(predicted_labels.shape[0], self.X.shape[0])
+
 
     def tearDown(self):
         pass

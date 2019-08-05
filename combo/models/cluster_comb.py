@@ -156,6 +156,26 @@ class ClustererEnsemble(BaseAggregator):
         raise NotImplemented("predict_proba function is currently disabled for"
                              "clustering due to inconsistent behaviours.")
 
+    def fit_predict(self, X, y=None):
+        """Fit estimator and predict on X. y is optional for unsupervised
+        methods.
+
+        Parameters
+        ----------
+        X : numpy array of shape (n_samples, n_features)
+            The input samples.
+
+        y : numpy array of shape (n_samples,), optional (default=None)
+            The ground truth of the input samples (labels).
+
+        Returns
+        -------
+        labels : numpy array of shape (n_samples,)
+            Cluster labels for each data sample.
+        """
+        self.fit(X)
+        return self.labels_
+
 
 def clusterer_ensemble_scores(original_labels, n_estimators, n_clusters,
                               weights=None, return_results=False,

@@ -66,6 +66,7 @@ class BaseAggregator(ABC):
         """
         pass
 
+    # todo: make sure fit then predict is equivalent to fit_predict
     @abstractmethod
     def fit_predict(self, X, y=None):
         """Fit estimator and predict on X. y is optional for unsupervised

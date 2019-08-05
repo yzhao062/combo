@@ -208,3 +208,23 @@ class LSCP(BaseAggregator):
         check_is_fitted(self, ['decision_scores_', 'threshold_', 'labels_'])
         X = check_array(X)
         return self._detector_predict_proba(X, proba_method)
+
+    def fit_predict(self, X, y=None):
+        """Fit estimator and predict on X. y is optional for unsupervised
+        methods.
+
+        Parameters
+        ----------
+        X : numpy array of shape (n_samples, n_features)
+            The input samples.
+
+        y : numpy array of shape (n_samples,), optional (default=None)
+            The ground truth of the input samples (labels).
+
+        Returns
+        -------
+        labels : numpy array of shape (n_samples,)
+            Class labels for each data sample.
+        """
+        self.fit(X)
+        return self.predict(X)

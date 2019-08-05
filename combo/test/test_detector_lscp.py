@@ -110,6 +110,10 @@ class TestLSCP(unittest.TestCase):
         with assert_raises(ValueError):
             self.clf.predict_proba(self.X_test, proba_method='something')
 
+    def test_fit_predict(self):
+        pred_labels = self.clf.fit_predict(self.X_train)
+        assert_equal(pred_labels.shape, self.y_train.shape)
+
     def tearDown(self):
         pass
 

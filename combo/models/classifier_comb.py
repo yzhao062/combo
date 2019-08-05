@@ -168,3 +168,22 @@ class SimpleClassifierAggregator(BaseAggregator):
             Warning('average method is invoked for predict_proba as'
                     'probability is not continuous')
             return np.mean(all_scores * self.weights, axis=2)
+
+    def fit_predict(self, X, y):
+        """Fit estimator and predict on X
+
+        Parameters
+        ----------
+        X : numpy array of shape (n_samples, n_features)
+            The input samples.
+
+        y : numpy array of shape (n_samples,), optional (default=None)
+            The ground truth of the input samples (labels).
+
+        Returns
+        -------
+        labels : numpy array of shape (n_samples,)
+            Class labels for each data sample.
+        """
+        self.fit(X, y)
+        return self.predict(X)

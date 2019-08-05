@@ -36,6 +36,34 @@ from combo.models.classifier_comb import SimpleClassifierAggregator
 from combo.utils.data import evaluate_print
 
 
+class TestFitPredict(unittest.TestCase):
+    def setUp(self):
+        self.roc_floor = 0.9
+        self.accuracy_floor = 0.9
+
+        random_state = 42
+        X, y = load_breast_cancer(return_X_y=True)
+
+        self.X_train, self.X_test, self.y_train, self.y_test = \
+            train_test_split(X, y, test_size=0.4, random_state=random_state)
+
+        classifiers = [DecisionTreeClassifier(random_state=random_state),
+                       LogisticRegression(random_state=random_state),
+                       KNeighborsClassifier(),
+                       RandomForestClassifier(random_state=random_state),
+                       GradientBoostingClassifier(random_state=random_state)]
+
+        self.clf = SimpleClassifierAggregator(classifiers, method='average')
+
+    def test_fit_predict(self):
+        y_train_predicted = self.clf.fit_predict(self.X_train, self.y_train)
+        assert_equal(len(y_train_predicted), self.X_train.shape[0])
+
+        # check performance
+        assert_greater(accuracy_score(self.y_train, y_train_predicted),
+                       self.accuracy_floor)
+
+
 class TestAverage(unittest.TestCase):
     def setUp(self):
         self.roc_floor = 0.9
