@@ -127,7 +127,7 @@ class SimpleDetectorAggregator(BaseAggregator):
         self.decision_scores_ = self._create_scores(X)
         self._process_decision_scores()
 
-        return self.labels_
+        return self
 
     def _create_scores(self, X):
         """Internal function to generate and combine scores.

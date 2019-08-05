@@ -18,6 +18,11 @@ Initialize the project by Yue Zhao in Jul 2019.
 API
 ~~~
 
+Key changes
+~~~~~~~~~~~
+
+* v<0.0.8>, <08/05/2019> -- Add fit_predict as core API
+
 
 New methods
 ~~~~~~~~~~~

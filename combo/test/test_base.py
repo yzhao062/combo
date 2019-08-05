@@ -33,6 +33,9 @@ class MyEstimator(BaseAggregator):
     def fit(self, X, y=None):
         pass
 
+    def fit_predict(self, X, y=None):
+        pass
+
     def predict(self, X):
         pass
 
@@ -49,6 +52,9 @@ class K(BaseAggregator):
     def fit(self, X, y=None):
         pass
 
+    def fit_predict(self, X, y=None):
+        pass
+
     def predict(self, X):
         pass
 
@@ -63,6 +69,9 @@ class T(BaseAggregator):
         self.b = b
 
     def fit(self, X, y=None):
+        pass
+
+    def fit_predict(self, X, y=None):
         pass
 
     def predict(self, X):
@@ -85,6 +94,9 @@ class ModifyInitParams(BaseAggregator):
     def fit(self, X, y=None):
         pass
 
+    def fit_predict(self, X, y=None):
+        pass
+
     def predict(self, X):
         pass
 
@@ -102,6 +114,9 @@ class VargEstimator(BaseAggregator):
     def fit(self, X, y=None):
         pass
 
+    def fit_predict(self, X, y=None):
+        pass
+
     def predict(self, X):
         pass
 
@@ -115,6 +130,9 @@ class Dummy1(BaseAggregator):
         super(Dummy1, self).__init__(base_estimators=base_estimators)
 
     def fit(self, X, y=None):
+        pass
+
+    def fit_predict(self, X, y=None):
         pass
 
     def predict(self, X):
@@ -131,6 +149,9 @@ class Dummy2(BaseAggregator):
 
     def fit(self, X, y=None):
         return X
+
+    def fit_predict(self, X, y=None):
+        pass
 
     def predict(self, X):
         pass
@@ -150,6 +171,9 @@ class Dummy3(BaseAggregator):
     def fit(self, X, y=None):
         pass
 
+    def fit_predict(self, X, y=None):
+        pass
+
     def predict(self, X):
         return X
 
@@ -167,6 +191,30 @@ class Dummy4(BaseAggregator):
 
     def fit(self, X, y=None):
         pass
+
+    def fit_predict(self, X, y=None):
+        pass
+
+    def predict(self, X):
+        pass
+
+    def predict_proba(self, X):
+        return X
+
+
+class Dummy5(BaseAggregator):
+    def __init__(self, base_estimators=[DecisionTreeClassifier(),
+                                        LogisticRegression()]):
+        super(Dummy5, self).__init__(base_estimators=base_estimators)
+
+    def decision_function(self, X):
+        pass
+
+    def fit(self, X, y=None):
+        pass
+
+    def fit_predict(self, X, y=None):
+        return X
 
     def predict(self, X):
         pass
@@ -212,6 +260,10 @@ class TestBASE(unittest.TestCase):
     def test_fit(self):
         self.dummy_clf = Dummy2()
         assert_equal(self.dummy_clf.fit(0), 0)
+
+    def test_fit_predict(self):
+        self.dummy_clf = Dummy5()
+        assert_equal(self.dummy_clf.fit_predict(0), 0)
 
     def test_predict(self):
         # TODO: add more testcases

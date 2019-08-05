@@ -205,9 +205,10 @@ Full API Reference: (https://pycombo.readthedocs.io/en/latest/api.html).
 The following APIs are consistent for most of the models
 (API Cheatsheet: https://pycombo.readthedocs.io/en/latest/api_cc.html).
 
-* **fit(X)**\ : Fit estimator. y is optional for unsupervised methods.
+* **fit(X, y)**\ : Fit estimator. y is optional for unsupervised methods.
 * **predict(X)**\ : Predict on a particular sample once the estimator is fitted.
 * **predict_proba(X)**\ : Predict the probability of a sample belonging to each class once the estimator is fitted.
+* **fit_predict(X, y)**\ : Fit estimator and predict on X. y is optional for unsupervised methods.
 
 For raw score combination (after the score matrix is generated),
 use individual methods from

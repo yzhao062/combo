@@ -150,6 +150,7 @@ following APIs are applicable for most models for easy use.
 * :func:`combo.models.base.BaseAggregator.fit`: Fit estimator. y is optional for unsupervised methods.
 * :func:`combo.models.base.BaseAggregator.predict`: Predict on a particular sample once the estimator is fitted.
 * :func:`combo.models.base.BaseAggregator.predict_proba`: Predict the probability of a sample belonging to each class once the estimator is fitted.
+* :func:`combo.models.base.BaseAggregator.fit_predict`: Fit estimator and predict on X. y is optional for unsupervised methods.
 
 
 For raw score combination (after the score matrix is generated),
