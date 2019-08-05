@@ -105,6 +105,12 @@ class SimpleDetectorAggregator(BaseAggregator):
 
         y : numpy array of shape (n_samples,), optional (default=None)
             The ground truth of the input samples (labels).
+
+        Returns
+        -------
+        labels_ : numpy array of shape (n_samples,)
+            Return the generated labels.
+
         """
 
         # Validate inputs X and y
@@ -121,7 +127,7 @@ class SimpleDetectorAggregator(BaseAggregator):
         self.decision_scores_ = self._create_scores(X)
         self._process_decision_scores()
 
-        return self
+        return self.labels_
 
     def _create_scores(self, X):
         """Internal function to generate and combine scores.
