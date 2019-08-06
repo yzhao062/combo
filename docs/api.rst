@@ -26,6 +26,7 @@ Cluster Combination
 
 * :class:`combo.models.cluster_comb.ClustererEnsemble`: Clusterer Ensemble combines multiple base clustering estimators by alignment.
 * :func:`combo.models.cluster_comb.clusterer_ensemble_scores`: Clusterer Ensemble on clustering results directly.
+* :class:`combo.models.cluster_eac.EAC`: Combining multiple clusterings using evidence accumulation (EAC).
 
 
 ----

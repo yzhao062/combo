@@ -47,6 +47,15 @@ combo.models.cluster\_comb module
    :show-inheritance:
    :inherited-members:
 
+combo.models.cluster\_eac module
+--------------------------------
+
+.. automodule:: combo.models.eac
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
 combo.models.detector\_comb module
 ----------------------------------
 

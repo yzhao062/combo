@@ -127,7 +127,8 @@ Example of Clustering Combination
 
 
 `"examples/cluster_comb_example.py" <https://github.com/yzhao062/combo/blob/master/examples/cluster_comb_example.py>`_
-demonstrates the basic API of combining multiple base clustering estimators.
+demonstrates the basic API of combining multiple base clustering estimators. `"examples/cluster_eac_example.py" <https://github.com/yzhao062/combo/blob/master/examples/cluster_eac_example.py>`_
+demonstrates the basic API of Combining multiple clusterings using evidence accumulation (EAC).
 
 #. Initialize a group of clustering methods as base estimators
 
