@@ -237,7 +237,7 @@ Classification       DCS: Dynamic Classifier Selection (Combination of multiple 
 Classification       DES: Dynamic Ensemble Selection (From dynamic classifier selection to dynamic ensemble selection)       2008   [#Ko2008From]_
 Classification       Stacking (meta ensembling): use a meta learner to learn the base classifier results                     N/A    [#Gorman2016Kaggle]_
 Clustering           Clusterer Ensemble: combine the results of multiple clustering results by relabeling                    2006   [#Zhou2006Clusterer]_
-Clustering           Combining multiple clusterings using evidence accumulation (EAC)                                        2002   [#Fred2005Combining]_ (work-in-progress)
+Clustering           Combining multiple clusterings using evidence accumulation (EAC)                                        2002   [#Fred2005Combining]_
 Anomaly Detection    SimpleDetectorCombination: combining outlier detectors by general purpose methods above                 N/A    [#Aggarwal2017Outlier]_
 Anomaly Detection    Average of Maximum (AOM): divide base detectors into subgroups to take the maximum, and then average    2015   [#Aggarwal2015Theoretical]_
 Anomaly Detection    Maximum of Average (MOA): divide base detectors into subgroups to take the average, and then maximize   2015   [#Aggarwal2015Theoretical]_

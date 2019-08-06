@@ -17,3 +17,4 @@ v<0.0.7>, <08/02/2019> -- Add DCS_LA.
 v<0.0.7>, <08/03/2019> -- Refactor code for setting weights in Base class.
 v<0.0.7>, <08/04/2019> -- Add DES_LA.
 v<0.0.8>, <08/05/2019> -- Add fit_predict as core API.
+v<0.0.8>, <08/06/2019> -- Add EAC model.

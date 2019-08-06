@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Example of Dynamic Classifier Selection by Local Accuracy
+"""Example of combining multiple clustering algorithm. The example uses
+Clusterer Ensemble by Zhi-hua Zhou, 2006.
 """
 # Author: Yue Zhao <zhaoy@cmu.edu>
 # License: BSD 2 clause
@@ -14,82 +15,104 @@ sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname("__file__"), '..')))
 
 import numpy as np
-from scipy.io import loadmat
 
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neighbors import KDTree
+from sklearn.cluster import KMeans
+from sklearn.cluster import MiniBatchKMeans
+from sklearn.cluster import AgglomerativeClustering
 
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import f1_score
-
-from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_breast_cancer
-from sklearn.utils.multiclass import check_classification_targets
 
-from combo.models.classifier_des import DES_LA
-from combo.utils.data import evaluate_print
+from combo.models.cluster_comb import clusterer_ensemble_scores
+from combo.models.cluster_comb import ClustererEnsemble
+from scipy.cluster.hierarchy import complete, fcluster
 
 import warnings
 
 warnings.filterwarnings("ignore")
 
 if __name__ == "__main__":
-
     # Define data file and read X and y
-    # Generate some data if the source data is missing
-    mat_file = 'letter.mat'
-    try:
-        mat = loadmat(os.path.join('data', mat_file))
-    except TypeError:
-        X, y = load_breast_cancer(return_X_y=True)  # load data
-    except IOError:
-        X, y = load_breast_cancer(return_X_y=True)  # load data
-    else:
-        X = mat['X']
-        y = mat['y'].ravel()
+    X, y = load_breast_cancer(return_X_y=True)
 
-    random_state = 42
+    n_clusters = 5
+    n_estimators = 3
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,
-                                                        random_state=random_state)
+    # Initialize a set of estimators
+    estimators = [KMeans(n_clusters=n_clusters),
+                  MiniBatchKMeans(n_clusters=n_clusters),
+                  AgglomerativeClustering(n_clusters=n_clusters)]
 
-    # initialize a group of clfs
-    classifiers = [DecisionTreeClassifier(random_state=random_state),
-                   LogisticRegression(random_state=random_state),
-                   KNeighborsClassifier(),
-                   RandomForestClassifier(random_state=random_state),
-                   GradientBoostingClassifier(random_state=random_state)]
+    clf = ClustererEnsemble(estimators, n_clusters=n_clusters)
+    clf.fit(X)
 
-    # fit and predict by individual classifiers
-    clf = DecisionTreeClassifier(random_state=random_state)
-    clf.fit(X_train, y_train)
-    evaluate_print('Decision Tree        |', y_test, clf.predict(X_test))
+    # generate the labels on X
+    aligned_labels = clf.aligned_labels_
+    predicted_labels = clf.labels_
 
-    clf = LogisticRegression(random_state=random_state)
-    clf.fit(X_train, y_train)
-    evaluate_print('Logistic Regression  |', y_test, clf.predict(X_test))
+    # Clusterer Ensemble without initializing a new Class
+    original_labels = np.zeros([X.shape[0], n_estimators])
 
-    clf = KNeighborsClassifier()
-    clf.fit(X_train, y_train)
-    evaluate_print('K Neighbors          |', y_test, clf.predict(X_test))
+    for i, estimator in enumerate(estimators):
+        estimator.fit(X)
+        original_labels[:, i] = estimator.labels_
 
-    clf = GradientBoostingClassifier(random_state=random_state)
-    clf.fit(X_train, y_train)
-    evaluate_print('Gradient Boosting    |', y_test, clf.predict(X_test))
+    # Invoke method directly without initializing a new Class
+    # Demo the effect of different parameters
+    labels_by_vote1 = clusterer_ensemble_scores(original_labels, n_estimators,
+                                                n_clusters)
+    # return aligned_labels as well
+    labels_by_vote2, aligned_labels = clusterer_ensemble_scores(
+        original_labels, n_estimators, n_clusters, return_results=True)
 
-    clf = RandomForestClassifier(random_state=random_state)
-    clf.fit(X_train, y_train)
-    evaluate_print('Random Forest        |', y_test, clf.predict(X_test))
-
-    print()
-    clf = DES_LA(classifiers, use_weights=True)
-    clf.fit(X_train, y_train)
-    y_test_predicted = clf.predict(X_test)
-    y_test_proba_predicted = clf.predict_proba(X_test)
-    evaluate_print('DCS_LA               |', y_test, y_test_predicted)
-    print(roc_auc_score(y_test, y_test_proba_predicted[:, 1]))
+    # select a different reference base estimator (default is 0)
+    labels_by_vote3 = clusterer_ensemble_scores(original_labels, n_estimators,
+                                                n_clusters, reference_idx=1)
+#%%
+    c_mat = np.array([[0, 1, 7, 8],[1, 0, 3, 9],[7, 3, 0, 10],[8, 9, 10, 0]])
+    Z = complete(c_mat)
+    
+    k=3
+    fcluster(Z, k, criterion='maxclust')
+#%%
+    from scipy.cluster.hierarchy import fcluster
+    from scipy.cluster.hierarchy import linkage
+    from scipy.cluster import hierarchy
+    
+    
+    n_samples = X.shape[0]
+    def generate_similarity_mat(labels):
+        
+#        labels = column_or_1d(labels)
+        l_mat = np.repeat(labels, len(labels), axis=1)
+        l_mat_t = l_mat.T
+        sim_mat = np.equal(l_mat, l_mat_t).astype(int)
+        return sim_mat
+    
+    sim_mat_all = np.zeros([n_samples, n_samples])
+    
+    for i, clf in enumerate(estimators):
+        
+        clf.fit(X)
+        labels = clf.labels_.reshape(n_samples, 1)
+        sim_mat = generate_similarity_mat(labels)
+        
+        sim_mat_all = sim_mat_all+sim_mat
+    
+    # get the average of the similarity
+    sim_mat_avg = np.divide(sim_mat_all, n_estimators)
+    
+    # flip the similarity. smaller value implies more similarity
+    sim_mat_avg = np.abs(np.max(sim_mat_avg)-sim_mat_avg)
+    
+    # build clusters
+    Z = linkage(sim_mat_avg, method='single')
+    labels = fcluster(Z, n_clusters, criterion='maxclust')
+    
+    n_clusters_build = np.unique(labels)
+    
+    
+    
+    
+    
+    
+    
