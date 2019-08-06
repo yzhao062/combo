@@ -50,7 +50,7 @@ combo.models.cluster\_comb module
 combo.models.cluster\_eac module
 --------------------------------
 
-.. automodule:: combo.models.eac
+.. automodule:: combo.models.cluster_eac
    :members:
    :undoc-members:
    :show-inheritance:
