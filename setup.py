@@ -34,7 +34,7 @@ setup(
     url='https://github.com/yzhao062/combo',
     download_url='https://github.com/yzhao062/combo/archive/master.zip',
     keywords=['ensemble learning', 'model combination', 'outlier ensembles',
-              'data mining', 'machine learning', 'python'],
+              'data mining', 'machine learning', 'clustering', 'python'],
     packages=find_packages(exclude=['test']),
     include_package_data=True,
     install_requires=requirements,

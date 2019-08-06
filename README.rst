@@ -78,30 +78,25 @@ combo: A Python Toolbox for Machine Learning Model Combination
 ----
 
 
-**combo** is a comprehensive Python toolbox for **combining machine
-learning (ML) models and scores** for various tasks, including **classification**,
-**clustering**, and **anomaly detection**. It supports the combination of ML models from
-core libraries such as `scikit-learn <https://scikit-learn.org/stable/index.html>`_
-and `xgboost <https://xgboost.ai/>`_.
+**combo** is a comprehensive Python toolbox for **combining machine learning (ML) models and scores**.
+**Model combination** can be considered as a subtask of `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
+but is often beyond the scope of ensemble learning. This technique has been widely used in
+real-world tasks and data science competitions, such as Kaggle [#Bell2007Lessons]_.
 
-**Model combination** has been widely used in data science competitions and
-real-world tasks, such as Kaggle [#Bell2007Lessons]_.
-It can be considered as a subtask of
-`ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
-but is often beyond the scope of ensemble learning. For instance,
-averaging the results of multiple runs of an ML model is deemed as
-a reliable way of reducing the randomness. See
-figure below for basic combination approaches.
+**combo** library supports the combination of models and score from
+key ML libraries such as `scikit-learn <https://scikit-learn.org/stable/index.html>`_
+and `xgboost <https://xgboost.ai/>`_. See figure below for some representative
+combination approaches.
 
 .. image:: https://raw.githubusercontent.com/yzhao062/combo/master/docs/figs/framework_demo.png
    :target: https://raw.githubusercontent.com/yzhao062/combo/master/docs/figs/framework_demo.png
    :alt: Combination Framework Demo
 
 
-combo is featured for:
+**combo** is featured for:
 
 * **Unified APIs, detailed documentation, and interactive examples** across various algorithms.
-* **Advanced models**, such as dynamic classifier/ensemble selection.
+* **Advanced and latest models**, such as Stacking/DCS/DES/EAC/LSCP.
 * **Comprehensive coverage** for classification, clustering, anomaly detection, and raw score.
 * **Optimized performance with JIT and parallelization** when possible, using `numba <https://github.com/numba/numba>`_ and `joblib <https://github.com/joblib/joblib>`_.
 
@@ -480,14 +475,17 @@ demonstrates the basic API of combining multiple base outlier detectors.
 Development Status
 ^^^^^^^^^^^^^^^^^^
 
-combo is currently **under development** as of July 30, 2019. A concrete plan has
+**combo** is currently **under development** as of July 30, 2019. A concrete plan has
 been laid out and will be implemented in the next few months.
 
 Similar to other libraries built by us, e.g., Python Outlier Detection Toolbox
 (`pyod <https://github.com/yzhao062/pyod>`_),
-combo is also targeted to be published in *Journal of Machine Learning Research (JMLR)*,
+**combo** is also targeted to be published in *Journal of Machine Learning Research (JMLR)*,
 `open-source software track <http://www.jmlr.org/mloss/>`_. A demo paper to
 *AAAI* or *IJCAI* may be submitted soon for progress update.
+
+**Watch & Star** to get the latest update! Also feel free to send me an email (zhaoy@cmu.edu)
+for suggestions and ideas.
 
 
 ----
