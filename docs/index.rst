@@ -84,8 +84,7 @@ Welcome to combo's documentation!
 
 **combo** is a comprehensive Python toolbox for **combining machine learning (ML) models and scores**.
 **Model combination** can be considered as a subtask of `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
-but is often beyond the scope of ensemble learning. This technique has been widely used in
-real-world tasks and data science competitions, such as Kaggle :cite:`a-bell2007lessons`.
+and has been widely used in real-world tasks and data science competitions like Kaggle :cite:`a-bell2007lessons`.
 
 **combo** library supports the combination of models and score from
 key ML libraries such as `scikit-learn <https://scikit-learn.org/stable/index.html>`_
