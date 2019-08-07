@@ -235,9 +235,9 @@ def clusterer_ensemble_scores(original_labels, n_estimators, n_clusters,
     labels_by_vote = majority_vote(aligned_labels, n_classes=n_clusters,
                                    weights=weights)
     if return_results:
-        return labels_by_vote, aligned_labels
+        return labels_by_vote.astype(int), aligned_labels.astype(int)
     else:
-        return labels_by_vote
+        return labels_by_vote.astype(int)
 
 
 def _intersection_mat(result_mat, first_idx, second_idx, n_clusters):

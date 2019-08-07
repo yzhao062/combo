@@ -4,7 +4,7 @@
 # Author: Yue Zhao <zhaoy@cmu.edu>
 # License: BSD 2 clause
 
-
+import warnings
 import numpy as np
 
 from scipy.cluster.hierarchy import fcluster
@@ -135,6 +135,13 @@ class EAC(BaseAggregator):
         # build clusters
         self.Z_ = linkage(sim_mat_avg, method=self.linkage_method)
         self.labels_ = fcluster(self.Z_, self.n_clusters, criterion='maxclust')
+
+        # it may leads to different number of clusters as specified by the user
+        if len(np.unique(self.labels_)) != self.n_clusters:
+            warnings.warn(
+                'EAC generates {n} clusters instead of {n_clusters}'.format(
+                    n=len(np.unique(self.labels_)),
+                    n_clusters=self.n_clusters))
 
         return self
 
