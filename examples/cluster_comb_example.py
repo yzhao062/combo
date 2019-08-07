@@ -19,22 +19,28 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.cluster import AgglomerativeClustering
-
-from sklearn.datasets import load_breast_cancer
+from sklearn import datasets
 
 from combo.models.cluster_comb import clusterer_ensemble_scores
 from combo.models.cluster_comb import ClustererEnsemble
+from combo.utils.example import visualize_clusters
 
 import warnings
 
 warnings.filterwarnings("ignore")
 
 if __name__ == "__main__":
-    # Define data file and read X and y
-    X, y = load_breast_cancer(return_X_y=True)
+    random_state = 42
 
-    n_clusters = 5
+    n_clusters = 3
     n_estimators = 3
+    # ============
+    # Generate datasets. We choose the size big enough to see the scalability
+    # of the algorithms, but not too big to avoid too long running times
+    # ============
+    n_samples = 1500
+    X, y = datasets.make_moons(n_samples=n_samples, noise=.05)
+
 
     # Initialize a set of estimators
     estimators = [KMeans(n_clusters=n_clusters),
@@ -47,6 +53,9 @@ if __name__ == "__main__":
     # generate the labels on X
     aligned_labels = clf.aligned_labels_
     predicted_labels = clf.labels_
+
+    visualize_clusters('Clusterer Ensemble', X, predicted_labels, 
+                       show_figure=True, save_figure=False)
 
     # Clusterer Ensemble without initializing a new Class
     original_labels = np.zeros([X.shape[0], n_estimators])
