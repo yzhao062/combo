@@ -41,7 +41,6 @@ if __name__ == "__main__":
     n_samples = 1500
     X, y = datasets.make_moons(n_samples=n_samples, noise=.05)
 
-
     # Initialize a set of estimators
     estimators = [KMeans(n_clusters=n_clusters),
                   MiniBatchKMeans(n_clusters=n_clusters),
@@ -54,7 +53,7 @@ if __name__ == "__main__":
     aligned_labels = clf.aligned_labels_
     predicted_labels = clf.labels_
 
-    visualize_clusters('Clusterer Ensemble', X, predicted_labels, 
+    visualize_clusters('Clusterer Ensemble', X, predicted_labels,
                        show_figure=True, save_figure=False)
 
     # Clusterer Ensemble without initializing a new Class
