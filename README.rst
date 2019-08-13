@@ -84,8 +84,8 @@ and has been widely used in real-world tasks and data science competitions like 
 
 **combo** library supports the combination of models and score from
 key ML libraries such as `scikit-learn <https://scikit-learn.org/stable/index.html>`_
-and `xgboost <https://xgboost.ai/>`_. See figure below for some representative
-combination approaches.
+and `xgboost <https://xgboost.ai/>`_, and crucial tasks including classification, clustering, anomaly detection.
+See figure below for some representative combination approaches.
 
 .. image:: https://raw.githubusercontent.com/yzhao062/combo/master/docs/figs/framework_demo.png
    :target: https://raw.githubusercontent.com/yzhao062/combo/master/docs/figs/framework_demo.png
