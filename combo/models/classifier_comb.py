@@ -185,5 +185,5 @@ class SimpleClassifierAggregator(BaseAggregator):
         labels : numpy array of shape (n_samples,)
             Class labels for each data sample.
         """
-        self.fit(X, y)
-        return self.predict(X)
+        raise NotImplementedError(
+            'fit_predict should not be used in supervised learning models.')

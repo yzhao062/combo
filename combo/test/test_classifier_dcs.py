@@ -98,13 +98,9 @@ class TestDCS_LA(unittest.TestCase):
                         y_test_predicted_sum)
 
     def test_fit_predict(self):
-        y_train_predict = self.clf.fit_predict(self.X_train, self.y_train)
-
-        assert_equal(len(y_train_predict), self.X_train.shape[0])
-
-        # check performance
-        assert_greater(accuracy_score(self.y_train, y_train_predict),
-                       self.accuracy_floor)
+        with assert_raises(NotImplementedError):
+            y_train_predicted = self.clf.fit_predict(self.X_train,
+                                                     self.y_train)
 
     def tearDown(self):
         pass

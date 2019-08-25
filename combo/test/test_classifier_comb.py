@@ -56,12 +56,9 @@ class TestFitPredict(unittest.TestCase):
         self.clf = SimpleClassifierAggregator(classifiers, method='average')
 
     def test_fit_predict(self):
-        y_train_predicted = self.clf.fit_predict(self.X_train, self.y_train)
-        assert_equal(len(y_train_predicted), self.X_train.shape[0])
-
-        # check performance
-        assert_greater(accuracy_score(self.y_train, y_train_predicted),
-                       self.accuracy_floor)
+        with assert_raises(NotImplementedError):
+            y_train_predicted = self.clf.fit_predict(self.X_train,
+                                                     self.y_train)
 
 
 class TestAverage(unittest.TestCase):
