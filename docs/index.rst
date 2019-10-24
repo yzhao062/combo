@@ -124,6 +124,26 @@ See figure below for some representative combination approaches.
    y_test_proba = clf.predict_proba(X_test)  # probability prediction
 
 
+**Citing combo**\ :
+
+`combo paper <http://www.andrew.cmu.edu/user/yuezhao2/papers/20-aaao-combo.pdf>`_ is accepted (to appear) in
+`AAAI 2020 <https://aaai.org/Conferences/AAAI-20/>`_ (demo track).
+If you use combo in a scientific publication, we would appreciate citations to the following paper::
+
+    @inproceedings{zhao2020combo,
+      title={Combining Machine Learning Models and Scores using combo library},
+      author={Zhao, Yue and Wang, Xuejian and Cheng, Cheng and Ding, Xueying},
+      booktitle={Thirty-Fourth AAAI Conference on Artificial Intelligence},
+      month = {Feb},
+      year={2020},
+      address = {New York, USA}
+    }
+
+or::
+
+    Zhao, Y., Wang, X., Cheng, C. and Ding, X., 2020. Combining Machine Learning Models and Scores using combo library. Thirty-Fourth AAAI Conference on Artificial Intelligence.
+
+
 **Key Links and Resources**\ :
 
 * `awesome-ensemble-learning <https://github.com/yzhao062/awesome-ensemble-learning>`_ (ensemble learning related books, papers, and more)
