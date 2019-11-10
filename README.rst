@@ -147,6 +147,7 @@ or::
 * `View the latest codes on Github <https://github.com/yzhao062/combo>`_
 * `View the documentation & API <https://pycombo.readthedocs.io/>`_
 * `View all examples <https://github.com/yzhao062/combo/tree/master/examples>`_
+* `View the demo video for AAAI 2020 <https://youtu.be/PaSJ49Ij7w4>`_
 * `Execute Interactive Jupyter Notebooks <https://mybinder.org/v2/gh/yzhao062/combo/master>`_
 
 
