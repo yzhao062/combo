@@ -122,7 +122,7 @@ See figure below for some representative combination approaches.
 
 **Citing combo**\ :
 
-`combo paper <http://www.andrew.cmu.edu/user/yuezhao2/papers/20-aaao-combo.pdf>`_ is accepted (to appear) in
+`combo paper <http://www.andrew.cmu.edu/user/yuezhao2/papers/20-aaai-combo.pdf>`_ is accepted (to appear) in
 `AAAI 2020 <https://aaai.org/Conferences/AAAI-20/>`_ (demo track).
 If you use combo in a scientific publication, we would appreciate citations to the following paper::
 
