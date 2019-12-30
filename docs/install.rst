@@ -30,7 +30,7 @@ Alternatively, you could clone and run setup.py file:
 * numba>=0.35
 * pyod
 * scipy>=0.19.1
-* scikit_learn>=0.19.1
+* scikit_learn>=0.20
 
 
 **Note on Python 2**\ :
