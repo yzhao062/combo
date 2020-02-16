@@ -23,7 +23,7 @@ exec(open(version_path).read())
 # -- Project information -----------------------------------------------------
 
 project = 'combo'
-copyright = '2019, Yue Zhao'
+copyright = '2020, Yue Zhao'
 author = 'Yue Zhao'
 
 # The short X.Y version
