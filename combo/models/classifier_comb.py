@@ -106,7 +106,7 @@ class SimpleClassifierAggregator(BaseAggregator):
         all_scores = np.zeros([X.shape[0], self.n_base_estimators_])
 
         for i, clf in enumerate(self.base_estimators):
-            if clf.fitted_ != True and self.pre_fitted == False:
+            if clf.fitted_ is not True and self.pre_fitted == False:
                 ValueError('Classifier should be fitted first!')
             else:
                 if hasattr(clf, 'predict'):
@@ -146,7 +146,7 @@ class SimpleClassifierAggregator(BaseAggregator):
 
         for i in range(self.n_base_estimators_):
             clf = self.base_estimators[i]
-            if clf.fitted_ != True and self.pre_fitted == False:
+            if clf.fitted_ is not True and self.pre_fitted == False:
                 ValueError('Classifier should be fitted first!')
             else:
                 if hasattr(clf, 'predict_proba'):

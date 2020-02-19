@@ -281,9 +281,10 @@ def _alignment(inter_mat, n_clusters, second_idx, result_mat_aligned,
         inter_mat[max_i, :] = -1
         inter_mat[:, max_j] = -1
 
-        #  print('component 1 cluser', max_i, '==', 'component 2 cluser', max_j)
-        result_mat_aligned[np.where(result_mat_aligned[:,
-                                    second_idx] == max_j), second_idx] = max_i + offset
+        # print('component 1 cluser', max_i, '==', 'component 2 cluser', max_j)
+        result_mat_aligned[
+            np.where(result_mat_aligned[:, second_idx] == max_j), second_idx] \
+            = max_i + offset
     return index_mapping
 
 

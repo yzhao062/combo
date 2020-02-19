@@ -145,7 +145,8 @@ class BaseAggregator(ABC):
         return self
 
     def _detector_predict(self, X):
-        """Internal function to predict if a particular sample is an outlier or not.
+        """Internal function to predict if a particular sample is an
+        outlier or not.
 
         Parameters
         ----------

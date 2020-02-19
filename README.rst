@@ -81,6 +81,7 @@ combo: A Python Toolbox for Machine Learning Model Combination
 **combo** is a comprehensive Python toolbox for **combining machine learning (ML) models and scores**.
 **Model combination** can be considered as a subtask of `ensemble learning <https://en.wikipedia.org/wiki/Ensemble_learning>`_,
 and has been widely used in real-world tasks and data science competitions like Kaggle [#Bell2007Lessons]_.
+**combo** has been used/introduced in various research works since its inception [#Raschka2020Machine]_ [#Zhao2019PyOD]_.
 
 **combo** library supports the combination of models and score from
 key ML libraries such as `scikit-learn <https://scikit-learn.org/stable/index.html>`_,
@@ -122,7 +123,7 @@ See figure below for some representative combination approaches.
 
 **Citing combo**\ :
 
-`combo paper <http://www.andrew.cmu.edu/user/yuezhao2/papers/20-aaai-combo.pdf>`_ is accepted (to appear) in
+`combo paper <http://www.andrew.cmu.edu/user/yuezhao2/papers/20-aaai-combo.pdf>`_ is published in
 `AAAI 2020 <https://aaai.org/Conferences/AAAI-20/>`_ (demo track).
 If you use combo in a scientific publication, we would appreciate citations to the following paper::
 
@@ -541,11 +542,15 @@ Reference
 
 .. [#Fred2005Combining] Fred, A. L. N., & Jain, A. K. (2005). Combining multiple clusterings using evidence accumulation. *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 27(6), 835–850. https://doi.org/10.1109/TPAMI.2005.113
 
+.. [#Raschka2020Machine] Raschka, S., Patterson, J. and Nolet, C., 2020. Machine Learning in Python: Main developments and technology trends in data science, machine learning, and artificial intelligence. arXiv preprint arXiv:2002.04803.
+
 .. [#Woods1997Combination] Woods, K., Kegelmeyer, W.P. and Bowyer, K., 1997. Combination of multiple classifiers using local accuracy estimates. *IEEE transactions on pattern analysis and machine intelligence*, 19(4), pp.405-410.
+
+.. [#Zhao2018XGBOD] Zhao, Y. and Hryniewicki, M.K. XGBOD: Improving Supervised Outlier Detection with Unsupervised Representation Learning. *IEEE International Joint Conference on Neural Networks*, 2018.
 
 .. [#Zhao2019LSCP] Zhao, Y., Nasrullah, Z., Hryniewicki, M.K. and Li, Z., 2019, May. LSCP: Locally selective combination in parallel outlier ensembles. In *Proceedings of the 2019 SIAM International Conference on Data Mining (SDM)*, pp. 585-593. Society for Industrial and Applied Mathematics.
 
-.. [#Zhao2018XGBOD] Zhao, Y. and Hryniewicki, M.K. XGBOD: Improving Supervised Outlier Detection with Unsupervised Representation Learning. *IEEE International Joint Conference on Neural Networks*, 2018.
+.. [#Zhao2019PyOD] Zhao, Y., Nasrullah, Z. and Li, Z., 2019. PyOD: A Python Toolbox for Scalable Outlier Detection. *Journal of Machine Learning Research*, 20, pp.1-7.
 
 .. [#Zhou2006Clusterer] Zhou, Z.H. and Tang, W., 2006. Clusterer ensemble. *Knowledge-Based Systems*, 19(1), pp.77-83.
 
