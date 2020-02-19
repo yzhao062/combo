@@ -40,7 +40,7 @@ X_train, y_train, X_test, y_test = \
 
 detectors = [KNN(), LOF(), OCSVM()]
 
-clf = LSCP(base_estimators=detectors)
+clf = LSCP(base_estimators=detectors, random_state=42)
 clf_name = 'LSCP'
 clf.fit(X_train)
 
