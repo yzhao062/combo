@@ -224,14 +224,14 @@ For Jupyter Notebooks, please navigate to **"/notebooks/compare_selected_classif
 Development Status
 ^^^^^^^^^^^^^^^^^^
 
-**combo** is currently **under development** as of July 30, 2019. A concrete plan has
+**combo** is currently **under development** as of Feb, 2020. A concrete plan has
 been laid out and will be implemented in the next few months.
 
 Similar to other libraries built by us, e.g., Python Outlier Detection Toolbox
 (`pyod <https://github.com/yzhao062/pyod>`_),
 **combo** is also targeted to be published in *Journal of Machine Learning Research (JMLR)*,
-`open-source software track <http://www.jmlr.org/mloss/>`_. A demo paper to
-*AAAI* or *IJCAI* may be submitted soon for progress update.
+`open-source software track <http://www.jmlr.org/mloss/>`_. A demo paper has been presented in
+*AAAI 2020* for progress update.
 
 **Watch & Star** to get the latest update! Also feel free to send me an email (zhaoy@cmu.edu)
 for suggestions and ideas.
