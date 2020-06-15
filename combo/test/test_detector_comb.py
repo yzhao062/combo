@@ -12,7 +12,6 @@ from sklearn.utils.testing import assert_greater
 from sklearn.utils.testing import assert_greater_equal
 from sklearn.utils.testing import assert_less_equal
 from sklearn.utils.testing import assert_raises
-from sklearn.utils.testing import assert_true
 from sklearn.utils.estimator_checks import check_estimator
 
 from sklearn.metrics import roc_auc_score
@@ -48,15 +47,15 @@ class TestAverage(unittest.TestCase):
         self.clf.fit(self.X_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'decision_scores_') and
+        assert(hasattr(self.clf, 'decision_scores_') and
                     self.clf.decision_scores_ is not None)
-        assert_true(hasattr(self.clf, 'labels_') and
+        assert(hasattr(self.clf, 'labels_') and
                     self.clf.labels_ is not None)
-        assert_true(hasattr(self.clf, 'threshold_') and
+        assert(hasattr(self.clf, 'threshold_') and
                     self.clf.threshold_ is not None)
-        assert_true(hasattr(self.clf, '_mu') and
+        assert(hasattr(self.clf, '_mu') and
                     self.clf._mu is not None)
-        assert_true(hasattr(self.clf, '_sigma') and
+        assert(hasattr(self.clf, '_sigma') and
                     self.clf._sigma is not None)
 
     def test_train_scores(self):
@@ -116,15 +115,15 @@ class Maximization(unittest.TestCase):
         self.clf.fit(self.X_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'decision_scores_') and
+        assert(hasattr(self.clf, 'decision_scores_') and
                     self.clf.decision_scores_ is not None)
-        assert_true(hasattr(self.clf, 'labels_') and
+        assert(hasattr(self.clf, 'labels_') and
                     self.clf.labels_ is not None)
-        assert_true(hasattr(self.clf, 'threshold_') and
+        assert(hasattr(self.clf, 'threshold_') and
                     self.clf.threshold_ is not None)
-        assert_true(hasattr(self.clf, '_mu') and
+        assert(hasattr(self.clf, '_mu') and
                     self.clf._mu is not None)
-        assert_true(hasattr(self.clf, '_sigma') and
+        assert(hasattr(self.clf, '_sigma') and
                     self.clf._sigma is not None)
 
     def test_train_scores(self):
@@ -184,15 +183,15 @@ class TestMedian(unittest.TestCase):
         self.clf.fit(self.X_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'decision_scores_') and
+        assert(hasattr(self.clf, 'decision_scores_') and
                     self.clf.decision_scores_ is not None)
-        assert_true(hasattr(self.clf, 'labels_') and
+        assert(hasattr(self.clf, 'labels_') and
                     self.clf.labels_ is not None)
-        assert_true(hasattr(self.clf, 'threshold_') and
+        assert(hasattr(self.clf, 'threshold_') and
                     self.clf.threshold_ is not None)
-        assert_true(hasattr(self.clf, '_mu') and
+        assert(hasattr(self.clf, '_mu') and
                     self.clf._mu is not None)
-        assert_true(hasattr(self.clf, '_sigma') and
+        assert(hasattr(self.clf, '_sigma') and
                     self.clf._sigma is not None)
 
     def test_train_scores(self):

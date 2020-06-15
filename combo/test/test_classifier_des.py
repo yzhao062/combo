@@ -23,7 +23,6 @@ from sklearn.utils.testing import assert_greater
 from sklearn.utils.testing import assert_greater_equal
 from sklearn.utils.testing import assert_less_equal
 from sklearn.utils.testing import assert_raises
-from sklearn.utils.testing import assert_true
 
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score
@@ -57,8 +56,8 @@ class TestDEC_LA(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_estimators') and
-                    self.clf.base_estimators is not None)
+        assert (hasattr(self.clf, 'base_estimators')
+                and self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)

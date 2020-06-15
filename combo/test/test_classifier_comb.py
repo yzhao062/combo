@@ -23,7 +23,6 @@ from sklearn.utils.testing import assert_greater
 from sklearn.utils.testing import assert_greater_equal
 from sklearn.utils.testing import assert_less_equal
 from sklearn.utils.testing import assert_raises
-from sklearn.utils.testing import assert_true
 
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score
@@ -82,7 +81,7 @@ class TestAverage(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_estimators') and
+        assert(hasattr(self.clf, 'base_estimators') and
                     self.clf.base_estimators is not None)
 
     def test_train_scores(self):
@@ -154,7 +153,7 @@ class TestWeightedAverage(unittest.TestCase):
         assert_equal(np.sum(self.clf.weights), self.clf.n_base_estimators_)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_estimators') and
+        assert(hasattr(self.clf, 'base_estimators') and
                     self.clf.base_estimators is not None)
 
         # print clf details
@@ -223,7 +222,7 @@ class TestMax(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_estimators') and
+        assert(hasattr(self.clf, 'base_estimators') and
                     self.clf.base_estimators is not None)
 
     def test_train_scores(self):
@@ -289,7 +288,7 @@ class TestMajorityVote(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_estimators') and
+        assert(hasattr(self.clf, 'base_estimators') and
                     self.clf.base_estimators is not None)
 
     def test_train_scores(self):
@@ -355,7 +354,7 @@ class TestMedian(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert_true(hasattr(self.clf, 'base_estimators') and
+        assert(hasattr(self.clf, 'base_estimators') and
                     self.clf.base_estimators is not None)
 
     def test_train_scores(self):

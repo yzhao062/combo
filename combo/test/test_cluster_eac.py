@@ -20,7 +20,6 @@ from sklearn.utils.testing import assert_greater
 from sklearn.utils.testing import assert_greater_equal
 from sklearn.utils.testing import assert_less_equal
 from sklearn.utils.testing import assert_raises
-from sklearn.utils.testing import assert_true
 
 # temporary solution for relative imports in case combo is not installed
 # if  combo is installed, no need to use the following line
@@ -58,7 +57,7 @@ class TestEAC(unittest.TestCase):
                      self.estimator.n_base_estimators_)
 
     def test_parameters(self):
-        assert_true(hasattr(self.estimator, 'base_estimators') and
+        assert(hasattr(self.estimator, 'base_estimators') and
                     self.estimator.base_estimators is not None)
 
     def test_scores(self):

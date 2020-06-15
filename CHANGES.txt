@@ -23,3 +23,4 @@ v<0.0.9>, <09/01/2019> -- Add classifier_multiple_libs.py for multiple lib suppo
 v<0.1.0>, <12/30/2019> -- Import Optimization.
 v<0.1.0>, <02/17/2020> -- Documentation update.
 v<0.1.0>, <02/17/2020> -- Code cleaning.
+v<0.1.1>, <06/15/2020> -- Unit test update.
