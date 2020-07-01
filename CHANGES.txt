@@ -24,3 +24,4 @@ v<0.1.0>, <12/30/2019> -- Import Optimization.
 v<0.1.0>, <02/17/2020> -- Documentation update.
 v<0.1.0>, <02/17/2020> -- Code cleaning.
 v<0.1.1>, <06/15/2020> -- Unit test update.
+v<0.1.1>, <07/01/2020> -- Documentation update.
