@@ -158,17 +158,6 @@ or::
 ----
 
 
-The project is free of charge thanks to community sponsorship. Check out the banner below to support us :)
-
-
-.. image:: https://images.gitads.io/combo
-   :target: https://tracking.gitads.io/?repo=combo
-   :alt: sponsorship
-
-
-----
-
-
 API Cheatsheet & Reference
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
