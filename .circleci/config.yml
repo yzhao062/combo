@@ -22,9 +22,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-py3-dependencies-{{ checksum "requirements_ci.txt" }}
+          - v2-py3-dependencies-{{ checksum "requirements_ci.txt" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-py3-dependencies-
+          - v2-py3-dependencies-
 
       - run:
           name: install dependencies
@@ -40,7 +40,7 @@ jobs:
       - save_cache:
           paths:
             - ./venv
-          key: v1-py3-dependencies-{{ checksum "requirements.txt" }}
+          key: v2-py3-dependencies-{{ checksum "requirements.txt" }}
 
 
       # run tests!
