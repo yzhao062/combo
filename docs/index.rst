@@ -273,7 +273,7 @@ for suggestions and ideas.
 
 .. rubric:: References
 
-.. bibliography:: zreferences.bib
+.. bibliography::
    :cited:
    :labelprefix: A
    :keyprefix: a-

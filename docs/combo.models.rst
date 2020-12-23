@@ -96,6 +96,6 @@ Module contents
 
 .. rubric:: References
 
-.. bibliography:: zreferences.bib
+.. bibliography::
    :cited:
    :labelprefix: B
