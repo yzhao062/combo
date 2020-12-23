@@ -16,13 +16,9 @@ from sklearn.neighbors import KNeighborsClassifier
 
 from sklearn.datasets import load_breast_cancer
 # noinspection PyProtectedMember
-from sklearn.utils.testing import assert_allclose
-from sklearn.utils.testing import assert_array_less
-from sklearn.utils.testing import assert_equal
-from sklearn.utils.testing import assert_greater
-from sklearn.utils.testing import assert_greater_equal
-from sklearn.utils.testing import assert_less_equal
-from sklearn.utils.testing import assert_raises
+from numpy.testing import assert_allclose
+from numpy.testing import assert_equal
+from numpy.testing import assert_raises
 
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score
@@ -81,36 +77,36 @@ class TestAverage(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert(hasattr(self.clf, 'base_estimators') and
-                    self.clf.base_estimators is not None)
+        assert (hasattr(self.clf, 'base_estimators') and
+                self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
         assert_equal(len(y_train_predicted), self.X_train.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_train, y_train_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_train,
+                               y_train_predicted) >= self.accuracy_floor)
 
     def test_prediction_scores(self):
         y_test_predicted = self.clf.predict(self.X_test)
         assert_equal(len(y_test_predicted), self.X_test.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_test, y_test_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_test, y_test_predicted) >=
+                self.accuracy_floor)
 
         # test utility function
         evaluate_print('averaging', self.y_test, y_test_predicted)
 
     def test_prediction_proba(self):
         y_test_predicted = self.clf.predict_proba(self.X_test)
-        assert_greater_equal(y_test_predicted.min(), 0)
-        assert_less_equal(y_test_predicted.max(), 1)
+        assert (y_test_predicted.min() >= 0)
+        assert (y_test_predicted.max() <= 1)
 
         # check performance
-        assert_greater(roc_auc_score(self.y_test, y_test_predicted[:, 1]),
-                       self.roc_floor)
+        assert (roc_auc_score(self.y_test,
+                              y_test_predicted[:, 1]) >= self.roc_floor)
 
         # check shape of integrity
         n_classes = len(np.unique(self.y_train))
@@ -153,8 +149,8 @@ class TestWeightedAverage(unittest.TestCase):
         assert_equal(np.sum(self.clf.weights), self.clf.n_base_estimators_)
 
     def test_parameters(self):
-        assert(hasattr(self.clf, 'base_estimators') and
-                    self.clf.base_estimators is not None)
+        assert (hasattr(self.clf, 'base_estimators') and
+                self.clf.base_estimators is not None)
 
         # print clf details
         print(self.clf)
@@ -167,25 +163,25 @@ class TestWeightedAverage(unittest.TestCase):
         assert_equal(len(y_train_predicted), self.X_train.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_train, y_train_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_train,
+                               y_train_predicted) >= self.accuracy_floor)
 
     def test_prediction_scores(self):
         y_test_predicted = self.clf.predict(self.X_test)
         assert_equal(len(y_test_predicted), self.X_test.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_test, y_test_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_test, y_test_predicted) >=
+                self.accuracy_floor)
 
     def test_prediction_proba(self):
         y_test_predicted = self.clf.predict_proba(self.X_test)
-        assert_greater_equal(y_test_predicted.min(), 0)
-        assert_less_equal(y_test_predicted.max(), 1)
+        assert (y_test_predicted.min() >= 0)
+        assert (y_test_predicted.max() <= 1)
 
         # check performance
-        assert_greater(roc_auc_score(self.y_test, y_test_predicted[:, 1]),
-                       self.roc_floor)
+        assert (roc_auc_score(self.y_test, y_test_predicted[:, 1]) >=
+                self.roc_floor)
 
         # check shape of integrity
         n_classes = len(np.unique(self.y_train))
@@ -222,36 +218,36 @@ class TestMax(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert(hasattr(self.clf, 'base_estimators') and
-                    self.clf.base_estimators is not None)
+        assert (hasattr(self.clf, 'base_estimators') and
+                self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
         assert_equal(len(y_train_predicted), self.X_train.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_train, y_train_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_train, y_train_predicted) >=
+                self.accuracy_floor)
 
     def test_prediction_scores(self):
         y_test_predicted = self.clf.predict(self.X_test)
         assert_equal(len(y_test_predicted), self.X_test.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_test, y_test_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_test, y_test_predicted) >=
+                self.accuracy_floor)
 
         # test utility function
         evaluate_print('maximization', self.y_test, y_test_predicted)
 
     def test_prediction_proba(self):
         y_test_predicted = self.clf.predict_proba(self.X_test)
-        assert_greater_equal(y_test_predicted.min(), 0)
-        assert_less_equal(y_test_predicted.max(), 1)
+        assert (y_test_predicted.min() >= 0)
+        assert (y_test_predicted.max() <= 1)
 
         # check performance
-        assert_greater(roc_auc_score(self.y_test, y_test_predicted[:, 1]),
-                       self.roc_floor)
+        assert (roc_auc_score(self.y_test, y_test_predicted[:, 1]) >=
+                self.roc_floor)
 
         # check shape of integrity
         n_classes = len(np.unique(self.y_train))
@@ -288,36 +284,36 @@ class TestMajorityVote(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert(hasattr(self.clf, 'base_estimators') and
-                    self.clf.base_estimators is not None)
+        assert (hasattr(self.clf, 'base_estimators') and
+                self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
         assert_equal(len(y_train_predicted), self.X_train.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_train, y_train_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_train, y_train_predicted) >=
+                self.accuracy_floor)
 
     def test_prediction_scores(self):
         y_test_predicted = self.clf.predict(self.X_test)
         assert_equal(len(y_test_predicted), self.X_test.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_test, y_test_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_test, y_test_predicted) >=
+                self.accuracy_floor)
 
         # test utility function
         evaluate_print('majority_vote', self.y_test, y_test_predicted)
 
     def test_prediction_proba(self):
         y_test_predicted = self.clf.predict_proba(self.X_test)
-        assert_greater_equal(y_test_predicted.min(), 0)
-        assert_less_equal(y_test_predicted.max(), 1)
+        assert (y_test_predicted.min() >= 0)
+        assert(y_test_predicted.max()<= 1)
 
         # check performance
-        assert_greater(roc_auc_score(self.y_test, y_test_predicted[:, 1]),
-                       self.roc_floor)
+        assert (roc_auc_score(self.y_test, y_test_predicted[:, 1]) >=
+                self.roc_floor)
 
         # check shape of integrity
         n_classes = len(np.unique(self.y_train))
@@ -354,36 +350,36 @@ class TestMedian(unittest.TestCase):
         self.clf.fit(self.X_train, self.y_train)
 
     def test_parameters(self):
-        assert(hasattr(self.clf, 'base_estimators') and
-                    self.clf.base_estimators is not None)
+        assert (hasattr(self.clf, 'base_estimators') and
+                self.clf.base_estimators is not None)
 
     def test_train_scores(self):
         y_train_predicted = self.clf.predict(self.X_train)
         assert_equal(len(y_train_predicted), self.X_train.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_train, y_train_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_train, y_train_predicted) >=
+                self.accuracy_floor)
 
     def test_prediction_scores(self):
         y_test_predicted = self.clf.predict(self.X_test)
         assert_equal(len(y_test_predicted), self.X_test.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_test, y_test_predicted),
-                       self.accuracy_floor)
+        assert (accuracy_score(self.y_test, y_test_predicted) >=
+                self.accuracy_floor)
 
         # test utility function
         evaluate_print('median', self.y_test, y_test_predicted)
 
     def test_prediction_proba(self):
         y_test_predicted = self.clf.predict_proba(self.X_test)
-        assert_greater_equal(y_test_predicted.min(), 0)
-        assert_less_equal(y_test_predicted.max(), 1)
+        assert (y_test_predicted.min() >= 0)
+        assert (y_test_predicted.max() <= 1)
 
         # check performance
-        assert_greater(roc_auc_score(self.y_test, y_test_predicted[:, 1]),
-                       self.roc_floor)
+        assert (roc_auc_score(self.y_test, y_test_predicted[:, 1]) >=
+                self.roc_floor)
 
         # check shape of integrity
         n_classes = len(np.unique(self.y_train))

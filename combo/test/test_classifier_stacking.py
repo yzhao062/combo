@@ -16,13 +16,10 @@ from sklearn.neighbors import KNeighborsClassifier
 
 from sklearn.datasets import load_breast_cancer
 # noinspection PyProtectedMember
-from sklearn.utils.testing import assert_allclose
-from sklearn.utils.testing import assert_array_less
-from sklearn.utils.testing import assert_equal
-from sklearn.utils.testing import assert_greater
-from sklearn.utils.testing import assert_greater_equal
-from sklearn.utils.testing import assert_less_equal
-from sklearn.utils.testing import assert_raises
+# noinspection PyProtectedMember
+from numpy.testing import assert_allclose
+from numpy.testing import assert_equal
+from numpy.testing import assert_raises
 
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score
@@ -64,7 +61,7 @@ class TestStacking(unittest.TestCase):
         assert_equal(len(y_train_predicted), self.X_train.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_train, y_train_predicted),
+        assert(accuracy_score(self.y_train, y_train_predicted)>=
                        self.accuracy_floor)
 
     def test_prediction_scores(self):
@@ -72,7 +69,7 @@ class TestStacking(unittest.TestCase):
         assert_equal(len(y_test_predicted), self.X_test.shape[0])
 
         # check performance
-        assert_greater(accuracy_score(self.y_test, y_test_predicted),
+        assert(accuracy_score(self.y_test, y_test_predicted)>=
                        self.accuracy_floor)
 
         # test utility function
@@ -80,12 +77,12 @@ class TestStacking(unittest.TestCase):
 
     def test_prediction_proba(self):
         y_test_predicted = self.clf.predict_proba(self.X_test)
-        assert_greater_equal(y_test_predicted.min(), 0)
-        assert_less_equal(y_test_predicted.max(), 1)
+        assert (y_test_predicted.min() >= 0)
+        assert (y_test_predicted.max() <= 1)
 
         # check performance
-        assert_greater(roc_auc_score(self.y_test, y_test_predicted[:, 1]),
-                       self.roc_floor)
+        assert (roc_auc_score(self.y_test,
+                              y_test_predicted[:, 1]) >= self.roc_floor)
 
         # check shape of integrity
         n_classes = len(np.unique(self.y_train))
@@ -95,11 +92,6 @@ class TestStacking(unittest.TestCase):
         y_test_predicted_sum = np.sum(y_test_predicted, axis=1)
         assert_allclose(np.ones([self.X_test.shape[0], ]),
                         y_test_predicted_sum)
-
-    def test_fit_predict(self):
-        with assert_raises(NotImplementedError):
-            y_train_predicted = self.clf.fit_predict(self.X_train,
-                                                     self.y_train)
 
     def tearDown(self):
         pass

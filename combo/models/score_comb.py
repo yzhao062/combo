@@ -13,7 +13,7 @@ from sklearn.utils import column_or_1d
 from sklearn.utils import shuffle
 from sklearn.utils.extmath import weighted_mode
 from sklearn.utils.random import sample_without_replacement
-from sklearn.utils.testing import assert_equal
+from numpy.testing import assert_equal
 from sklearn.utils.multiclass import check_classification_targets
 
 from pyod.utils.utility import check_parameter

@@ -9,7 +9,7 @@ import numpy as np
 
 from sklearn.utils import check_array
 from sklearn.utils.validation import check_is_fitted
-from sklearn.utils.testing import assert_equal
+from numpy.testing import assert_equal
 
 from pyod.utils.utility import check_parameter
 

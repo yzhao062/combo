@@ -5,24 +5,17 @@ from os import path
 
 import unittest
 # noinspection PyProtectedMember
+
+from numpy.testing import assert_equal
+from numpy.testing import assert_raises
 from sklearn.model_selection import train_test_split
-from sklearn.utils.testing import assert_allclose
-from sklearn.utils.testing import assert_array_less
-from sklearn.utils.testing import assert_equal
-from sklearn.utils.testing import assert_greater
-from sklearn.utils.testing import assert_greater_equal
-from sklearn.utils.testing import assert_less_equal
-from sklearn.utils.testing import assert_raises
-from sklearn.utils.estimator_checks import check_estimator
 from sklearn.utils.validation import check_X_y
 from scipy.io import loadmat
 
 from sklearn.metrics import roc_auc_score
 
 from pyod.utils.data import generate_data
-from pyod.models.knn import KNN
 from pyod.models.lof import LOF
-from pyod.models.ocsvm import OCSVM
 
 # temporary solution for relative imports in case pyod is not installed
 # if combo is installed, no need to use the following line
@@ -63,16 +56,16 @@ class TestLSCP(unittest.TestCase):
         self.roc_floor = 0.6
 
     def test_parameters(self):
-        assert(hasattr(self.clf, 'decision_scores_') and
-                    self.clf.decision_scores_ is not None)
-        assert(hasattr(self.clf, 'labels_') and
-                    self.clf.labels_ is not None)
-        assert(hasattr(self.clf, 'threshold_') and
-                    self.clf.threshold_ is not None)
-        assert(hasattr(self.clf, '_mu') and
-                    self.clf._mu is not None)
-        assert(hasattr(self.clf, '_sigma') and
-                    self.clf._sigma is not None)
+        assert (hasattr(self.clf, 'decision_scores_') and
+                self.clf.decision_scores_ is not None)
+        assert (hasattr(self.clf, 'labels_') and
+                self.clf.labels_ is not None)
+        assert (hasattr(self.clf, 'threshold_') and
+                self.clf.threshold_ is not None)
+        assert (hasattr(self.clf, '_mu') and
+                self.clf._mu is not None)
+        assert (hasattr(self.clf, '_sigma') and
+                self.clf._sigma is not None)
 
     def test_train_scores(self):
         assert_equal(len(self.clf.decision_scores_), self.X_train.shape[0])
@@ -84,7 +77,7 @@ class TestLSCP(unittest.TestCase):
         assert_equal(pred_scores.shape[0], self.X_test.shape[0])
 
         # check performance
-        assert_greater(roc_auc_score(self.y_test, pred_scores), self.roc_floor)
+        assert (roc_auc_score(self.y_test, pred_scores) >= self.roc_floor)
 
     def test_prediction_labels(self):
         pred_labels = self.clf.predict(self.X_test)
@@ -92,18 +85,18 @@ class TestLSCP(unittest.TestCase):
 
     def test_prediction_proba(self):
         pred_proba = self.clf.predict_proba(self.X_test)
-        assert_greater_equal(pred_proba.min(), 0)
-        assert_less_equal(pred_proba.max(), 1)
+        assert (pred_proba.min() >= 0)
+        assert (pred_proba.max() <= 1)
 
     def test_prediction_proba_linear(self):
         pred_proba = self.clf.predict_proba(self.X_test, proba_method='linear')
-        assert_greater_equal(pred_proba.min(), 0)
-        assert_less_equal(pred_proba.max(), 1)
+        assert (pred_proba.min() >= 0)
+        assert (pred_proba.max() <= 1)
 
     def test_prediction_proba_unify(self):
         pred_proba = self.clf.predict_proba(self.X_test, proba_method='unify')
-        assert_greater_equal(pred_proba.min(), 0)
-        assert_less_equal(pred_proba.max(), 1)
+        assert (pred_proba.min() >= 0)
+        assert (pred_proba.max() <= 1)
 
     def test_prediction_proba_parameter(self):
         with assert_raises(ValueError):

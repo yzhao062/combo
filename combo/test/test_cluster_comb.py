@@ -13,13 +13,8 @@ from sklearn.cluster import AgglomerativeClustering
 
 from sklearn.datasets import load_breast_cancer
 # noinspection PyProtectedMember
-from sklearn.utils.testing import assert_allclose
-from sklearn.utils.testing import assert_array_less
-from sklearn.utils.testing import assert_equal
-from sklearn.utils.testing import assert_greater
-from sklearn.utils.testing import assert_greater_equal
-from sklearn.utils.testing import assert_less_equal
-from sklearn.utils.testing import assert_raises
+from numpy.testing import assert_equal
+
 
 # temporary solution for relative imports in case combo is not installed
 # if  combo is installed, no need to use the following line
