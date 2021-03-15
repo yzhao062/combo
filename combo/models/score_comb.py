@@ -68,7 +68,8 @@ def _aom_moa_helper(mode, scores, n_buckets, method, bootstrap_estimators,
     # use random_state instead
     # for now it is fixed at n_estimators/2
     n_estimators = scores.shape[1]
-    check_parameter(n_buckets, 2, n_estimators, param_name='n_buckets')
+    check_parameter(n_buckets, 2, n_estimators, include_left=True,
+                    include_right=True, param_name='n_buckets')
 
     scores_buckets = np.zeros([scores.shape[0], n_buckets])
 
