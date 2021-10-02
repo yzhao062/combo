@@ -17,12 +17,8 @@ from sklearn.utils.validation import check_is_fitted
 from sklearn.utils.multiclass import check_classification_targets
 
 from .sklearn_base import _pprint
-from pyod.utils.utility import _get_sklearn_version
 
-if _get_sklearn_version() > 20:
-    from inspect import signature
-else:
-    from sklearn.externals.funcsigs import signature
+from inspect import signature
 
 
 class BaseAggregator(ABC):
