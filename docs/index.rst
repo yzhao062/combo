@@ -49,9 +49,9 @@ Welcome to combo's documentation!
 **Build Status & Coverage & Maintainability & License**
 
 
-.. image:: https://travis-ci.org/yzhao062/combo.svg?branch=master
-   :target: https://travis-ci.org/yzhao062/combo
-   :alt: Build Status
+.. image:: https://github.com/yzhao062/combo/actions/workflows/testing.yml/badge.svg
+   :target: https://github.com/yzhao062/combo/actions/workflows/testing.yml
+   :alt: testing
 
 
 .. image:: https://circleci.com/gh/yzhao062/combo.svg?style=svg
