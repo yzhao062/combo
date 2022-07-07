@@ -10,7 +10,6 @@ from numpy.testing import assert_raises
 
 
 from sklearn.metrics import roc_auc_score
-from scipy.stats import rankdata
 
 from pyod.utils.data import generate_data
 from pyod.models.knn import KNN
@@ -30,8 +29,8 @@ class TestAverage(unittest.TestCase):
         self.n_test = 100
         self.contamination = 0.1
         self.roc_floor = 0.8
-        self.X_train, self.y_train, self.X_test, self.y_test = generate_data(
-            n_train=self.n_train, n_test=self.n_test,
+        self.X_train, self.X_test, self.y_train, self.y_test = generate_data(
+            n_train=self.n_train, n_test=self.n_test, behaviour='new',
             contamination=self.contamination, random_state=42)
 
         detectors = [KNN(), LOF(), OCSVM()]
@@ -98,8 +97,8 @@ class Maximization(unittest.TestCase):
         self.n_test = 100
         self.contamination = 0.1
         self.roc_floor = 0.8
-        self.X_train, self.y_train, self.X_test, self.y_test = generate_data(
-            n_train=self.n_train, n_test=self.n_test,
+        self.X_train, self.X_test, self.y_train, self.y_test = generate_data(
+            n_train=self.n_train, n_test=self.n_test, behaviour='new',
             contamination=self.contamination, random_state=42)
 
         detectors = [KNN(), LOF(), OCSVM()]
@@ -166,8 +165,8 @@ class TestMedian(unittest.TestCase):
         self.n_test = 100
         self.contamination = 0.1
         self.roc_floor = 0.8
-        self.X_train, self.y_train, self.X_test, self.y_test = generate_data(
-            n_train=self.n_train, n_test=self.n_test,
+        self.X_train, self.X_test, self.y_train, self.y_test = generate_data(
+            n_train=self.n_train, n_test=self.n_test, behaviour='new',
             contamination=self.contamination, random_state=42)
 
         detectors = [KNN(), LOF(), OCSVM()]

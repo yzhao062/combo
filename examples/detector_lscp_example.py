@@ -31,11 +31,12 @@ n_train = 200  # number of training points
 n_test = 100  # number of testing points
 
 # Generate sample data
-X_train, y_train, X_test, y_test = \
+X_train, X_test, y_train, y_test = \
     generate_data(n_train=n_train,
                   n_test=n_test,
                   n_features=2,
                   contamination=contamination,
+                  behaviour='new',
                   random_state=42)
 
 detectors = [KNN(), LOF(), OCSVM()]
