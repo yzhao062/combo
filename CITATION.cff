@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper in preferred-citation below."
+title: "combo"
+abstract: "A Python toolbox for machine learning model combination."
+type: software
+authors:
+  - family-names: "Zhao"
+    given-names: "Yue"
+    orcid: "https://orcid.org/0000-0003-3401-4921"
+  - family-names: "Wang"
+    given-names: "Xuejian"
+  - family-names: "Cheng"
+    given-names: "Cheng"
+  - family-names: "Ding"
+    given-names: "Xueying"
+repository-code: "https://github.com/yzhao062/combo"
+url: "https://pycombo.readthedocs.io"
+license: BSD-2-Clause
+keywords:
+  - "ensemble-learning"
+  - "model-combination"
+  - "machine-learning"
+  - "data-mining"
+  - "aggregation"
+  - "python"
+preferred-citation:
+  type: conference-paper
+  title: "Combining Machine Learning Models using combo Library"
+  authors:
+    - family-names: "Zhao"
+      given-names: "Yue"
+      orcid: "https://orcid.org/0000-0003-3401-4921"
+    - family-names: "Wang"
+      given-names: "Xuejian"
+    - family-names: "Cheng"
+      given-names: "Cheng"
+    - family-names: "Ding"
+      given-names: "Xueying"
+  collection-title: "Thirty-Fourth AAAI Conference on Artificial Intelligence (Demonstration Track)"
+  year: 2020
+  url: "https://ojs.aaai.org/index.php/AAAI/article/view/7111"
